@@ -8,21 +8,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Reviewdetails extends AppCompatActivity
-{
+public class Reviewdetails extends AppCompatActivity {
     String TAG = "Reviewdetails";
     LinearLayout adult1, adult2, adult3, adult4, adult5, adult6, adult7, adult8, adult9;
     LinearLayout child1, child2, child3, child4, child5, child6, child7, child8;
     LinearLayout infant1, infant2, infant3, infant4, infant5, infant6, infant7, infant8, infant9;
 
-    TextView adultOneFirstName,adultTwoFirstName,adultThirdFirstName,adultFourthFirstName,adultFifthFirstName,adultSixthFirstName,adultSeventhFirstName,adultEighthFirstName,adultNinethFirstName;
-    TextView adultOneLastName,adultTwoLastName,adultThirdLastName,adultFourthLastName,adultFifthLastName,adultSixthLastName,adultSeventhLastName,adultEighthLastName,adultNinethLastName;
+    TextView adultOneFirstName, adultTwoFirstName, adultThirdFirstName, adultFourthFirstName, adultFifthFirstName, adultSixthFirstName, adultSeventhFirstName, adultEighthFirstName, adultNinethFirstName;
+    TextView adultOneLastName, adultTwoLastName, adultThirdLastName, adultFourthLastName, adultFifthLastName, adultSixthLastName, adultSeventhLastName, adultEighthLastName, adultNinethLastName;
 
-    TextView childOneFirstName,childTwoFirstName,childThirdFirstName,childFourthFirstName,childFifthFirstName,childSixthFirstName,childSeventhFirstName,childEighthFirstName;
-    TextView childOneLastName,childSecondLastName,childThirdLastName,childFourthLastName,childFifthLastName,childSixthLastName,childSeventhLastName,childEighthLastName;
+    TextView childOneFirstName, childTwoFirstName, childThirdFirstName, childFourthFirstName, childFifthFirstName, childSixthFirstName, childSeventhFirstName, childEighthFirstName;
+    TextView childOneLastName, childSecondLastName, childThirdLastName, childFourthLastName, childFifthLastName, childSixthLastName, childSeventhLastName, childEighthLastName;
 
-    TextView infantOneFirstName,infantTwoFirstName,infantThirdFirstName,infantFourthFirstName,infantFifthFirstName,infantSixthFirstName,infantSeventhFirstName,infantEighthFirstName,infantNinethFirstName;
-    TextView infantOneLastName,infantTwoLastName,infantThirdLastName,infantFourthLastName,infantFifthLastName,infantSixthLastName,infantSeventhLastName,infantEighthLastName,infantNinethLastName;
+    TextView infantOneFirstName, infantTwoFirstName, infantThirdFirstName, infantFourthFirstName, infantFifthFirstName, infantSixthFirstName, infantSeventhFirstName, infantEighthFirstName, infantNinethFirstName;
+    TextView infantOneLastName, infantTwoLastName, infantThirdLastName, infantFourthLastName, infantFifthLastName, infantSixthLastName, infantSeventhLastName, infantEighthLastName, infantNinethLastName;
 
     Intent intent;
     TextView adultreview;
@@ -30,16 +29,20 @@ public class Reviewdetails extends AppCompatActivity
     String adultCount;
     String childCount;
     String infantCount;
+    String flightPrice, flightDepartureTime, flightArrivalTime, flightCode, flightName, flightNumber, flightPriceR, flightArrivalTimeR, flightCodeR,
+            flightNameR,
+            flightNumberR,
+            originR,
+            destinationR,flightDepartureTimeR;
 
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviewdetails);
         intent = getIntent();
         adultCount = intent.getStringExtra("adultCount");
         childCount = intent.getStringExtra("childCount");
         infantCount = intent.getStringExtra("infantCount");
-        String adult1FirstName=intent.getStringExtra("adultOneFirstName");
+        String adult1FirstName = intent.getStringExtra("adultOneFirstName");
         intent.getStringExtra("adultSecondFirstName");
         intent.getStringExtra("adultThirdFirstName");
         intent.getStringExtra("adultFourthFirstName");
@@ -97,6 +100,24 @@ public class Reviewdetails extends AppCompatActivity
         intent.getStringExtra("infantEighthLastName");
         intent.getStringExtra("infantNinethLastName");
 
+        //Flights Details
+        flightPrice = intent.getStringExtra("flightPrice");
+        flightDepartureTime = intent.getStringExtra("flightDepartureTime");
+        flightArrivalTime = intent.getStringExtra("flightArrivalTime");
+        flightCode = intent.getStringExtra("flightCode");
+        flightName = intent.getStringExtra("flightName");
+        flightNumber = intent.getStringExtra("flightNumber");
+        //ReturgetStringLight Details
+        flightPriceR = intent.getStringExtra("flightPriceR");
+        flightDepartureTimeR = intent.getStringExtra("flightDepartureTimeR");
+        flightArrivalTimeR = intent.getStringExtra("flightArrivalTimeR");
+        flightCodeR = intent.getStringExtra("flightCodeR");
+        flightNameR = intent.getStringExtra("flightNameR");
+        flightNumberR = intent.getStringExtra("flightNumberR");
+
+        originR = intent.getStringExtra("originround");
+        destinationR = intent.getStringExtra("destinationround");
+
 
         Toast.makeText(Reviewdetails.this, "Number of adults" + adultCount, Toast.LENGTH_LONG).show();
 
@@ -133,53 +154,53 @@ public class Reviewdetails extends AppCompatActivity
         infant8 = findViewById(R.id.infant8);
         infant9 = findViewById(R.id.infant9);
 
-        adultOneFirstName=findViewById(R.id.adultName1);
-        adultTwoFirstName=findViewById(R.id.adultName2);
-        adultThirdFirstName=findViewById(R.id.adultName3);
-        adultFourthFirstName=findViewById(R.id.adultName4);
-        adultFifthFirstName=findViewById(R.id.adultName5);
-        adultSixthFirstName=findViewById(R.id.adultName6);
-        adultSeventhFirstName=findViewById(R.id.adultName7);
-        adultEighthFirstName=findViewById(R.id.adultName8);
-        adultNinethFirstName=findViewById(R.id.adultName9);
+        adultOneFirstName = findViewById(R.id.adultName1);
+        adultTwoFirstName = findViewById(R.id.adultName2);
+        adultThirdFirstName = findViewById(R.id.adultName3);
+        adultFourthFirstName = findViewById(R.id.adultName4);
+        adultFifthFirstName = findViewById(R.id.adultName5);
+        adultSixthFirstName = findViewById(R.id.adultName6);
+        adultSeventhFirstName = findViewById(R.id.adultName7);
+        adultEighthFirstName = findViewById(R.id.adultName8);
+        adultNinethFirstName = findViewById(R.id.adultName9);
 
-        adultOneLastName=findViewById(R.id.adultLastname1);
-        adultTwoLastName=findViewById(R.id.adultLastname2);
-        adultThirdLastName=findViewById(R.id.adultLastname3);
-        adultFourthLastName=findViewById(R.id.adultLastname4);
-        adultFifthLastName=findViewById(R.id.adultLastname5);
-        adultSixthLastName=findViewById(R.id.adultLastname6);
-        adultSeventhLastName=findViewById(R.id.adultLastname7);
-        adultEighthLastName=findViewById(R.id.adultLastname8);
-        adultNinethLastName=findViewById(R.id.adultLastname9);
+        adultOneLastName = findViewById(R.id.adultLastname1);
+        adultTwoLastName = findViewById(R.id.adultLastname2);
+        adultThirdLastName = findViewById(R.id.adultLastname3);
+        adultFourthLastName = findViewById(R.id.adultLastname4);
+        adultFifthLastName = findViewById(R.id.adultLastname5);
+        adultSixthLastName = findViewById(R.id.adultLastname6);
+        adultSeventhLastName = findViewById(R.id.adultLastname7);
+        adultEighthLastName = findViewById(R.id.adultLastname8);
+        adultNinethLastName = findViewById(R.id.adultLastname9);
 
-        childOneFirstName=findViewById(R.id.child1_firstname);
-        childTwoFirstName=findViewById(R.id.child2_firstname);
-        childThirdFirstName=findViewById(R.id.child3_firstname);
-        childFourthFirstName=findViewById(R.id.child4_firstname);
-        childFifthFirstName=findViewById(R.id.child5_firstname);
-        childSixthFirstName=findViewById(R.id.child6_firstname);
-        childSeventhFirstName=findViewById(R.id.child7_firstname);
-        childEighthFirstName=findViewById(R.id.child8_firstname);
+        childOneFirstName = findViewById(R.id.child1_firstname);
+        childTwoFirstName = findViewById(R.id.child2_firstname);
+        childThirdFirstName = findViewById(R.id.child3_firstname);
+        childFourthFirstName = findViewById(R.id.child4_firstname);
+        childFifthFirstName = findViewById(R.id.child5_firstname);
+        childSixthFirstName = findViewById(R.id.child6_firstname);
+        childSeventhFirstName = findViewById(R.id.child7_firstname);
+        childEighthFirstName = findViewById(R.id.child8_firstname);
 
-        childOneLastName=findViewById(R.id.child1_lastname);
-        childTwoFirstName=findViewById(R.id.child2_lastname);
-        childThirdFirstName=findViewById(R.id.child3_lastname);
-        childFourthFirstName=findViewById(R.id.child4_lastname);
-        childFifthFirstName=findViewById(R.id.child5_lastname);
-        childSixthFirstName=findViewById(R.id.child6_lastname);
-        childSeventhFirstName=findViewById(R.id.child7_lastname);
-        childEighthFirstName=findViewById(R.id.child8_lastname);
+        childOneLastName = findViewById(R.id.child1_lastname);
+        childTwoFirstName = findViewById(R.id.child2_lastname);
+        childThirdFirstName = findViewById(R.id.child3_lastname);
+        childFourthFirstName = findViewById(R.id.child4_lastname);
+        childFifthFirstName = findViewById(R.id.child5_lastname);
+        childSixthFirstName = findViewById(R.id.child6_lastname);
+        childSeventhFirstName = findViewById(R.id.child7_lastname);
+        childEighthFirstName = findViewById(R.id.child8_lastname);
 
-        infantOneFirstName=findViewById(R.id.infants1_firstname);
-        infantTwoFirstName=findViewById(R.id.infants2_firstname);
-        infantThirdFirstName=findViewById(R.id.infants3_firstname);
-        infantFourthFirstName=findViewById(R.id.infants4_firstname);
-        infantFifthFirstName=findViewById(R.id.infants5_firstname);
-        infantSixthFirstName=findViewById(R.id.infants6_firstname);
-        infantSeventhFirstName=findViewById(R.id.infants7_firstname);
-        infantEighthFirstName=findViewById(R.id.infants8_firstname);
-        infantNinethFirstName=findViewById(R.id.infants9_firstname);
+        infantOneFirstName = findViewById(R.id.infants1_firstname);
+        infantTwoFirstName = findViewById(R.id.infants2_firstname);
+        infantThirdFirstName = findViewById(R.id.infants3_firstname);
+        infantFourthFirstName = findViewById(R.id.infants4_firstname);
+        infantFifthFirstName = findViewById(R.id.infants5_firstname);
+        infantSixthFirstName = findViewById(R.id.infants6_firstname);
+        infantSeventhFirstName = findViewById(R.id.infants7_firstname);
+        infantEighthFirstName = findViewById(R.id.infants8_firstname);
+        infantNinethFirstName = findViewById(R.id.infants9_firstname);
 
 //        infantOneLastName=findViewById(R.id.infants1_lastname);
 //        infantTwoLastName=findViewById(R.id.infants2_lastname);
@@ -195,8 +216,7 @@ public class Reviewdetails extends AppCompatActivity
     }//End of onCreate method
 
     public void makeVisible() {
-        if (Integer.parseInt(adultCount) == 1)
-        {
+        if (Integer.parseInt(adultCount) == 1) {
             adultOneFirstName.setText(intent.getStringExtra("adultOneFirstName"));
             adultOneLastName.setText(intent.getStringExtra("adultOneLastName"));
 
@@ -209,8 +229,7 @@ public class Reviewdetails extends AppCompatActivity
             adult8.setVisibility(View.GONE);
             adult9.setVisibility(View.GONE);
 
-        } else if (Integer.parseInt(adultCount) == 2)
-        {
+        } else if (Integer.parseInt(adultCount) == 2) {
             adultOneFirstName.setText(intent.getStringExtra("adultOneFirstName"));
             adultOneLastName.setText(intent.getStringExtra("adultOneLastName"));
 
@@ -225,8 +244,7 @@ public class Reviewdetails extends AppCompatActivity
             adult7.setVisibility(View.GONE);
             adult8.setVisibility(View.GONE);
             adult9.setVisibility(View.GONE);
-        } else if (Integer.parseInt(adultCount) == 3)
-        {
+        } else if (Integer.parseInt(adultCount) == 3) {
             adultOneFirstName.setText(intent.getStringExtra("adultOneFirstName"));
             adultOneLastName.setText(intent.getStringExtra("adultOneLastName"));
 
@@ -243,8 +261,7 @@ public class Reviewdetails extends AppCompatActivity
             adult7.setVisibility(View.GONE);
             adult8.setVisibility(View.GONE);
             adult9.setVisibility(View.GONE);
-        } else if (Integer.parseInt(adultCount) == 4)
-        {
+        } else if (Integer.parseInt(adultCount) == 4) {
             adultOneFirstName.setText(intent.getStringExtra("adultOneFirstName"));
             adultOneLastName.setText(intent.getStringExtra("adultOneLastName"));
 
@@ -263,8 +280,7 @@ public class Reviewdetails extends AppCompatActivity
             adult7.setVisibility(View.GONE);
             adult8.setVisibility(View.GONE);
             adult9.setVisibility(View.GONE);
-        } else if (Integer.parseInt(adultCount) == 5)
-        {
+        } else if (Integer.parseInt(adultCount) == 5) {
             adultOneFirstName.setText(intent.getStringExtra("adultOneFirstName"));
             adultOneLastName.setText(intent.getStringExtra("adultOneLastName"));
 
@@ -281,8 +297,7 @@ public class Reviewdetails extends AppCompatActivity
             adult7.setVisibility(View.GONE);
             adult8.setVisibility(View.GONE);
             adult9.setVisibility(View.GONE);
-        } else if (Integer.parseInt(adultCount) == 6)
-        {
+        } else if (Integer.parseInt(adultCount) == 6) {
             adultOneFirstName.setText(intent.getStringExtra("adultOneFirstName"));
             adultOneLastName.setText(intent.getStringExtra("adultOneLastName"));
 
@@ -305,8 +320,7 @@ public class Reviewdetails extends AppCompatActivity
             adult7.setVisibility(View.GONE);
             adult8.setVisibility(View.GONE);
             adult9.setVisibility(View.GONE);
-        } else if (Integer.parseInt(adultCount) == 7)
-        {
+        } else if (Integer.parseInt(adultCount) == 7) {
             adultOneFirstName.setText(intent.getStringExtra("adultOneFirstName"));
             adultOneLastName.setText(intent.getStringExtra("adultOneLastName"));
 
@@ -330,8 +344,7 @@ public class Reviewdetails extends AppCompatActivity
 
             adult8.setVisibility(View.GONE);
             adult9.setVisibility(View.GONE);
-        } else if (Integer.parseInt(adultCount) == 8)
-        {
+        } else if (Integer.parseInt(adultCount) == 8) {
 
             adultOneFirstName.setText(intent.getStringExtra("adultOneFirstName"));
             adultOneLastName.setText(intent.getStringExtra("adultOneLastName"));
@@ -358,9 +371,7 @@ public class Reviewdetails extends AppCompatActivity
             adultEighthLastName.setText(intent.getStringExtra("adultEighthLastName"));
 
             adult9.setVisibility(View.GONE);
-        }
-        else if(Integer.parseInt(adultCount)==9)
-        {
+        } else if (Integer.parseInt(adultCount) == 9) {
             adultOneFirstName.setText(intent.getStringExtra("adultOneFirstName"));
             adultOneLastName.setText(intent.getStringExtra("adultOneLastName"));
 
@@ -391,8 +402,7 @@ public class Reviewdetails extends AppCompatActivity
         }
 
 
-        if (Integer.parseInt(infantCount) == 0)
-        {
+        if (Integer.parseInt(infantCount) == 0) {
             infant1.setVisibility(View.GONE);
             infant2.setVisibility(View.GONE);
             infant3.setVisibility(View.GONE);

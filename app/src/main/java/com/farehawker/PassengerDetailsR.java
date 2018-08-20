@@ -32,6 +32,25 @@ import java.util.List;
 public class PassengerDetailsR extends AppCompatActivity
 {
     EditText mobileNumber,emailId;
+    //Flight Details
+    String flightCode;
+    String flightName;
+    String flightNumber;
+    String flightSeatLeft;
+    String flightDepartureTime;
+    String flightPrice;
+    String flightArrivalTime;
+    //Return Flight Details
+    String flightCodeR;
+    String flightNameR;
+    String flightNumberR;
+    String flightSeatLeftR;
+    String flightDepartureTimeR;
+    String flightArrivalTimeR;
+    String flightPriceR;
+    String originR;
+    String destinationR;
+
     TextView adultOneFirstName, adultSecondFirstName, adultThirdFirstName, adultFourthFirstName, adultFifthFirstName, adultSixthFirstName, adultSeventhFirstName, adultEigthFirstName, adultNinethFirstName,
             adultOneLastName, adultSecondLastName, adultThirdLastName, adultFourthLastName, adultFifthLastName, adultSixthLastName, adultSeventhLastName, adultEigthLastName, adultNinethLastName,
             childOneFirstName, childSecondFirstName,childThirdFirstName,childFourthFirstName,childFifthFirstName,childSixthFirstName,childSeventhFirstName,childEigthFirstName,
@@ -90,6 +109,7 @@ public class PassengerDetailsR extends AppCompatActivity
     TextView child_count,infant_count;
     LinearLayout gstLinearLayout;
     Button reviewDetails;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -236,7 +256,8 @@ public class PassengerDetailsR extends AppCompatActivity
                     inr.putExtra("infantSeventhLastName",infant_dob7.getText().toString());
                     inr.putExtra("infantEigthLastName",infant_dob8.getText().toString());
                     inr.putExtra("infantNinethLastName",infant_dob9.getText().toString());
-                    startActivity(inr);
+
+                     startActivity(inr);
                 }
 
             }
@@ -286,6 +307,26 @@ public class PassengerDetailsR extends AppCompatActivity
         adultCount=intent.getStringExtra("adultround");
         childCount=intent.getStringExtra("childround");
         infantCount=intent.getStringExtra("infantsround");
+
+        //First FLight Details
+        flightPrice=intent.getStringExtra("flightPrice");
+        flightDepartureTime=intent.getStringExtra("flightDepartureTime");
+        flightArrivalTime=intent.getStringExtra("flightArrivalTime");
+        flightCode=intent.getStringExtra("flightCode");
+        flightName=intent.getStringExtra("flightName");
+        flightNumber=intent.getStringExtra("flightNumber");
+        //ReturgetStringLight Details
+        flightPriceR=intent.getStringExtra("flightPriceR");
+        flightDepartureTimeR=intent.getStringExtra("flightDepartureTimeR");
+        flightArrivalTimeR=intent.getStringExtra("flightArrivalTimeR");
+        flightCodeR=intent.getStringExtra("flightCodeR");
+        flightNameR=intent.getStringExtra("flightNameR");
+        flightNumberR=intent.getStringExtra("flightNumberR");
+
+        originR=intent.getStringExtra("originround");
+        destinationR=intent.getStringExtra("destinationround");
+
+        intent.putExtra("destinationround", destinationR);
 
         children=findViewById(R.id.children);
         infants=findViewById(R.id.infants);

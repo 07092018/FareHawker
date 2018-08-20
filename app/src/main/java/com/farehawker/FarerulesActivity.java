@@ -53,12 +53,14 @@ public class FarerulesActivity extends MyBaseActivity
     String flightDepartureTime;
     String flightPrice;
     String flightArrivalTime;
+
     //Return Flight Details
     String flightCodeR;
     String flightNameR;
     String flightNumberR;
     String flightSeatLeftR;
     String flightDepartureTimeR;
+    String flightArrivalTimeR;
     String flightPriceR;
     String originR;
     String destinationR;
@@ -133,6 +135,7 @@ public class FarerulesActivity extends MyBaseActivity
         flightNumberR=intent.getStringExtra("flightNumberR");
         flightSeatLeftR=intent.getStringExtra("flightSeatLeftR");
         flightDepartureTimeR=intent.getStringExtra("flightDepartureTimeR");
+        flightArrivalTimeR=intent.getStringExtra("flightDepartureTimeR");
         flightPriceR=intent.getStringExtra("flightPriceR");
         flightArrivalTime=intent.getStringExtra("flightArrivalTimeR");
 
@@ -181,6 +184,22 @@ public class FarerulesActivity extends MyBaseActivity
                     intent.putExtra("tokenid_round",tokenid_round);
                     intent.putExtra("flightPrice",flightPrice);
                     intent.putExtra("flightPriceR",flightPriceR);
+
+                    //First FLight Details
+                    intent.putExtra("flightPrice",flightPrice);
+                    intent.putExtra("flightDepartureTime",flightDepartureTime);
+                    intent.putExtra("flightArrivalTime",flightArrivalTime);
+                    intent.putExtra("flightCode",flightCode);
+                    intent.putExtra("flightName",flightName);
+                    intent.putExtra("flightNumber",flightNumber);
+
+                    //Return FLight Details
+                    intent.putExtra("flightPriceR",flightPriceR);
+                    intent.putExtra("flightDepartureTimeR",flightDepartureTimeR);
+                    intent.putExtra("flightArrivalTimeR",flightArrivalTimeR);
+                    intent.putExtra("flightCodeR",flightCodeR);
+                    intent.putExtra("flightNameR",flightNameR);
+                    intent.putExtra("flightNumberR",flightNumberR);
 
                     startActivity(intent);
                 }
