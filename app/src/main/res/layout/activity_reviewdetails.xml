@@ -1338,6 +1338,7 @@
                 android:layout_height="0dp"
                 android:text="20:00"/>
             <TextView
+                android:id="@+id/origin1"
                 android:layout_weight="1"
                 android:text="DEL"
                 android:layout_width="wrap_content"
@@ -1359,7 +1360,7 @@
                 android:layout_height="wrap_content"
                 android:text="01:30"/>
             <TextView
-                
+                android:id="@+id/destination1"
                 android:text="BOM"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -1434,12 +1435,13 @@
             android:orientation="vertical"
             android:weightSum="2">
             <TextView
-
+                android:id="@+id/flightName2"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:text="Indigo"/>
             <TextView
+                android:id="@+id/flightCode2"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -1453,11 +1455,13 @@
             android:orientation="vertical"
             android:weightSum="2">
             <TextView
+                android:id="@+id/arrivalTime2"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:text="20:00"/>
             <TextView
+                
                 android:layout_weight="1"
                 android:text="DEL"
                 android:layout_width="wrap_content"
