@@ -441,7 +441,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/child_count"
+                        android:id="@+id/children"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
@@ -804,7 +804,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        android:text="Infants"/>
+                        android:text="Infants "/>
                     <TextView
                         android:textSize="20sp"
                         android:id="@+id/maincount_infant"
@@ -843,10 +843,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-                            android:id="@+id/infants1_lastname"
+                            android:id="@+id/infants1_dob"
                             android:hint="DOB"
                             android:layout_weight="40"
-                            android:focusable="false"
+                            android:focusableInTouchMode="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
@@ -886,7 +886,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-                            android:id="@+id/infants2_lastname"
+                            android:focusableInTouchMode="true"
+                            android:id="@+id/infants2_dob"
                             android:hint="DOB"
                             android:focusable="false"
                             android:layout_weight="40"
@@ -929,7 +930,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-                            android:id="@+id/infants3_lastname"
+                            android:focusableInTouchMode="true"
+                            android:id="@+id/infants3_dob"
                             android:hint="DOB"
                             android:focusable="false"
                             android:layout_weight="40"
@@ -972,7 +974,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-                            android:id="@+id/infants4_lastname"
+                            android:focusableInTouchMode="true"
+                            android:id="@+id/infants4_dob"
                             android:hint="DOB"
                             android:focusable="false"
                             android:layout_weight="40"
@@ -1014,7 +1017,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-                            android:id="@+id/infants5_lastname"
+                            android:focusableInTouchMode="true"
+                            android:id="@+id/infants5_dob"
                             android:hint="DOB"
                             android:focusable="false"
                             android:layout_weight="40"
@@ -1056,7 +1060,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-                            android:id="@+id/infants6_lastname"
+                            android:focusableInTouchMode="true"
+                            android:id="@+id/infants6_dob"
                             android:hint="DOB"
                             android:focusable="false"
                             android:layout_weight="40"
@@ -1098,7 +1103,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-                            android:id="@+id/infants7_lastname"
+                            android:focusableInTouchMode="true"
+                            android:id="@+id/infants7_dob"
                             android:hint="DOB"
                             android:focusable="false"
                             android:layout_weight="40"
@@ -1140,7 +1146,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-                            android:id="@+id/infants8_lastname"
+                            android:focusableInTouchMode="true"
+                            android:id="@+id/infants8_dob"
                             android:hint="DOB"
                             android:focusable="false"
                             android:layout_weight="40"
@@ -1182,9 +1189,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-                            android:id="@+id/infants9_lastname"
+
+                            android:id="@+id/infants9_dob"
                             android:hint="DOB"
-                            android:focusable="false"
+                            android:focusableInTouchMode="true"
                             android:layout_weight="40"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />

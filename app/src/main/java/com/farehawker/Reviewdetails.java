@@ -181,15 +181,15 @@ public class Reviewdetails extends AppCompatActivity
         infantEighthFirstName=findViewById(R.id.infants8_firstname);
         infantNinethFirstName=findViewById(R.id.infants9_firstname);
 
-        infantOneLastName=findViewById(R.id.infants1_lastname);
-        infantTwoLastName=findViewById(R.id.infants2_lastname);
-        infantThirdLastName=findViewById(R.id.infants3_lastname);
-        infantFourthLastName=findViewById(R.id.infants4_lastname);
-        infantFifthLastName=findViewById(R.id.infants5_lastname);
-        infantSixthLastName=findViewById(R.id.infants6_lastname);
-        infantSeventhLastName=findViewById(R.id.infants7_lastname);
-        infantEighthLastName=findViewById(R.id.infants8_lastname);
-        infantNinethLastName =findViewById(R.id.infants9_lastname);
+//        infantOneLastName=findViewById(R.id.infants1_lastname);
+//        infantTwoLastName=findViewById(R.id.infants2_lastname);
+//        infantThirdLastName=findViewById(R.id.infants3_lastname);
+//        infantFourthLastName=findViewById(R.id.infants4_lastname);
+//        infantFifthLastName=findViewById(R.id.infants5_lastname);
+//        infantSixthLastName=findViewById(R.id.infants6_lastname);
+//        infantSeventhLastName=findViewById(R.id.infants7_lastname);
+//        infantEighthLastName=findViewById(R.id.infants8_lastname);
+//        infantNinethLastName =findViewById(R.id.infants9_lastname);
 
         makeVisible();
     }//End of onCreate method

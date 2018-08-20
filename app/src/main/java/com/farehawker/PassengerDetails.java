@@ -166,15 +166,15 @@ public class PassengerDetails extends AppCompatActivity
         infantEigthFirstName=(TextView)findViewById(R.id.infants8_firstname);
         infantNinethFirstName=(TextView)findViewById(R.id.infants9_firstname);
 
-        infantOneLastName=(TextView)findViewById(R.id.infants1_lastname);
-        infantSecondLastName=(TextView)findViewById(R.id.infants2_lastname);
-        infantThirdLastName=(TextView)findViewById(R.id.infants3_lastname);
-        infantFourthLastName=(TextView)findViewById(R.id.infants4_lastname);
-        infantFifthLastName=(TextView)findViewById(R.id.infants5_lastname);
-        infantSixthLastName=(TextView)findViewById(R.id.infants6_lastname);
-        infantSeventhLastName=(TextView)findViewById(R.id.infants7_lastname);
-        infantEigthLastName=(TextView)findViewById(R.id.infants8_lastname);
-        infantNinethLastName=(TextView)findViewById(R.id.infants9_lastname);
+//        infantOneLastName=(TextView)findViewById(R.id.infants1_lastname);
+//        infantSecondLastName=(TextView)findViewById(R.id.infants2_lastname);
+//        infantThirdLastName=(TextView)findViewById(R.id.infants3_lastname);
+//        infantFourthLastName=(TextView)findViewById(R.id.infants4_lastname);
+//        infantFifthLastName=(TextView)findViewById(R.id.infants5_lastname);
+//        infantSixthLastName=(TextView)findViewById(R.id.infants6_lastname);
+//        infantSeventhLastName=(TextView)findViewById(R.id.infants7_lastname);
+//        infantEigthLastName=(TextView)findViewById(R.id.infants8_lastname);
+//        infantNinethLastName=(TextView)findViewById(R.id.infants9_lastname);
 
 
         Linear_adult1 = (LinearLayout) findViewById(R.id.linear_adult1);
@@ -1155,10 +1155,10 @@ public class PassengerDetails extends AppCompatActivity
     }
 
     private void infantsdob() {
-        infant_DOB1 = (TextView) findViewById(R.id.infants1_lastname);
-        infant_DOB2 = (TextView) findViewById(R.id.infants2_lastname);
-        infant_DOB3 = (TextView) findViewById(R.id.infants3_lastname);
-        infant_DOB4 = (TextView) findViewById(R.id.infants4_lastname);
+        infant_DOB1 = (TextView) findViewById(R.id.infants1_dob);
+        infant_DOB2 = (TextView) findViewById(R.id.infants2_dob);
+        infant_DOB3 = (TextView) findViewById(R.id.infants3_dob);
+      infant_DOB4 = (TextView) findViewById(R.id.infants4_dob);
 
         infant_DOB1.setOnClickListener(new View.OnClickListener() {
             @Override
