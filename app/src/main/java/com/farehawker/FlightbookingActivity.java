@@ -137,7 +137,7 @@ public class FlightbookingActivity extends AppCompatActivity
             String rF =returncountry;
             String rE=descountry;
 
-        //convert all original intent
+        //Convert all original intent
             String a=AirportcodeTO;
             String b=citynameTO;
             String f=countryTO;
@@ -445,7 +445,7 @@ public class FlightbookingActivity extends AppCompatActivity
         });
 
     }
-    //for date calender show
+    //For date calender show
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {

@@ -47,10 +47,11 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
     String TokenId="dea00526-a6b8-497d-bddc-f6ae12c56e2c";
     String traceid;
     String originacc_one,destinationacc_one,adultacc_one,childacc_one,infantacc_one,cabinacc_one,depdateacc_one,returndateacc_one;
-        public static final String JSON_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
-    //public static final String JSON_URL = "https://demo0977760.mockable.io/oneway";
+    public static final String JSON_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oneway_activityresult);
         text_ocode=(TextView)findViewById(R.id.origincodeo);
