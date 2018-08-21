@@ -70,7 +70,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
     LinearLayout Linvisible;
     TextView Book_btn;
     String EndUserIp_Round = "216.10.251.69";
-    String TokenId_Round = "6e5393f4-523e-47dc-bb00-f2839801646b";
+    String TokenId_Round = "dea00526-a6b8-497d-bddc-f6ae12c56e2c";
     String originacc, destinationacc, adultacc, childacc, infantacc, cabinacc, depdateacc, returndateacc;
     String urlJsonroundtrip = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
     private int flightImageR;
@@ -88,6 +88,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             public void onClick(View v)
             {
                 Intent in = new Intent(RoundTripActivity.this, FarerulesActivity.class);
+
                 in.putExtra("adultR", adultacc);
                 in.putExtra("childR", childacc);
                 in.putExtra("infantR", infantacc);
@@ -103,24 +104,21 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
                 in.putExtra("cabinclass", cabinacc);
                 in.putExtra("departureround", depdateacc);
                 in.putExtra("returnround", returndateacc);
-
-                //Flight Details
-                in.putExtra("flightCode",flightCode);
-                in.putExtra("fightName",flightName);
-                in.putExtra("flightNumber",flightNumber);
-                in.putExtra("flightSeatLeft",flightSeatLeft);
-                in.putExtra("flightDepartureTime",flightDepartureTime);
+                //First FLight Details
                 in.putExtra("flightPrice",flightPrice);
+                in.putExtra("flightDepartureTime",flightDepartureTime);
                 in.putExtra("flightArrivalTime",flightArrivalTime);
+                in.putExtra("flightCode",flightCode);
+                in.putExtra("flightName",flightName);
+                in.putExtra("flightNumber",flightNumber);
 
-                //Return Flight details
-                in.putExtra("flightCodeR",flightCodeR);
-                in.putExtra("fightNameR",flightNameR);
-                in.putExtra("flightNumberR",flightNumberR);
-                in.putExtra("flightSeatLeftR",flightSeatLeftR);
-                in.putExtra("flightDepartureTimeR",flightDepartureTimeR);
+                //Return FLight Details
                 in.putExtra("flightPriceR",flightPriceR);
+                in.putExtra("flightDepartureTimeR",flightDepartureTimeR);
                 in.putExtra("flightArrivalTimeR",flightArrivalTimeR);
+                in.putExtra("flightCodeR",flightCodeR);
+                in.putExtra("flightNameR",flightNameR);
+                in.putExtra("flightNumberR",flightNumberR);
 
                 startActivity(in);
             }
@@ -246,7 +244,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             //first object
             JSONObject jsonobjectt = new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId", "6e5393f4-523e-47dc-bb00-f2839801646b");
+            jsonobjectt.put("TokenId", "dea00526-a6b8-497d-bddc-f6ae12c56e2c");
             jsonobjectt.put("AdultCount", adultacc);
             jsonobjectt.put("ChildCount", childacc);
             jsonobjectt.put("InfantCount", infantacc);
@@ -415,7 +413,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             e.printStackTrace();
         }
     }
-//Right side flight clicked
+//Right side flights clicked
     @Override
     public void itemClicked(View view, int position) {
         RoundtripreturnModelclass rightmodel = (RoundtripreturnModelclass) rightadaptor.getItem(position);

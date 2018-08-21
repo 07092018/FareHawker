@@ -105,7 +105,7 @@ public class FarerulesActivity extends MyBaseActivity
         originrecyclerview.setLayoutManager(orignLayoutManager);
         originlist = new ArrayList<>();
         Intent intent= getIntent();
-      //  Log.i("depDate",intent.getStringExtra("depart"));
+
         resultindex_oneward = intent.getStringExtra("result_oneward");
         resultindex_return=intent.getStringExtra("result_return");
         tracidR=intent.getStringExtra("traceid");
@@ -122,7 +122,7 @@ public class FarerulesActivity extends MyBaseActivity
 
         //Flight Details
         flightCode=intent.getStringExtra("flightCode");
-        flightName=intent.getStringExtra("fightName");
+        flightName=intent.getStringExtra("flightName");
         flightNumber=intent.getStringExtra("flightNumber");
         flightSeatLeft=intent.getStringExtra("flightSeatLeft");
         flightDepartureTime=intent.getStringExtra("flightDepartureTime");
@@ -131,7 +131,7 @@ public class FarerulesActivity extends MyBaseActivity
 
         //Return Flight details
         flightCodeR=intent.getStringExtra("flightCodeR");
-        flightNameR=intent.getStringExtra("fightNameR");
+        flightNameR=intent.getStringExtra("flightNameR");
         flightNumberR=intent.getStringExtra("flightNumberR");
         flightSeatLeftR=intent.getStringExtra("flightSeatLeftR");
         flightDepartureTimeR=intent.getStringExtra("flightDepartureTimeR");
@@ -169,7 +169,9 @@ public class FarerulesActivity extends MyBaseActivity
 
                 else
                 {
+
                     Intent intent = new Intent(getApplicationContext(),PassengerDetailsR.class);
+
                     intent.putExtra("intentId","RoundTrip");
                     intent.putExtra("originround", originR);
                     intent.putExtra("destinationround", destinationR);
@@ -179,6 +181,7 @@ public class FarerulesActivity extends MyBaseActivity
                     intent.putExtra("cabinclass", cabinR);
                     intent.putExtra("departureround", departureR);
                     intent.putExtra("returnround", retrunR);
+
                     //Flight Details
                     intent.putExtra("enduserip_round",enduserip_round);
                     intent.putExtra("tokenid_round",tokenid_round);

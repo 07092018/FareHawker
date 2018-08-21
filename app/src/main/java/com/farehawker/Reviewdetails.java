@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Reviewdetails extends AppCompatActivity {
+    TextView flightNameT, flightNameRT, arrivalTimeT, arrivalTimeRT, departureT, departureRT, flightCodeT, flightCodeRT, destinationT, destinationRT, originT, originRT;
     String TAG = "Reviewdetails";
     LinearLayout adult1, adult2, adult3, adult4, adult5, adult6, adult7, adult8, adult9;
     LinearLayout child1, child2, child3, child4, child5, child6, child7, child8;
@@ -29,11 +31,8 @@ public class Reviewdetails extends AppCompatActivity {
     String adultCount;
     String childCount;
     String infantCount;
-    String flightPrice, flightDepartureTime, flightArrivalTime, flightCode, flightName, flightNumber, flightPriceR, flightArrivalTimeR, flightCodeR,
-            flightNameR,
-            flightNumberR,
-            originR,
-            destinationR,flightDepartureTimeR;
+    String flightPrice, flightDepartureTime, flightArrivalTime, flightCode, flightName, flightNumber, flightPriceR, flightArrivalTimeR, flightCodeR, flightNameR, flightNumberR, originR, destinationR, flightDepartureTimeR;
+    RelativeLayout flightDetailsR;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +106,8 @@ public class Reviewdetails extends AppCompatActivity {
         flightCode = intent.getStringExtra("flightCode");
         flightName = intent.getStringExtra("flightName");
         flightNumber = intent.getStringExtra("flightNumber");
-        //ReturgetStringLight Details
+
+        //Return Flight Details
         flightPriceR = intent.getStringExtra("flightPriceR");
         flightDepartureTimeR = intent.getStringExtra("flightDepartureTimeR");
         flightArrivalTimeR = intent.getStringExtra("flightArrivalTimeR");
@@ -115,8 +115,8 @@ public class Reviewdetails extends AppCompatActivity {
         flightNameR = intent.getStringExtra("flightNameR");
         flightNumberR = intent.getStringExtra("flightNumberR");
 
-        originR = intent.getStringExtra("originround");
-        destinationR = intent.getStringExtra("destinationround");
+        originR = intent.getStringExtra("origin");
+        destinationR = intent.getStringExtra("destination");
 
 
         Toast.makeText(Reviewdetails.this, "Number of adults" + adultCount, Toast.LENGTH_LONG).show();
@@ -201,6 +201,46 @@ public class Reviewdetails extends AppCompatActivity {
         infantSeventhFirstName = findViewById(R.id.infants7_firstname);
         infantEighthFirstName = findViewById(R.id.infants8_firstname);
         infantNinethFirstName = findViewById(R.id.infants9_firstname);
+        flightCodeT = findViewById(R.id.flightCode);
+        flightCodeRT = findViewById(R.id.flightCode2);
+
+        flightNameT = findViewById(R.id.flightName);
+
+        arrivalTimeT = findViewById(R.id.arrivalTime);
+
+        departureT = findViewById(R.id.departureTimeR);
+
+        flightCodeT = findViewById(R.id.flightCode2);
+
+        destinationT = findViewById(R.id.destination1);
+
+        flightNameRT = findViewById(R.id.flightName2);
+        arrivalTimeRT = findViewById(R.id.arrivalTime2);
+        departureRT = findViewById(R.id.departureTimeR);
+        flightCodeRT = findViewById(R.id.flightCode2);
+        destinationRT = findViewById(R.id.destination2);
+        originRT = findViewById(R.id.origin2);
+        flightNameRT.setText(flightNameR);
+        originT = findViewById(R.id.origin1);
+        flightDetailsR = findViewById(R.id.flightDetailsR_RelativeLayout);
+
+
+        flightNameT.setText(flightName);
+        arrivalTimeT.setText(flightArrivalTime);
+        departureT.setText(flightDepartureTime);
+        flightCodeT.setText(flightCode);
+        if(intent.getStringExtra("id").equals("roundTrip"))
+        {
+            arrivalTimeRT.setText(flightArrivalTimeR);
+            departureRT.setText(flightDepartureTimeR);
+            flightCodeRT.setText(flightCodeR);
+            originRT.setText(destinationR);
+            destinationRT.setText(originR);
+            flightDetailsR.setVisibility(View.GONE);
+        }
+        originT.setText(originR);
+        destinationT.setText(destinationR);
+
 
 //        infantOneLastName=findViewById(R.id.infants1_lastname);
 //        infantTwoLastName=findViewById(R.id.infants2_lastname);

@@ -42,12 +42,19 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:weightSum="2"
+        android:weightSum="3"
         android:id="@+id/row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
-            android:gravity="center_horizontal"
+
+            android:layout_weight="0.4"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Title"/>
+
+        <TextView
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -1244,6 +1251,11 @@
 
 
     </LinearLayout>
+    <View
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        />
     <TextView
         android:textSize="24sp"
         android:textColor="@color/farehawkercolor"
@@ -1298,6 +1310,7 @@
         android:layout_marginBottom="10dp"
         >
         <ImageView
+            android:id="@+id/flightImage"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="35dp"
@@ -1421,6 +1434,7 @@
         android:layout_marginBottom="10dp"
         >
         <ImageView
+            android:id="@+id/returnFlight"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="35dp"
@@ -1461,7 +1475,7 @@
                 android:layout_height="0dp"
                 android:text="20:00"/>
             <TextView
-
+                android:id="@+id/origin2"
                 android:layout_weight="1"
                 android:text="DEL"
                 android:layout_width="wrap_content"
@@ -1477,11 +1491,13 @@
 
             android:orientation="vertical">
             <TextView
+                android:id="@+id/departureTimeR"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="01:30"/>
             <TextView
+                android:id="@+id/destination2"
                 android:text="BOM"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -1491,6 +1507,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/makeButton"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

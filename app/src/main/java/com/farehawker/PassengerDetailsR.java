@@ -257,6 +257,24 @@ public class PassengerDetailsR extends AppCompatActivity
                     inr.putExtra("infantEigthLastName",infant_dob8.getText().toString());
                     inr.putExtra("infantNinethLastName",infant_dob9.getText().toString());
 
+                    //First FLight Details
+                    inr.putExtra("flightPrice",flightPrice);
+                    inr.putExtra("flightDepartureTime",flightDepartureTime);
+                    inr.putExtra("flightArrivalTime",flightArrivalTime);
+                    inr.putExtra("flightCode",flightCode);
+                    inr.putExtra("flightName",flightName);
+                    inr.putExtra("flightNumber",flightNumber);
+
+                    //ReturgetStringExtra Details
+                    inr.putExtra("flightPriceR",flightPriceR);
+                    inr.putExtra("flightDepartureTimeR",flightDepartureTimeR);
+                    inr.putExtra("flightArrivalTimeR",flightArrivalTimeR);
+                    inr.putExtra("flightCodeR",flightCodeR);
+                    inr.putExtra("flightNameR",flightNameR);
+                    inr.putExtra("flightNumberR",flightNumberR);
+                    inr.putExtra("origin",originR);
+                    inr.putExtra("destination",destinationR);
+                    inr.putExtra("id","roundTrip");
                      startActivity(inr);
                 }
 
@@ -315,7 +333,8 @@ public class PassengerDetailsR extends AppCompatActivity
         flightCode=intent.getStringExtra("flightCode");
         flightName=intent.getStringExtra("flightName");
         flightNumber=intent.getStringExtra("flightNumber");
-        //ReturgetStringLight Details
+
+        //Return flight Details
         flightPriceR=intent.getStringExtra("flightPriceR");
         flightDepartureTimeR=intent.getStringExtra("flightDepartureTimeR");
         flightArrivalTimeR=intent.getStringExtra("flightArrivalTimeR");
@@ -326,7 +345,7 @@ public class PassengerDetailsR extends AppCompatActivity
         originR=intent.getStringExtra("originround");
         destinationR=intent.getStringExtra("destinationround");
 
-        intent.putExtra("destinationround", destinationR);
+
 
         children=findViewById(R.id.children);
         infants=findViewById(R.id.infants);
@@ -2876,7 +2895,7 @@ public class PassengerDetailsR extends AppCompatActivity
                                 Toast.makeText(PassengerDetailsR.this, "invalid coupon", Toast.LENGTH_SHORT).show();
 
                             } else {
-                                if (couponValidity == 1) {
+                                if (couponValidity == 1 && !TextUtils.isEmpty(couponCode.getText())) {
                                     String str=TotalFare.getText().toString();
 
                                     TotalFare.setText("₹"+String.valueOf(Integer.parseInt(TotalFare.getText().toString().substring(1)) - my_amount));

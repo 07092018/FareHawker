@@ -61,6 +61,10 @@ public class FlightbookingActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flightbooking);
+
+        text_onewaytrip=(TextView)findViewById(R.id.oneway_triptxt);
+        text_roundtrip=(TextView)findViewById(R.id.round_triptxt);
+
         linear_departure = (LinearLayout) findViewById(R.id.linearlayout_departure);
         linear_departure.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +79,7 @@ public class FlightbookingActivity extends AppCompatActivity
                 showDialog(Dialog_id);
             }
         });
+
         //get intent values
         if (getSupportActionBar() != null)
         {
@@ -181,9 +186,8 @@ public class FlightbookingActivity extends AppCompatActivity
             }
         });
 
-        text_onewaytrip=(TextView)findViewById(R.id.oneway_triptxt);
-        text_roundtrip=(TextView)findViewById(R.id.round_triptxt);
-        text_roundtrip.setBackgroundColor(Color.BLUE);
+
+
         text_onewaytrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -374,16 +378,30 @@ public class FlightbookingActivity extends AppCompatActivity
                     String adultc = text_Adult.getText().toString();
                     String childc = text_Child.getText().toString();
                     String infacntc = text_infant.getText().toString();
+                    String infantc=infacntc;
                     String depadate = text_departure.getText().toString();
                     String retunrdate = text_return.getText().toString();
                     String cabinclas = String.valueOf(spn_count);
-                    if ((linear_return.isShown()) && ((!text_fromcountry.getText().toString().equals("India")) || (!text_tocountry.getText().toString().equals("India")))) {
-
+                    if ((linear_return.isShown()) && ((!text_fromcountry.getText().toString().equals("India")) || (!text_tocountry.getText().toString().equals("India"))))
+                    {
                         Toast.makeText(getApplicationContext(), "this is third segment ", Toast.LENGTH_SHORT).show();
-                         Intent in =new Intent(FlightbookingActivity.this,International_Roundtrip.class);
-                         startActivity(in);
-                    } else {
-                        if (linear_return.isShown()) {
+                        Intent in =new Intent(FlightbookingActivity.this,International_Roundtrip.class);
+
+                        in.putExtra("origin",fromc);
+                        in.putExtra("destination",toc);
+                        in.putExtra("adultCount",adultc);
+                        in.putExtra("childCount",childc);
+                        in.putExtra("infantCount",infantc);
+                        in.putExtra("departureDate",depadate);
+                        in.putExtra("returnDate",retunrdate);
+                        in.putExtra("cabinClass",cabinclas);
+
+                        startActivity(in);
+                    }
+                    else
+                        {
+                        if (linear_return.isShown())
+                        {
                             if (TextUtils.isEmpty(text_return.getText().toString()) || (returwrong < departurewron)) {
                                 //new AlertDialog.Builder(FlightbookingActivity.this)
                                 AlertDialog.Builder builder = new AlertDialog.Builder(FlightbookingActivity.this);
