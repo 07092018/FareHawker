@@ -109,7 +109,7 @@ public class FlightbookingActivity extends AppCompatActivity
         AirportcodeTO = getIntent().getStringExtra("airport_codedestination");
         citynameTO = getIntent().getStringExtra("citynamedestination");
         countryTO=getIntent().getStringExtra("Countrydes");
-        //get intent from Searchactivity
+        //Get intent from Searchactivity
         AirportcodeFROM = getIntent().getStringExtra("airport_code");
         citynameFROM = getIntent().getStringExtra("cityname");
         countrynameFROm=getIntent().getStringExtra("countryname");
