@@ -185,9 +185,6 @@ public class FlightbookingActivity extends AppCompatActivity
                     startActivity(iii);
             }
         });
-
-
-
         text_onewaytrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
