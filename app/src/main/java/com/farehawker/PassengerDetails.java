@@ -107,7 +107,7 @@ public class PassengerDetails extends AppCompatActivity
         childonep = intent.getStringExtra("childone");
         infantsonep = intent.getStringExtra("infantsone");
         flightPrice=intent.getStringExtra("totalFare");
-        TotalFare.setText(intent.getStringExtra("totalFare"));
+        TotalFare.setText("₹"+intent.getStringExtra("totalFare"));
         airlineCode = intent.getStringExtra("airlineCode");
         airlineName=intent.getStringExtra("airlineName");
 
@@ -360,7 +360,7 @@ public class PassengerDetails extends AppCompatActivity
                 inr.putExtra("infantCount", infantsonep);
                   inr.putExtra("flightPrice",flightPrice);
                   inr.putExtra("flightDepartureTime",departure);
-                  inr.putExtra("Id","roundTrip");
+
                   //Log.i("PassengerDetails","departure",departure);
 
                   inr.putExtra("flightArrivalTime",arrivalTime);

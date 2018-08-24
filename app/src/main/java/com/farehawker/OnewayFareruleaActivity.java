@@ -290,7 +290,7 @@ public class OnewayFareruleaActivity extends AppCompatActivity
                         //total fare
                         Double total = Double.valueOf(Faresr.getString("PublishedFare"));
                         total_o_oneway= total.intValue();
-                        int pub = total_o_oneway ;
+                        int pub = total_o_oneway +1;
                          Log.wtf("values", String.valueOf(total_o_oneway));
                         publish_oneway.setText(String.valueOf(pub));
 

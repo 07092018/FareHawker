@@ -1,6 +1,7 @@
 package com.farehawker;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -14,11 +15,16 @@ import org.json.JSONObject;
 public class MerchantActivity extends Activity implements PaymentResultListner
 {
     private static final String TAG ="MerchantActivity" ;
-
+    float totalFare;
     @Override
     public void onCreate( Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        Intent intent =getIntent();
+        String s=intent.getStringExtra("totalFare");
+        float f=Float.parseFloat(s);
+        totalFare=Float.parseFloat(intent.getStringExtra("totalFare"));
+
         startPayment();
     }
 
@@ -43,11 +49,13 @@ public class MerchantActivity extends Activity implements PaymentResultListner
         final Activity activity= this;
         try
         {
+
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("name","FareHawker");
-            jsonObject.put("description","123");
+            jsonObject.put("description","");
             jsonObject.put("currency","INR");
-            jsonObject.put("amount","500");
+            totalFare=100*totalFare;
+            jsonObject.put("amount",totalFare);
             checkout.open(activity,jsonObject);
 
 

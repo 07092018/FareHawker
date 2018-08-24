@@ -16,6 +16,7 @@ public class SomeEarlierMerchantActivity extends Activity
         super.onCreate(savedInstanceState);
         Checkout.preload(getApplicationContext());
         Intent intent = new Intent(SomeEarlierMerchantActivity.this,MerchantActivity.class);
+        intent.putExtra("totalFare",intent.getStringExtra("totalFare"));
         startActivity(intent);
 
     }

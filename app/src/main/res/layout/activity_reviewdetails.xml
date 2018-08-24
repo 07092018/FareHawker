@@ -1381,6 +1381,7 @@
                 />
         </LinearLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/flightDetailsR_RelativeLayout"
         android:background="@color/farehawkercolor"
@@ -1418,11 +1419,7 @@
         android:layout_width="match_parent"
         />
 
-    <View
-        android:background="@color/marginColor"
-        android:layout_height="2dp"
-        android:layout_width="match_parent"
-        />
+
     <LinearLayout
         android:weightSum="4"
         android:id="@+id/flightRLinearLayout"

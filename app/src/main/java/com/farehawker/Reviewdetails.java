@@ -35,10 +35,13 @@ public class Reviewdetails extends AppCompatActivity {
     RelativeLayout flightDetailsR;
     String id;
     Button makePayment;
+    RelativeLayout flightDetailsR_RelativeLayout;
+    LinearLayout flightRLinearLayout;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviewdetails);
+
         intent = getIntent();
         adultCount = intent.getStringExtra("adultCount");
         childCount = intent.getStringExtra("childCount");
@@ -105,6 +108,7 @@ public class Reviewdetails extends AppCompatActivity {
         infant8 = findViewById(R.id.infant8);
         infant9 = findViewById(R.id.infant9);
 
+        flightDetailsR_RelativeLayout=findViewById(R.id.flightDetailsR_RelativeLayout);
         adultOneFirstName = findViewById(R.id.adultName1);
         adultTwoFirstName = findViewById(R.id.adultName2);
         adultThirdFirstName = findViewById(R.id.adultName3);
@@ -173,7 +177,9 @@ public class Reviewdetails extends AppCompatActivity {
         originRT = findViewById(R.id.origin2);
         flightNameRT.setText(flightNameR);
         originT = findViewById(R.id.origin1);
+        destinationT =findViewById(R.id.destination1);
         flightDetailsR = findViewById(R.id.flightDetailsR_RelativeLayout);
+        flightRLinearLayout=findViewById(R.id.flightRLinearLayout);
         makePayment=findViewById(R.id.makeButton);
 
         makePayment.setOnClickListener(new View.OnClickListener() {
@@ -181,15 +187,22 @@ public class Reviewdetails extends AppCompatActivity {
             public void onClick(View view)
             {
               Intent intent = new Intent(Reviewdetails.this,SomeEarlierMerchantActivity.class);
+              intent.putExtra("totalFare",flightPrice);
               startActivity(intent);
             }
         });
         flightNameT.setText(flightName);
         arrivalTimeT.setText(flightArrivalTime);
         departureT.setText(flightDepartureTime);
+        destinationT.setText(destination);
+        originT.setText(origin);
         flightCodeT.setText(flightCode);
-        if(intent.getStringExtra("id").equals("roundTrip"))
+        flightDetailsR_RelativeLayout.setVisibility(View.GONE);
+        flightRLinearLayout.setVisibility(View.GONE);
+        if(id.equals("roundTrip"))
         {
+            flightDetailsR_RelativeLayout.setVisibility(View.VISIBLE);
+            flightRLinearLayout.setVisibility(View.VISIBLE);
             arrivalTimeRT.setText(flightArrivalTimeR);
             departureRT.setText(flightDepartureTimeR);
             flightCodeRT.setText(flightCodeR);
@@ -197,8 +210,7 @@ public class Reviewdetails extends AppCompatActivity {
             destinationRT.setText(originR);
             flightDetailsR.setVisibility(View.GONE);
         }
-        originT.setText(originR);
-        destinationT.setText(destinationR);
+
 
 
 //        infantOneLastName=findViewById(R.id.infants1_lastname);
