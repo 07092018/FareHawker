@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,7 +19,6 @@ public class Reviewdetails extends AppCompatActivity {
 
     TextView adultOneFirstName, adultTwoFirstName, adultThirdFirstName, adultFourthFirstName, adultFifthFirstName, adultSixthFirstName, adultSeventhFirstName, adultEighthFirstName, adultNinethFirstName;
     TextView adultOneLastName, adultTwoLastName, adultThirdLastName, adultFourthLastName, adultFifthLastName, adultSixthLastName, adultSeventhLastName, adultEighthLastName, adultNinethLastName;
-
     TextView childOneFirstName, childTwoFirstName, childThirdFirstName, childFourthFirstName, childFifthFirstName, childSixthFirstName, childSeventhFirstName, childEighthFirstName;
     TextView childOneLastName, childSecondLastName, childThirdLastName, childFourthLastName, childFifthLastName, childSixthLastName, childSeventhLastName, childEighthLastName;
 
@@ -31,8 +31,9 @@ public class Reviewdetails extends AppCompatActivity {
     String adultCount;
     String childCount;
     String infantCount;
-    String flightPrice, flightDepartureTime, flightArrivalTime, flightCode, flightName, flightNumber, flightPriceR, flightArrivalTimeR, flightCodeR, flightNameR, flightNumberR, originR, destinationR, flightDepartureTimeR;
+    String flightPrice, flightDepartureTime, flightArrivalTime, flightCode, flightName, flightNumber, flightPriceR, flightArrivalTimeR, flightCodeR, flightNameR, flightNumberR, originR, destinationR, flightDepartureTimeR,origin,destination;
     RelativeLayout flightDetailsR;
+    Button makePayment;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,63 +42,6 @@ public class Reviewdetails extends AppCompatActivity {
         adultCount = intent.getStringExtra("adultCount");
         childCount = intent.getStringExtra("childCount");
         infantCount = intent.getStringExtra("infantCount");
-        String adult1FirstName = intent.getStringExtra("adultOneFirstName");
-        intent.getStringExtra("adultSecondFirstName");
-        intent.getStringExtra("adultThirdFirstName");
-        intent.getStringExtra("adultFourthFirstName");
-        intent.getStringExtra("adultFifthFirstName");
-        intent.getStringExtra("adultSixthFirstName");
-        intent.getStringExtra("adultSeventhFirstName");
-        intent.getStringExtra("adultEighthFirstName");
-        intent.getStringExtra("adultNinethFirstName");
-
-        intent.getStringExtra("adultOneLastName");
-        intent.getStringExtra("adultTwoLastName");
-        intent.getStringExtra("adultThirdLastName");
-        intent.getStringExtra("adultFourthLastName");
-        intent.getStringExtra("adultFifthLastName");
-        intent.getStringExtra("adultSixthLastName");
-        intent.getStringExtra("adultSeventhLastName");
-        intent.getStringExtra("adultEighthLastName");
-        intent.getStringExtra("adultNinethLastName");
-
-        intent.getStringExtra("childOneFirstName");
-        intent.getStringExtra("childTwoFirstName");
-        intent.getStringExtra("childThrirdFirstName");
-        intent.getStringExtra("childFourthFirstName");
-        intent.getStringExtra("childFifthFirstName");
-        intent.getStringExtra("childSixthFirstName");
-        intent.getStringExtra("childSeventhFirstName");
-        intent.getStringExtra("childEighthFirstName");
-
-        intent.getStringExtra("childFirstLastName");
-        intent.getStringExtra("childSecondLastName");
-        intent.getStringExtra("childThirdLastName");
-        intent.getStringExtra("childFourthLastName");
-        intent.getStringExtra("childFifthLastName");
-        intent.getStringExtra("childSixthLastName");
-        intent.getStringExtra("childSeventhLastName");
-        intent.getStringExtra("childEighthLastName");
-
-        intent.getStringExtra("infantOneFirstName");
-        intent.getStringExtra("infantSecondFirstName");
-        intent.getStringExtra("infantThirdFirstName");
-        intent.getStringExtra("infantFourthFirstName");
-        intent.getStringExtra("infantFifthFirstName");
-        intent.getStringExtra("infantSixthFirstName");
-        intent.getStringExtra("infantSeventhFirstName");
-        intent.getStringExtra("infantEighthFirstName");
-        intent.getStringExtra("infantNinethFirstName");
-
-        intent.getStringExtra("infantOneLastName");
-        intent.getStringExtra("infantSecondName");
-        intent.getStringExtra("infantThirdLastName");
-        intent.getStringExtra("infantFourthLastName");
-        intent.getStringExtra("infantFifthLastName");
-        intent.getStringExtra("infantSixthLastName");
-        intent.getStringExtra("infantSeventhLastName");
-        intent.getStringExtra("infantEighthLastName");
-        intent.getStringExtra("infantNinethLastName");
 
         //Flights Details
         flightPrice = intent.getStringExtra("flightPrice");
@@ -106,17 +50,23 @@ public class Reviewdetails extends AppCompatActivity {
         flightCode = intent.getStringExtra("flightCode");
         flightName = intent.getStringExtra("flightName");
         flightNumber = intent.getStringExtra("flightNumber");
+        origin = intent.getStringExtra("origin");
+        destination = intent.getStringExtra("destination");
 
         //Return Flight Details
-        flightPriceR = intent.getStringExtra("flightPriceR");
-        flightDepartureTimeR = intent.getStringExtra("flightDepartureTimeR");
-        flightArrivalTimeR = intent.getStringExtra("flightArrivalTimeR");
-        flightCodeR = intent.getStringExtra("flightCodeR");
-        flightNameR = intent.getStringExtra("flightNameR");
-        flightNumberR = intent.getStringExtra("flightNumberR");
+        if(intent.getStringExtra("Id")=="roundTrip")
+        {
+            flightPriceR = intent.getStringExtra("flightPriceR");
+            flightDepartureTimeR = intent.getStringExtra("flightDepartureTimeR");
+            flightArrivalTimeR = intent.getStringExtra("flightArrivalTimeR");
+            flightCodeR = intent.getStringExtra("flightCodeR");
+            flightNameR = intent.getStringExtra("flightNameR");
+            flightNumberR = intent.getStringExtra("flightNumberR");
 
-        originR = intent.getStringExtra("origin");
-        destinationR = intent.getStringExtra("destination");
+            originR = intent.getStringExtra("origin");
+            destinationR = intent.getStringExtra("destination");
+
+        }
 
 
         Toast.makeText(Reviewdetails.this, "Number of adults" + adultCount, Toast.LENGTH_LONG).show();
@@ -223,8 +173,16 @@ public class Reviewdetails extends AppCompatActivity {
         flightNameRT.setText(flightNameR);
         originT = findViewById(R.id.origin1);
         flightDetailsR = findViewById(R.id.flightDetailsR_RelativeLayout);
+        makePayment=findViewById(R.id.makeButton);
 
-
+        makePayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+              Intent intent = new Intent(Reviewdetails.this,SomeEarlierMerchantActivity.class);
+              startActivity(intent);
+            }
+        });
         flightNameT.setText(flightName);
         arrivalTimeT.setText(flightArrivalTime);
         departureT.setText(flightDepartureTime);

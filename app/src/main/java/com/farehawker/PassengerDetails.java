@@ -351,65 +351,165 @@ public class PassengerDetails extends AppCompatActivity
                 inr.putExtra("childCount", childonep);
                 inr.putExtra("infantCount", infantsonep);
 
-                inr.putExtra("adultOneFirstName", adultOneFirstName.getText().toString());
-                inr.putExtra("adultSecondFirstName", adultSecondFirstName.getText().toString());
-                inr.putExtra("adultThirdFirstName", adultThirdFirstName.getText().toString());
-                inr.putExtra("adultFourthFirstName", adultFourthFirstName.getText().toString());
-                inr.putExtra("adultFifthFirstName", adultFifthFirstName.getText().toString());
-                inr.putExtra("adultSixthFirstName", adultSixthFirstName.getText().toString());
-                inr.putExtra("adultSeventhFirstName", adultSeventhFirstName.getText().toString());
-                inr.putExtra("adultEigthFirstName", adultEigthFirstName.getText().toString());
-                inr.putExtra("adultNinethFirstName", adultNinethFirstName.getText().toString());
+                if(Integer.parseInt(adultonep)==1)
+                {
+                    inr.putExtra("adultOneFirstName",adultOneFirstName.getText().toString());
+                    inr.putExtra("adultOneLastName",adultOneLastName.getText().toString());
 
-                inr.putExtra("adultOneLastName", adultOneLastName.getText().toString());
-                inr.putExtra("adultTwoLastName", adultOneLastName.getText().toString());
-                inr.putExtra("adultThirdLastName", adultOneLastName.getText().toString());
-                inr.putExtra("adultFourthLastName", adultOneLastName.getText().toString());
-                inr.putExtra("adultFifthLastName", adultOneLastName.getText().toString());
-                inr.putExtra("adultSixthLastName", adultOneLastName.getText().toString());
-                inr.putExtra("adultSeventhLastName", adultOneLastName.getText().toString());
-                inr.putExtra("adultEigthLastName", adultOneLastName.getText().toString());
-                inr.putExtra("adultNinethLastName", adultOneLastName.getText().toString());
+                }
+                else if(Integer.parseInt(adultonep)==2)
+                {
+                    inr.putExtra("adultSecondFirstName",adultSecondFirstName.getText().toString());
+                    inr.putExtra("adultSecondLastName",adultSecondLastName.getText().toString());
 
-                inr.putExtra("childOneFirstName",childOneFirstName.getText().toString());
-                inr.putExtra("childTwoFirstName",childOneFirstName.getText().toString());
-                inr.putExtra("childThrirdFirstName",childOneFirstName.getText().toString());
-                inr.putExtra("childFourthFirstName",childOneFirstName.getText().toString());
-                inr.putExtra("childFifthFirstName",childOneFirstName.getText().toString());
-                inr.putExtra("childSixthFirstName",childOneFirstName.getText().toString());
-                inr.putExtra("childSeventhFirstName",childOneFirstName.getText().toString());
-                inr.putExtra("childEigthFirstName",childOneFirstName.getText().toString());
+                }
+                else if(Integer.parseInt(adultonep)==3)
+                {
+                    inr.putExtra("adultThrirdFirstName",adultThirdFirstName.getText().toString());
+                    inr.putExtra("adultThrirdLastName",adultThirdLastName.getText().toString());
 
-                inr.putExtra("childFirstLastName",childOneFirstName.getText().toString());
-                inr.putExtra("childSecondLastName",childOneFirstName.getText().toString());
-                inr.putExtra("childThirdLastName",childOneFirstName.getText().toString());
-                inr.putExtra("childFourthLastName",childOneFirstName.getText().toString());
-                inr.putExtra("childFifthLastName",childOneFirstName.getText().toString());
-                inr.putExtra("childSixthLastName",childOneFirstName.getText().toString());
-                inr.putExtra("childSeventhLastName",childOneFirstName.getText().toString());
-                inr.putExtra("childEigthLastName",childOneFirstName.getText().toString());
+                }
+                else if(Integer.parseInt(adultonep)==4)
+                {
+                    inr.putExtra("adultFourthFirstName",adultFourthFirstName.getText().toString());
+                    inr.putExtra("adultFourthLastName",adultFourthLastName.getText().toString());
 
-                inr.putExtra("infantOneFirstName",infantOneFirstName.getText().toString());
-                inr.putExtra("infantSecondFirstName",infantSecondFirstName.getText().toString());
-                inr.putExtra("infantThirdFirstName",infantThirdFirstName.getText().toString());
-                inr.putExtra("infantFourthFirstName",infantFourthFirstName.getText().toString());
-                inr.putExtra("infantFifthFirstName",infantFifthFirstName.getText().toString());
-                inr.putExtra("infantSixthFirstName",infantSixthFirstName.getText().toString());
-                inr.putExtra("infantSeventhFirstName",infantSeventhFirstName.getText().toString());
-                inr.putExtra("infantEigthFirstName",infantEigthFirstName.getText().toString());
-                inr.putExtra("infantNinethFirstName",infantNinethFirstName.getText().toString());
+                }
+                else if(Integer.parseInt(adultonep)==5)
+                {
+                    inr.putExtra("adultFifthFirstName",adultFifthFirstName.getText().toString());
+                    inr.putExtra("adultFifthdLastName",adultFifthLastName.getText().toString());
 
-                inr.putExtra("infantOneLastName",infantOneLastName.getText().toString());
-                inr.putExtra("infantSecondName",infantSecondLastName.getText().toString());
-                inr.putExtra("infantThirdLastName",infantThirdLastName.getText().toString());
-                inr.putExtra("infantFourthLastName",infantFourthLastName.getText().toString());
-                inr.putExtra("infantFifthLastName",infantFifthLastName.getText().toString());
-                inr.putExtra("infantSixthLastName",infantSixthLastName.getText().toString());
-                inr.putExtra("infantSeventhLastName",infantSeventhLastName.getText().toString());
-                inr.putExtra("infantEigthLastName",infantEigthLastName.getText().toString());
-                inr.putExtra("infantNinethLastName",infantNinethLastName.getText().toString());
+                }
+                else if(Integer.parseInt(adultonep)==6)
+                {
+                    inr.putExtra("adultSixthFirstName",adultSixthFirstName.getText().toString());
+                    inr.putExtra("adultsixthLastName",adultSixthLastName.getText().toString());
+
+                }
+                else if(Integer.parseInt(adultonep)==7)
+                {
+                    inr.putExtra("adultSeventhFirstName",adultSeventhFirstName.getText().toString());
+                    inr.putExtra("adultSeventhLastName",adultSeventhLastName.getText().toString());
+
+                }
+                else if(Integer.parseInt(adultonep)==8)
+                {
+                    inr.putExtra("adultEigthFirstName",adultEigthFirstName.getText().toString());
+                    inr.putExtra("adultEigthLastName",adultEigthLastName.getText().toString());
+
+                }
+                else if(Integer.parseInt(adultonep)==8)
+                {
+                    inr.putExtra("adultNinethFirstName",adultNinethFirstName.getText().toString());
+                    inr.putExtra("adultNinethLastName",adultNinethLastName.getText().toString());
+
+                }
 
 
+                if(Integer.parseInt(childonep)==1)
+                {
+                    inr.putExtra("childOneFirstName",childOneFirstName.getText().toString());
+                    inr.putExtra("childTwoFirstName",childOneFirstName.getText().toString());
+
+                }
+                else if(Integer.parseInt(childonep)==2)
+                {
+                    inr.putExtra("childThrirdFirstName",childSecondFirstName.getText().toString());
+                    inr.putExtra("childThrirdLastName",childSecondLastName.getText().toString());
+
+                }
+                else if(Integer.parseInt(childonep)==3)
+                {
+                    inr.putExtra("childThrirdFirstName",childThirdFirstName.getText().toString());
+                    inr.putExtra("childThrirdLastName",childThirdLastName.getText().toString());
+
+                }
+                else if(Integer.parseInt(childonep)==4)
+                {
+                    inr.putExtra("childFourthFirstName",childFourthFirstName.getText().toString());
+                    inr.putExtra("childFourthLastName",childFourthLastName.getText().toString());
+
+                }
+                else if(Integer.parseInt(childonep)==5)
+                {
+                    inr.putExtra("childFifthFirstName",childFifthFirstName.getText().toString());
+                    inr.putExtra("childFifthdLastName",childFifthLastName.getText().toString());
+
+                }
+                else if(Integer.parseInt(childonep)==6)
+                {
+                    inr.putExtra("childSixthFirstName",childSixthFirstName.getText().toString());
+                    inr.putExtra("childsixthLastName",childSixthLastName.getText().toString());
+
+                }
+                else if(Integer.parseInt(childonep)==7)
+                {
+                    inr.putExtra("childSeventhFirstName",childSeventhFirstName.getText().toString());
+                    inr.putExtra("childSeventhLastName",childSeventhLastName.getText().toString());
+
+                }
+                else if(Integer.parseInt(childonep)==8)
+                {
+                    inr.putExtra("childEigthFirstName",childEigthFirstName.getText().toString());
+                    inr.putExtra("childEigthLastName",childEigthLastName.getText().toString());
+
+                }
+                if(Integer.parseInt(infantsonep)==1)
+                {
+                    inr.putExtra("infantOneFirstName",infantOneFirstName.getText().toString());
+
+
+                }
+                else if(Integer.parseInt(infantsonep)==2)
+                {
+                    inr.putExtra("infantSecondFirstName",infantSecondFirstName.getText().toString());
+
+                }
+                else if(Integer.parseInt(infantsonep)==3)
+                {
+                    inr.putExtra("infantThrirdFirstName",infantThirdFirstName.getText().toString());
+
+                }
+                else if(Integer.parseInt(infantsonep)==4)
+                {
+                    inr.putExtra("infantFourthFirstName",infantFourthFirstName.getText().toString());
+
+                }
+                else if(Integer.parseInt(infantsonep)==5)
+                {
+                    inr.putExtra("infantFifthFirstName",infantFifthFirstName.getText().toString());
+
+                }
+                else if(Integer.parseInt(infantsonep)==6)
+                {
+                    inr.putExtra("infantSixthFirstName",infantSixthFirstName.getText().toString());
+
+                }
+                else if(Integer.parseInt(infantsonep)==7)
+                {
+                    inr.putExtra("infantSeventhFirstName",infantSeventhFirstName.getText().toString());
+
+                }
+                else if(Integer.parseInt(infantsonep)==8)
+                {
+                    inr.putExtra("infantEigthFirstName",infantEigthFirstName.getText().toString());
+
+                }
+
+
+
+//                inr.putExtra("infantOneLastName",infantOneLastName.getText().toString());
+//                inr.putExtra("infantSecondName",infantSecondLastName.getText().toString());
+//                inr.putExtra("infantThirdLastName",infantThirdLastName.getText().toString());
+//                inr.putExtra("infantFourthLastName",infantFourthLastName.getText().toString());
+//                inr.putExtra("infantFifthLastName",infantFifthLastName.getText().toString());
+//                inr.putExtra("infantSixthLastName",infantSixthLastName.getText().toString());
+//                inr.putExtra("infantSeventhLastName",infantSeventhLastName.getText().toString());
+//                inr.putExtra("infantEigthLastName",infantEigthLastName.getText().toString());
+//                inr.putExtra("infantNinethLastName",infantNinethLastName.getText().toString());
+
+                inr.putExtra("Id","oneWay");
                 inr.putExtra("adF", Adultstring);
                 inr.putExtra("adL", AdLstring);
                 if (isEmpty(adultOneFirstName.getText().toString()))
@@ -514,6 +614,7 @@ public class PassengerDetails extends AppCompatActivity
                     return;
                 }
                 Toast.makeText(getApplicationContext(), Adultstr + adl, Toast.LENGTH_SHORT).show();
+
                 startActivity(inr);
             }
         });
