@@ -45,7 +45,7 @@ public class PassengerDetails extends AppCompatActivity
 
     static int status = 0;
     String orignp, destp, endipp, tokenp, resultindp, traceidonep, adultonep, childonep, infantsonep;
-
+    String flightNumber,origin,destination;
     LinearLayout childmain, infantsmain;
     LinearLayout Linear_adult1, Linear_adult2, Linear_adult3, Linear_adult4, Linear_adult5, Linear_adult6, Linear_adult7, Linear_adult8, Linear_adult9;
     LinearLayout linear_child1, linear_child2, linear_child3, linear_child4, linear_child5, linear_child6, linear_child7, linear_child8;
@@ -77,7 +77,7 @@ public class PassengerDetails extends AppCompatActivity
             spn_child1, spn_child2, spn_child3, spn_child4, spn_child5, spn_child6, spn_child7, spn_child8,
             spn_infant1, spn_infant2, spn_infant3, spn_infant4;
     Button continueBookingButton;
-    String airlineCode;
+    String airlineCode,airlineName,flightPrice,departure,arrivalTime,flightCode,flightName;
     AwesomeValidation awesomeValidation = new AwesomeValidation(BASIC);
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -90,19 +90,27 @@ public class PassengerDetails extends AppCompatActivity
         Intent intent = getIntent();
         intentId=intent.getStringExtra("intentId");
 
-        orignp = intent.getStringExtra("originv");
-        destp = intent.getStringExtra("destinav");
+        origin = intent.getStringExtra("origin");
+        destination = intent.getStringExtra("destination");
         endipp = intent.getStringExtra("enduserip");
         tokenp = intent.getStringExtra("tokenid");
         resultindp = intent.getStringExtra("resultindex");
         traceidonep = intent.getStringExtra("traceid");
+        departure=intent.getStringExtra("departure");
+        //arrivalTime,flightCode,flightName
+        arrivalTime=intent.getStringExtra("arrivalTime");
+        departure=intent.getStringExtra("flightDepartureTime");
+        flightCode=intent.getStringExtra("flightCode");
+        flightName=intent.getStringExtra("flightName");
 
         adultonep = intent.getStringExtra("adultone");
         childonep = intent.getStringExtra("childone");
         infantsonep = intent.getStringExtra("infantsone");
-
+        flightPrice=intent.getStringExtra("totalFare");
         TotalFare.setText(intent.getStringExtra("totalFare"));
         airlineCode = intent.getStringExtra("airlineCode");
+        airlineName=intent.getStringExtra("airlineName");
+
         awesomeValidation.validate();
 
         Toast.makeText(PassengerDetails.this, "mag" + orignp + "\n" + destp + "\n" + endipp + "\n" + tokenp + "\n" + resultindp + "\n" + traceidonep + "\n" + adultonep + "\n" + childonep + "\n" + infantsonep, Toast.LENGTH_LONG).show();
@@ -350,6 +358,17 @@ public class PassengerDetails extends AppCompatActivity
                 inr.putExtra("adultCount", adultonep);
                 inr.putExtra("childCount", childonep);
                 inr.putExtra("infantCount", infantsonep);
+                  inr.putExtra("flightPrice",flightPrice);
+                  inr.putExtra("flightDepartureTime",departure);
+                  inr.putExtra("Id","roundTrip");
+                  //Log.i("PassengerDetails","departure",departure);
+
+                  inr.putExtra("flightArrivalTime",arrivalTime);
+                  inr.putExtra("flightCode",airlineCode);
+                  inr.putExtra("flightName",flightName);
+                 inr.putExtra("flightNumber",flightNumber);//flightNumber,origin,destination
+                  inr.putExtra("origin",origin);
+                inr.putExtra("destination",destination);
 
                 if(Integer.parseInt(adultonep)==1)
                 {
@@ -613,6 +632,7 @@ public class PassengerDetails extends AppCompatActivity
                     emailId.requestFocus();
                     return;
                 }
+
                 Toast.makeText(getApplicationContext(), Adultstr + adl, Toast.LENGTH_SHORT).show();
 
                 startActivity(inr);

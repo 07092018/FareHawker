@@ -46,6 +46,9 @@
         <activity android:name=".International_Roundtrip"></activity>
         <activity android:name=".PassengerDetailsR"
             android:label="@string/PassengerDetails"></activity>
+        <activity android:name=".SomeEarlierMerchantActivity"
+            android:label="omeEarlierMerchantActivity"></activity>
+        <activity android:name=".MerchantActivity" android:label="MerchantActivity"></activity>
         /**
         * Add your API key
         API Key of Razor pay

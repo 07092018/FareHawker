@@ -427,14 +427,24 @@ public class FlightbookingActivity extends AppCompatActivity
                         } else
                             {
                             Intent inr = new Intent(FlightbookingActivity.this, OnewayActivityresult.class);
-                            inr.putExtra("originround", fromc);
-                            inr.putExtra("destinationround", toc);
-                            inr.putExtra("departureround", depadate);
-                            inr.putExtra("adultround", adultc);
-                            inr.putExtra("childround", childc);
-                            inr.putExtra("infantsround", infacntc);
+                            inr.putExtra("origin", fromc);
+                            inr.putExtra("destination", toc);
+                            inr.putExtra("departure", depadate);
+                            inr.putExtra("adult", adultc);
+                            inr.putExtra("child", childc);
+                            inr.putExtra("infants", infacntc);
                             inr.putExtra("cabinclass", cabinclas);
                             startActivity(inr);
+                          //      Intent inr= new Intent(FlightbookingActivity.this,SomeEarlierMerchantActivity.class);
+//                                inr.putExtra("originround", "Delhi");
+//                              inr.putExtra("destinationround", "BLR");
+//                            inr.putExtra("departureround", "2018-08-26");
+//                            inr.putExtra("adultround", "1");
+//                            inr.putExtra("childround", "0");
+//                            inr.putExtra("infantsround", "0");
+//                            inr.putExtra("cabinclass", "1");
+//
+//                                startActivity(inr);
                         }
                     }
                 }

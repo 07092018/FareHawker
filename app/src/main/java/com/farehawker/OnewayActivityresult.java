@@ -44,7 +44,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
     Spinner spfiltr;
     String item;
     String EndUserIp="216.10.251.69";
-    String TokenId="6c33fc04-2114-4296-9ba2-10b3abb153d3";
+    String TokenId="51e12095-4692-40fe-9540-fc5ebe621008";
     String traceid;
     String originacc_one,destinationacc_one,adultacc_one,childacc_one,infantacc_one,cabinacc_one,depdateacc_one,returndateacc_one;
     public static final String JSON_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
@@ -103,14 +103,14 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
         //get the data from bundle
         Intent intent= getIntent();
 
-        originacc_one = intent.getStringExtra("originround");
-        destinationacc_one = intent.getStringExtra("destinationround");
-        adultacc_one = intent.getStringExtra("adultround");
-        childacc_one = intent.getStringExtra("childround");
-        infantacc_one = intent.getStringExtra("infantsround");
+        originacc_one = intent.getStringExtra("origin");
+        destinationacc_one = intent.getStringExtra("destination");
+        adultacc_one = intent.getStringExtra("adult");
+        childacc_one = intent.getStringExtra("child");
+        infantacc_one = intent.getStringExtra("infants");
         cabinacc_one = intent.getStringExtra("cabinclass");
-        depdateacc_one = intent.getStringExtra("departureround");
-        returndateacc_one = intent.getStringExtra("returnround");
+        depdateacc_one = intent.getStringExtra("departure");
+
 
         text_ocode.setText(String.valueOf(originacc_one));
         text_dcode.setText(String.valueOf(destinationacc_one));
@@ -128,14 +128,14 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
             JSONObject objsagment = new JSONObject();
 
             Intent intent= getIntent();
-            String aa = intent.getStringExtra("originround");
-            String bb = intent.getStringExtra("destinationround");
-            String ad = intent.getStringExtra("adultround");
-            String ch = intent.getStringExtra("childround");
-            String inf = intent.getStringExtra("infantsround");
+            String aa = intent.getStringExtra("origin");
+            String bb = intent.getStringExtra("destination");
+            String ad = intent.getStringExtra("adult");
+            String ch = intent.getStringExtra("child");
+            String inf = intent.getStringExtra("infants");
             String cabin = intent.getStringExtra("cabinclass");
 
-            String depart = intent.getStringExtra("departureround")+"T00:00:00";
+            String depart = intent.getStringExtra("departure")+"T00:00:00";
             objsagment.put("Origin",String.valueOf(aa));
             objsagment.put("Destination",String.valueOf(bb));
             objsagment.put("FlightCabinClass",cabin);
@@ -146,7 +146,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
             //first object
             JSONObject jsonobjectt = new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId","6c33fc04-2114-4296-9ba2-10b3abb153d3");
+            jsonobjectt.put("TokenId","51e12095-4692-40fe-9540-fc5ebe621008");
             jsonobjectt.put("AdultCount", String.valueOf(ad));
             jsonobjectt.put("ChildCount", String.valueOf(ch));
             jsonobjectt.put("InfantCount", String.valueOf(inf));
@@ -303,8 +303,6 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
         Toast.makeText(getApplicationContext(),"color chenge"+resultindex,Toast.LENGTH_SHORT).show();
         Intent in=new Intent(OnewayActivityresult.this,OnewayFareruleaActivity.class);
          in.putExtra("airlineCode",airlineCode);
-         in.putExtra("originv",originacc_one);
-         in.putExtra("destinav",destinationacc_one);
          in.putExtra("enduserip",EndUserIp);
          in.putExtra("tokenid",TokenId);
          in.putExtra("resultindex",resultindex);
@@ -312,6 +310,16 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
          in.putExtra("adultone",adultacc_one);
          in.putExtra("childone",childacc_one);
          in.putExtra("infantsone",infantacc_one);
+         in.putExtra("flightName",onewaymodel.getAirlinename());
+         in.putExtra("flightPrice",onewaymodel.getPrice());
+         in.putExtra("flightDepartureTime",onewaymodel.getDeparturetime());
+         in.putExtra("arrivalTime",onewaymodel.getArrivingtime());
+         in.putExtra("flightCode",onewaymodel.getFlightcode());
+         String f=onewaymodel.getFlightcode();
+         in.putExtra("origin",originacc_one);
+         in.putExtra("destination",destinationacc_one);
+
+
         startActivity(in);
     }
 }

@@ -42,6 +42,9 @@ import java.util.List;
 public class OnewayFareruleaActivity extends AppCompatActivity
 {
   String orign,dest,endip,token,resultind,traceidone,adultone,childone,infantsone;
+  String flightPrice,flightDepartureTime,flightCode,origin,destination;
+
+
     int base_o_oneway, tex_o_oneway,otherc_oneway,total_o_oneway;
   public static final String FARE_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Farequote/";
     public static final String RULE_URL="http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareRule/";
@@ -57,15 +60,14 @@ public class OnewayFareruleaActivity extends AppCompatActivity
     TextView term_condition;
     TextView text_onward,text_dest;
     Button continue_booking;
-    String airlineCode;
+    String airlineCode,airlineName,flightArrivalTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oneway_farerulea);
         Intent intent= getIntent();
+        airlineName=intent.getStringExtra("flightName");
         airlineCode=intent.getStringExtra("airlineCode");
-        orign = intent.getStringExtra("originv");
-        dest = intent.getStringExtra("destinav");
         endip = intent.getStringExtra("enduserip");
         token = intent.getStringExtra("tokenid");
         resultind=intent.getStringExtra("resultindex");
@@ -73,10 +75,17 @@ public class OnewayFareruleaActivity extends AppCompatActivity
         adultone=intent.getStringExtra("adultone");
         childone=intent.getStringExtra("childone");
         infantsone=intent.getStringExtra("infantsone");
+        flightPrice=intent.getStringExtra("flightPrice");
+        flightDepartureTime=intent.getStringExtra("flightDepartureTime");
+        flightArrivalTime=intent.getStringExtra("arrivalTime");
+        flightCode=intent.getStringExtra("flightCode");
+        origin=intent.getStringExtra("origin");
+        destination=intent.getStringExtra("destination");
+
         text_onward=(TextView)findViewById(R.id.onewayname);
         text_dest=(TextView)findViewById(R.id.onewaydestname);
-        text_onward.setText(orign);
-        text_dest.setText(dest);
+        text_onward.setText(origin);
+        text_dest.setText(destination);
         Toast.makeText(OnewayFareruleaActivity.this, "mag" + orign+"\n" + dest+"\n" + endip +"\n"+ token+"\n"+resultind+"\n"+traceidone+"\n"+adultone+"\n"+childone+"\n"+infantsone, Toast.LENGTH_LONG).show();
         makevolleyoneway();
         basefare_oneway=(TextView)findViewById(R.id.oneway_basefare);
@@ -118,8 +127,8 @@ public class OnewayFareruleaActivity extends AppCompatActivity
         {
             Intent inn=new Intent(OnewayFareruleaActivity.this,PassengerDetails.class);
             inn.putExtra("airlineCode",airlineCode);
-            inn.putExtra("originv",orign);
-            inn.putExtra("destinav",dest);
+            inn.putExtra("origin",origin);
+            inn.putExtra("destination",destination);
             inn.putExtra("enduserip",endip);
             inn.putExtra("tokenid",token);
             inn.putExtra("resultindex",resultind);
@@ -127,6 +136,11 @@ public class OnewayFareruleaActivity extends AppCompatActivity
             inn.putExtra("adultone",adultone);
             inn.putExtra("childone",childone);
             inn.putExtra("infantsone",infantsone);
+            inn.putExtra("airlineName",airlineName);
+            inn.putExtra("flightCode",flightCode);
+            inn.putExtra("arrivalTime",flightArrivalTime);
+            inn.putExtra("flightDepartureTime",flightDepartureTime);
+            inn.putExtra("flightName",airlineName);
             inn.putExtra("totalFare",publish_oneway.getText().toString());//"totalFare",publish_oneway
             startActivity(inn);
 

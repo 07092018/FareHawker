@@ -33,6 +33,7 @@ public class Reviewdetails extends AppCompatActivity {
     String infantCount;
     String flightPrice, flightDepartureTime, flightArrivalTime, flightCode, flightName, flightNumber, flightPriceR, flightArrivalTimeR, flightCodeR, flightNameR, flightNumberR, originR, destinationR, flightDepartureTimeR,origin,destination;
     RelativeLayout flightDetailsR;
+    String id;
     Button makePayment;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +50,12 @@ public class Reviewdetails extends AppCompatActivity {
         flightArrivalTime = intent.getStringExtra("flightArrivalTime");
         flightCode = intent.getStringExtra("flightCode");
         flightName = intent.getStringExtra("flightName");
-        flightNumber = intent.getStringExtra("flightNumber");
+        //flightNumber = intent.getStringExtra("flightNumber");
         origin = intent.getStringExtra("origin");
         destination = intent.getStringExtra("destination");
-
+         id=intent.getStringExtra("Id");
         //Return Flight Details
-        if(intent.getStringExtra("Id")=="roundTrip")
+        if(id.equals("roundTrip"))
         {
             flightPriceR = intent.getStringExtra("flightPriceR");
             flightDepartureTimeR = intent.getStringExtra("flightDepartureTimeR");
