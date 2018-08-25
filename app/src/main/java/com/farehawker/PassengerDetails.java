@@ -37,6 +37,7 @@ import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 public class PassengerDetails extends AppCompatActivity
 {
     String intentId;
+    String countryFrom,countryTo;
     EditText couponCode;
     static int couponValidity = 1;
     String TAG = "PassengerDetails";
@@ -68,6 +69,7 @@ public class PassengerDetails extends AppCompatActivity
     TextView infantOneLastName,infantSecondLastName,infantThirdLastName,infantFourthLastName,infantFifthLastName,infantSixthLastName,infantSeventhLastName,infantEigthLastName,infantNinethLastName;
 
     TextView mobileNumber, emailId;
+    LinearLayout linearP_1,linearP_2,linearP_3,linearP_4,linearP_5,linearP_6,linearP_7,linearP_8,linearP_9;
     String Adultstring, Adultstring2, Adultstring3, Adultstring4, Adultstring5, Adultstring6, Adultstring7, Adultstring8, Adultstring9,
             childstring, childstring2, childstring3, childstring4, childstring5, childstring6, childstring7, childstring8,
             infantstring, infantstring2, infantstring3, infantstring4, AdLstring, AdLstring2, AdLstring3, AdLstring4,
@@ -76,6 +78,7 @@ public class PassengerDetails extends AppCompatActivity
     String spn_adult1, spn_adult2, spn_adult3, spn_adult4, spn_adult5, spn_adult6, spn_adult7, spn_adult8, spn_adult9,
             spn_child1, spn_child2, spn_child3, spn_child4, spn_child5, spn_child6, spn_child7, spn_child8,
             spn_infant1, spn_infant2, spn_infant3, spn_infant4;
+
     Button continueBookingButton;
     String airlineCode,airlineName,flightPrice,departure,arrivalTime,flightCode,flightName;
     AwesomeValidation awesomeValidation = new AwesomeValidation(BASIC);
@@ -102,7 +105,8 @@ public class PassengerDetails extends AppCompatActivity
         departure=intent.getStringExtra("flightDepartureTime");
         flightCode=intent.getStringExtra("flightCode");
         flightName=intent.getStringExtra("flightName");
-
+        countryFrom=intent.getStringExtra("countryFrom");
+        countryTo=intent.getStringExtra("countryTo");
         adultonep = intent.getStringExtra("adultone");
         childonep = intent.getStringExtra("childone");
         infantsonep = intent.getStringExtra("infantsone");
@@ -209,9 +213,20 @@ public class PassengerDetails extends AppCompatActivity
         Linear_infant3 = (LinearLayout) findViewById(R.id.linear_infants3);
         Linear_infant4 = (LinearLayout) findViewById(R.id.linear_infants4);
 
+        linearP_1=findViewById(R.id.adultPassport1);
+        linearP_2=findViewById(R.id.adultPassport2);
+        linearP_3=findViewById(R.id.adultPassport3);
+        linearP_4=findViewById(R.id.adultPassport4);
+        linearP_5=findViewById(R.id.adultPassport5);
+        linearP_6=findViewById(R.id.adultPassport6);
+        linearP_7=findViewById(R.id.adultPassport7);
+        linearP_8=findViewById(R.id.adultPassport8);
+        linearP_9=findViewById(R.id.adultPassport9);
+
         mobileNumber = findViewById(R.id.mobileNumber);
         emailId = findViewById(R.id.emailId);
         gstLinearLayout = (LinearLayout) findViewById(R.id.gstLinearLayout);
+
         if (childonep.equals("0")) {
             childmain.setVisibility(View.GONE);
         }
@@ -219,9 +234,15 @@ public class PassengerDetails extends AppCompatActivity
             infantsmain.setVisibility(View.GONE);
         }
 
-        //for adult
+        //for adults
+
         if (adultonep.equals("1"))
         {
+            if(!countryFrom.equals("india") || !countryTo.equals("india"))
+            {
+                linearP_1.setVisibility(View.VISIBLE);
+            }
+
             Linear_adult2.setVisibility(View.GONE);
             Linear_adult3.setVisibility(View.GONE);
             Linear_adult4.setVisibility(View.GONE);
@@ -234,6 +255,11 @@ public class PassengerDetails extends AppCompatActivity
         }
         if (adultonep.equals("2"))
         {
+            if(countryFrom.equals("india") || countryTo.equals("india"))
+            {
+                linearP_1.setVisibility(View.VISIBLE);
+                linearP_2.setVisibility(View.VISIBLE);
+            }
             Linear_adult3.setVisibility(View.GONE);
             Linear_adult4.setVisibility(View.GONE);
             Linear_adult5.setVisibility(View.GONE);
@@ -243,7 +269,14 @@ public class PassengerDetails extends AppCompatActivity
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("3")) {
+        if (adultonep.equals("3"))
+        {
+            if(countryFrom.equals("india") || countryTo.equals("india"))
+            {
+                linearP_1.setVisibility(View.VISIBLE);
+                linearP_2.setVisibility(View.VISIBLE);
+                linearP_3.setVisibility(View.VISIBLE);
+            }
             Linear_adult4.setVisibility(View.GONE);
             Linear_adult5.setVisibility(View.GONE);
             Linear_adult6.setVisibility(View.GONE);
@@ -252,7 +285,16 @@ public class PassengerDetails extends AppCompatActivity
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("4")) {
+        if (adultonep.equals("4"))
+        {
+            if(countryFrom.equals("india") || countryTo.equals("india"))
+            {
+                linearP_1.setVisibility(View.VISIBLE);
+                linearP_2.setVisibility(View.VISIBLE);
+                linearP_3.setVisibility(View.VISIBLE);
+                linearP_4.setVisibility(View.VISIBLE);
+            }
+
             Linear_adult5.setVisibility(View.GONE);
             Linear_adult6.setVisibility(View.GONE);
             Linear_adult7.setVisibility(View.GONE);
@@ -262,6 +304,15 @@ public class PassengerDetails extends AppCompatActivity
         }
         if (adultonep.equals("5")) {
 
+            if(countryFrom.equals("india") || countryTo.equals("india"))
+            {
+                linearP_1.setVisibility(View.VISIBLE);
+                linearP_2.setVisibility(View.VISIBLE);
+                linearP_3.setVisibility(View.VISIBLE);
+                linearP_4.setVisibility(View.VISIBLE);
+                linearP_5.setVisibility(View.VISIBLE);
+            }
+
             Linear_adult6.setVisibility(View.GONE);
             Linear_adult7.setVisibility(View.GONE);
             Linear_adult8.setVisibility(View.GONE);
@@ -269,21 +320,66 @@ public class PassengerDetails extends AppCompatActivity
 
         }
         if (adultonep.equals("6")) {
+            if(countryFrom.equals("india") || countryTo.equals("india"))
+            {
+                linearP_1.setVisibility(View.VISIBLE);
+                linearP_2.setVisibility(View.VISIBLE);
+                linearP_3.setVisibility(View.VISIBLE);
+                linearP_4.setVisibility(View.VISIBLE);
+                linearP_5.setVisibility(View.VISIBLE);
+                linearP_6.setVisibility(View.VISIBLE);
+            }
 
             Linear_adult7.setVisibility(View.GONE);
             Linear_adult8.setVisibility(View.GONE);
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("7")) {
-
+        if (adultonep.equals("7"))
+        {
+            if(countryFrom.equals("india") || countryTo.equals("india"))
+            {
+                linearP_1.setVisibility(View.VISIBLE);
+                linearP_2.setVisibility(View.VISIBLE);
+                linearP_3.setVisibility(View.VISIBLE);
+                linearP_4.setVisibility(View.VISIBLE);
+                linearP_5.setVisibility(View.VISIBLE);
+                linearP_6.setVisibility(View.VISIBLE);
+                linearP_7.setVisibility(View.VISIBLE);
+            }
             Linear_adult8.setVisibility(View.GONE);
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("8")) {
-
+        if (adultonep.equals("8"))
+        {
+            if(countryFrom.equals("india") || countryTo.equals("india"))
+            {
+                linearP_1.setVisibility(View.VISIBLE);
+                linearP_2.setVisibility(View.VISIBLE);
+                linearP_3.setVisibility(View.VISIBLE);
+                linearP_4.setVisibility(View.VISIBLE);
+                linearP_5.setVisibility(View.VISIBLE);
+                linearP_6.setVisibility(View.VISIBLE);
+                linearP_7.setVisibility(View.VISIBLE);
+                linearP_8.setVisibility(View.VISIBLE);
+            }
             Linear_adult9.setVisibility(View.GONE);
+        }
+        if(adultonep.equals("9"))
+        {
+            if(countryFrom.equals("india") || countryTo.equals("india"))
+            {
+                linearP_1.setVisibility(View.VISIBLE);
+                linearP_2.setVisibility(View.VISIBLE);
+                linearP_3.setVisibility(View.VISIBLE);
+                linearP_4.setVisibility(View.VISIBLE);
+                linearP_5.setVisibility(View.VISIBLE);
+                linearP_6.setVisibility(View.VISIBLE);
+                linearP_7.setVisibility(View.VISIBLE);
+                linearP_8.setVisibility(View.VISIBLE);
+                linearP_9.setVisibility(View.VISIBLE);
+            }
         }
 
         //for child

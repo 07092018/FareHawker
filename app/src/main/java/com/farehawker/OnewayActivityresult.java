@@ -34,7 +34,7 @@ import java.util.List;
 
 public class OnewayActivityresult extends AppCompatActivity implements ClickListener
 {
-    String airlineCode;
+    String airlineCode,countryFrom,countryTo;;
     String TAG ="OnewayActivityresult";
     private RecyclerView mRecyclerView;
     private OnewayAdaptor mAdapter;
@@ -44,7 +44,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
     Spinner spfiltr;
     String item;
     String EndUserIp="216.10.251.69";
-    String TokenId="51e12095-4692-40fe-9540-fc5ebe621008";
+    String TokenId="eddd860a-14bb-4d45-bac5-e2422dc90d37";
     String traceid;
     String originacc_one,destinationacc_one,adultacc_one,childacc_one,infantacc_one,cabinacc_one,depdateacc_one,returndateacc_one;
     public static final String JSON_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
@@ -111,11 +111,14 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
         cabinacc_one = intent.getStringExtra("cabinclass");
         depdateacc_one = intent.getStringExtra("departure");
 
+        countryFrom=intent.getStringExtra("countryFrom");
+        countryTo=intent.getStringExtra("countryTo");
 
         text_ocode.setText(String.valueOf(originacc_one));
         text_dcode.setText(String.valueOf(destinationacc_one));
         Toast.makeText(OnewayActivityresult.this, "mag" + originacc_one+"\n" + destinationacc_one+"\n" + adultacc_one +"\n"+ childacc_one+"\n" + infantacc_one+"\n" + cabinacc_one+"\n" + depdateacc_one +"\n"+ returndateacc_one, Toast.LENGTH_LONG).show();
     }//End of onCreate method
+
     private void sendRequest()
     {
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -146,7 +149,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
             //first object
             JSONObject jsonobjectt = new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId","51e12095-4692-40fe-9540-fc5ebe621008");
+            jsonobjectt.put("TokenId","eddd860a-14bb-4d45-bac5-e2422dc90d37");
             jsonobjectt.put("AdultCount", String.valueOf(ad));
             jsonobjectt.put("ChildCount", String.valueOf(ch));
             jsonobjectt.put("InfantCount", String.valueOf(inf));
@@ -319,6 +322,8 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
          in.putExtra("origin",originacc_one);
          in.putExtra("destination",destinationacc_one);
 
+         in.putExtra("countryTo",countryTo);
+         in.putExtra("countryFrom",countryFrom);
 
         startActivity(in);
     }

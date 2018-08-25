@@ -30,22 +30,18 @@ import java.util.List;
 
 public class FlightbookingActivity extends AppCompatActivity
 {
+    static final int DATE_PICKER_ID = 1111;
+    static final int Dialog_id = 111;
     //Tag used in Log
     String TAG="FlightbookingActivity";
     LinearLayout linear_departure, linear_return;
     TextView text_departure, text_return;
     TextView text_onewaytrip,text_roundtrip;
     TextView text_fromlocation,text_fromcountrycity,text_fromcountry, text_tolocation,text_tocountrycity,text_tocountry;
-
-    private int mday, yday;
-    private int mmonth, ymonth;
-    private int myear, yyear,n,c,i;
     Spinner spinner;
     String items;
     int spn_count=1;
     ImageView swap_image;
-    static final int DATE_PICKER_ID = 1111;
-    static final int Dialog_id = 111;
     //for count
     int count=1;
     int count_child=0;
@@ -56,6 +52,52 @@ public class FlightbookingActivity extends AppCompatActivity
     Button search_flightbtn;
     String AirportcodeTO,citynameTO,countryTO,AirportcodeFROM,citynameFROM,countrynameFROm;
     int returwrong,departurewron;
+    private int mday, yday;
+    private int mmonth, ymonth;
+    private int myear, yyear,n,c,i;
+    //for one way date
+    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
+            mday = selectedDay;
+            mmonth = selectedMonth;
+            myear = selectedYear;
+            String fm=""+selectedMonth;
+            String fd=""+selectedDay;
+            if((selectedMonth+1)<10){
+                fm ="0"+(selectedMonth+1);
+            }else {
+                fm= String.valueOf((selectedMonth+1));
+            }
+            if (selectedDay<10) {
+                fd = "0" +selectedDay;
+            }
+            departurewron= Integer.parseInt(fd);
+            String departure_data= String.valueOf(new StringBuilder().append(selectedYear).append("-").append((fm)).append("-").append(fd));
+
+            text_departure.setText(new StringBuilder().append(selectedYear).append("-").append((fm)).append("-").append(fd));
+        }
+    };
+    //for return trip date
+    private DatePickerDialog.OnDateSetListener datePickerListener2 = new DatePickerDialog.OnDateSetListener()
+    {
+        public void onDateSet(DatePicker viewv, int xselectedYear, int xselectedMonth, int xselectedDay)
+        {
+            returwrong=xselectedDay;
+            String rfm=""+xselectedMonth;
+            String rfd=""+xselectedDay;
+            if((xselectedMonth+1)<10){
+                rfm ="0"+(xselectedMonth+1);
+            }else {
+                rfm= String.valueOf((xselectedMonth+1));
+            }
+            if (xselectedDay<10) {
+                rfd = "0" +xselectedDay;
+            }
+            returwrong= Integer.parseInt(rfd);
+            text_return.setText(new StringBuilder().append(xselectedYear).append("-").append((rfm)).append("-").append(rfd));
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -86,7 +128,7 @@ public class FlightbookingActivity extends AppCompatActivity
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-        //this is for date picker
+        //This is for date picker
         text_departure = (TextView) findViewById(R.id.txt_departureday);
         text_return = (TextView) findViewById(R.id.txt_returnday);
         Calendar cc = Calendar.getInstance();
@@ -381,19 +423,19 @@ public class FlightbookingActivity extends AppCompatActivity
                     String cabinclas = String.valueOf(spn_count);
                     if ((linear_return.isShown()) && ((!text_fromcountry.getText().toString().equals("India")) || (!text_tocountry.getText().toString().equals("India"))))
                     {
-                        Toast.makeText(getApplicationContext(), "this is third segment ", Toast.LENGTH_SHORT).show();
-                        Intent in =new Intent(FlightbookingActivity.this,International_Roundtrip.class);
-
-                        in.putExtra("origin",fromc);
-                        in.putExtra("destination",toc);
-                        in.putExtra("adultCount",adultc);
-                        in.putExtra("childCount",childc);
-                        in.putExtra("infantCount",infantc);
-                        in.putExtra("departureDate",depadate);
-                        in.putExtra("returnDate",retunrdate);
-                        in.putExtra("cabinClass",cabinclas);
-
-                        startActivity(in);
+//                        Toast.makeText(getApplicationContext(), "this is third segment ", Toast.LENGTH_SHORT).show();
+//                        Intent in =new Intent(FlightbookingActivity.this,International_Roundtrip.class);
+//
+//                        in.putExtra("origin",fromc);
+//                        in.putExtra("destination",toc);
+//                        in.putExtra("adultCount",adultc);
+//                        in.putExtra("childCount",childc);
+//                        in.putExtra("infantCount",infantc);
+//                        in.putExtra("departureDate",depadate);
+//                        in.putExtra("returnDate",retunrdate);
+//                        in.putExtra("cabinClass",cabinclas);
+//
+//                        startActivity(in);
                     }
                     else
                         {
@@ -414,6 +456,9 @@ public class FlightbookingActivity extends AppCompatActivity
                             else
                                 {
                                 Intent in = new Intent(FlightbookingActivity.this, RoundTripActivity.class);
+                                //in case of international flights country will be other than India
+                                in.putExtra("countryTo",countryTO);
+                                in.putExtra("countryFrom",countrynameFROm);
                                 in.putExtra("originround", fromc);
                                 in.putExtra("destinationround", toc);
                                 in.putExtra("departureround", depadate);
@@ -426,7 +471,10 @@ public class FlightbookingActivity extends AppCompatActivity
                             }
                         } else
                             {
+                            Log.i("471","Inside else");
                             Intent inr = new Intent(FlightbookingActivity.this, OnewayActivityresult.class);
+                            inr.putExtra("countryTo",countryTO);
+                            inr.putExtra("countryFrom",countrynameFROm);
                             inr.putExtra("origin", fromc);
                             inr.putExtra("destination", toc);
                             inr.putExtra("departure", depadate);
@@ -452,6 +500,7 @@ public class FlightbookingActivity extends AppCompatActivity
         });
 
     }
+
     //For date calender show
     @Override
     protected Dialog onCreateDialog(int id) {
@@ -504,48 +553,6 @@ public class FlightbookingActivity extends AppCompatActivity
         }
         return null;
     }
-    //for one way date
-    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
-        public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
-            mday = selectedDay;
-            mmonth = selectedMonth;
-            myear = selectedYear;
-            String fm=""+selectedMonth;
-            String fd=""+selectedDay;
-            if((selectedMonth+1)<10){
-                fm ="0"+(selectedMonth+1);
-            }else {
-                fm= String.valueOf((selectedMonth+1));
-            }
-            if (selectedDay<10) {
-                fd = "0" +selectedDay;
-            }
-            departurewron= Integer.parseInt(fd);
-            String departure_data= String.valueOf(new StringBuilder().append(selectedYear).append("-").append((fm)).append("-").append(fd));
-
-            text_departure.setText(new StringBuilder().append(selectedYear).append("-").append((fm)).append("-").append(fd));
-        }
-    };
-    //for return trip date
-    private DatePickerDialog.OnDateSetListener datePickerListener2 = new DatePickerDialog.OnDateSetListener()
-    {
-        public void onDateSet(DatePicker viewv, int xselectedYear, int xselectedMonth, int xselectedDay)
-        {
-            returwrong=xselectedDay;
-            String rfm=""+xselectedMonth;
-            String rfd=""+xselectedDay;
-            if((xselectedMonth+1)<10){
-                rfm ="0"+(xselectedMonth+1);
-            }else {
-                rfm= String.valueOf((xselectedMonth+1));
-            }
-            if (xselectedDay<10) {
-                rfd = "0" +xselectedDay;
-            }
-            returwrong= Integer.parseInt(rfd);
-            text_return.setText(new StringBuilder().append(xselectedYear).append("-").append((rfm)).append("-").append(rfd));
-        }
-    };
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

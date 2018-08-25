@@ -43,7 +43,7 @@ public class OnewayFareruleaActivity extends AppCompatActivity
 {
   String orign,dest,endip,token,resultind,traceidone,adultone,childone,infantsone;
   String flightPrice,flightDepartureTime,flightCode,origin,destination;
-
+  String countryFrom,countryTo;
 
     int base_o_oneway, tex_o_oneway,otherc_oneway,total_o_oneway;
   public static final String FARE_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Farequote/";
@@ -81,7 +81,8 @@ public class OnewayFareruleaActivity extends AppCompatActivity
         flightCode=intent.getStringExtra("flightCode");
         origin=intent.getStringExtra("origin");
         destination=intent.getStringExtra("destination");
-
+        countryFrom=intent.getStringExtra("countryFrom");
+        countryTo=intent.getStringExtra("countryTo");
         text_onward=(TextView)findViewById(R.id.onewayname);
         text_dest=(TextView)findViewById(R.id.onewaydestname);
         text_onward.setText(origin);
@@ -142,6 +143,8 @@ public class OnewayFareruleaActivity extends AppCompatActivity
             inn.putExtra("flightDepartureTime",flightDepartureTime);
             inn.putExtra("flightName",airlineName);
             inn.putExtra("totalFare",publish_oneway.getText().toString());//"totalFare",publish_oneway
+            inn.putExtra("countryTo",countryTo);
+            inn.putExtra("countryFrom",countryFrom);
             startActivity(inn);
 
         }

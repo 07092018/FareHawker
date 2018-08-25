@@ -78,6 +78,30 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/adultPassport1"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/Passport1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <EditText
+                            android:id="@+id/adultDob1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
+                    </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:background="@color/bgBottomNavigation"
@@ -121,6 +145,29 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/adultPassport2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/Passport2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <EditText
+                            android:id="@+id/adultDob2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:background="@color/bgBottomNavigation"
@@ -162,6 +209,29 @@
                             android:layout_weight="40"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/adultPassport3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/Passport3"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <EditText
+                            android:id="@+id/adultDob3"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
@@ -213,7 +283,29 @@
                         android:layout_height="2dp"/>
                 </LinearLayout>
 
-
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/adultPassport4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/Passport4"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <EditText
+                        android:id="@+id/adultDob4"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
+                </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_adult5"
                     android:layout_width="match_parent"
@@ -255,7 +347,29 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                 </LinearLayout>
-
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/adultPassport5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/Passport5"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <EditText
+                        android:id="@+id/adultDob5"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
+                </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_adult6"
                     android:layout_width="match_parent"
@@ -297,7 +411,29 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                 </LinearLayout>
-
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/adultPassport6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/Passport6"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <EditText
+                        android:id="@+id/adultDob6"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
+                </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_adult7"
                     android:layout_width="match_parent"
@@ -339,7 +475,29 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                 </LinearLayout>
-
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/adultPassport7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/Passport7"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <EditText
+                        android:id="@+id/adultDob7"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
+                </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_adult8"
                     android:layout_width="match_parent"
@@ -381,7 +539,29 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                 </LinearLayout>
-
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/adultPassport8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/Passport8"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <EditText
+                        android:id="@+id/adultDob8"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
+                </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_adult9"
                     android:layout_width="match_parent"
@@ -424,7 +604,29 @@
                         android:layout_height="2dp"/>
                 </LinearLayout>
             </LinearLayout>
-
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/adultPassport9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/Passport9"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Passport"/>
+                <EditText
+                    android:id="@+id/adultDob9"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DOB"/>
+            </LinearLayout>
 
 
             <LinearLayout

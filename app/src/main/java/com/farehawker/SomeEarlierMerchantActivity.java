@@ -10,14 +10,18 @@ import com.razorpay.Checkout;
 
 public class SomeEarlierMerchantActivity extends Activity
 {
+    String totalFare;
+    Intent intent;
     @Override
     public void onCreate( Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         Checkout.preload(getApplicationContext());
-        Intent intent = new Intent(SomeEarlierMerchantActivity.this,MerchantActivity.class);
-        intent.putExtra("totalFare",intent.getStringExtra("totalFare"));
+        intent=getIntent();
+        totalFare=intent.getStringExtra("totalFare");
+        intent = new Intent(SomeEarlierMerchantActivity.this,MerchantActivity.class);
+        intent.putExtra("totalFare",totalFare);
         startActivity(intent);
-
-    }
-}
+    }//End of onCreate method
+}//End of SomeEarlierMerchantActivity class
