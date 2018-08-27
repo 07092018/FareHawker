@@ -102,7 +102,6 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
 
         //get the data from bundle
         Intent intent= getIntent();
-
         originacc_one = intent.getStringExtra("origin");
         destinationacc_one = intent.getStringExtra("destination");
         adultacc_one = intent.getStringExtra("adult");

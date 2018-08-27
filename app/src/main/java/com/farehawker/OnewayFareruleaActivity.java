@@ -46,7 +46,7 @@ public class OnewayFareruleaActivity extends AppCompatActivity
   String countryFrom,countryTo;
 
     int base_o_oneway, tex_o_oneway,otherc_oneway,total_o_oneway;
-  public static final String FARE_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Farequote/";
+    public static final String FARE_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Farequote/";
     public static final String RULE_URL="http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareRule/";
     private RecyclerView recyclerview_oneway;
     private Fareoneway_adaptr onewayAdaptr;

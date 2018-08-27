@@ -1,8 +1,10 @@
 //PassengerDetails
- package com.farehawker;
+package com.farehawker;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,10 +37,10 @@ import java.util.List;
 
 import static android.text.TextUtils.isEmpty;
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
-public class PassengerDetails extends AppCompatActivity
-{
+
+public class PassengerDetails extends AppCompatActivity {
     String intentId;
-    String countryFrom,countryTo;
+    String countryFrom, countryTo;
     EditText couponCode;
     static int couponValidity = 1;
     String TAG = "PassengerDetails";
@@ -47,7 +49,7 @@ public class PassengerDetails extends AppCompatActivity
 
     static int status = 0;
     String orignp, destp, endipp, tokenp, resultindp, traceidonep, adultonep, childonep, infantsonep;
-    String flightNumber,origin,destination;
+    String flightNumber, origin, destination;
     LinearLayout childmain, infantsmain;
     LinearLayout Linear_adult1, Linear_adult2, Linear_adult3, Linear_adult4, Linear_adult5, Linear_adult6, Linear_adult7, Linear_adult8, Linear_adult9;
     LinearLayout linear_child1, linear_child2, linear_child3, linear_child4, linear_child5, linear_child6, linear_child7, linear_child8;
@@ -60,17 +62,16 @@ public class PassengerDetails extends AppCompatActivity
     TextView adultcount, childcount, infantscount;
     TextView adultOneFirstName, adultSecondFirstName, adultThirdFirstName, adultFourthFirstName, adultFifthFirstName, adultSixthFirstName, adultSeventhFirstName, adultEigthFirstName, adultNinethFirstName,
             adultOneLastName, adultSecondLastName, adultThirdLastName, adultFourthLastName, adultFifthLastName, adultSixthLastName, adultSeventhLastName, adultEigthLastName, adultNinethLastName,
-            childOneFirstName, childSecondFirstName,childThirdFirstName,childFourthFirstName,childFifthFirstName,childSixthFirstName,childSeventhFirstName,childEigthFirstName,
-            childOneLastName,childSecondLastName,childThirdLastName,childFourthLastName,childFifthLastName,childSixthLastName,childSeventhLastName,childEigthLastName;
+            childOneFirstName, childSecondFirstName, childThirdFirstName, childFourthFirstName, childFifthFirstName, childSixthFirstName, childSeventhFirstName, childEigthFirstName,
+            childOneLastName, childSecondLastName, childThirdLastName, childFourthLastName, childFifthLastName, childSixthLastName, childSeventhLastName, childEigthLastName;
 
 
+    TextView infantOneFirstName, infantSecondFirstName, infantThirdFirstName, infantFourthFirstName, infantFifthFirstName, infantSixthFirstName, infantSeventhFirstName, infantEigthFirstName, infantNinethFirstName;
 
-    TextView infantOneFirstName,infantSecondFirstName,infantThirdFirstName,infantFourthFirstName,infantFifthFirstName,infantSixthFirstName,infantSeventhFirstName,infantEigthFirstName,infantNinethFirstName;
-
-    TextView infantOneLastName,infantSecondLastName,infantThirdLastName,infantFourthLastName,infantFifthLastName,infantSixthLastName,infantSeventhLastName,infantEigthLastName,infantNinethLastName;
+    TextView infantOneLastName, infantSecondLastName, infantThirdLastName, infantFourthLastName, infantFifthLastName, infantSixthLastName, infantSeventhLastName, infantEigthLastName, infantNinethLastName;
 
     TextView mobileNumber, emailId;
-    LinearLayout linearP_1,linearP_2,linearP_3,linearP_4,linearP_5,linearP_6,linearP_7,linearP_8,linearP_9;
+    LinearLayout linearP_1, linearP_2, linearP_3, linearP_4, linearP_5, linearP_6, linearP_7, linearP_8, linearP_9;
     String Adultstring, Adultstring2, Adultstring3, Adultstring4, Adultstring5, Adultstring6, Adultstring7, Adultstring8, Adultstring9,
             childstring, childstring2, childstring3, childstring4, childstring5, childstring6, childstring7, childstring8,
             infantstring, infantstring2, infantstring3, infantstring4, AdLstring, AdLstring2, AdLstring3, AdLstring4,
@@ -81,18 +82,25 @@ public class PassengerDetails extends AppCompatActivity
             spn_infant1, spn_infant2, spn_infant3, spn_infant4;
 
     Button continueBookingButton;
-    String airlineCode,airlineName,flightPrice,departure,arrivalTime,flightCode,flightName;
+    String airlineCode, airlineName, flightPrice, departure, arrivalTime, flightCode, flightName;
     AwesomeValidation awesomeValidation = new AwesomeValidation(BASIC);
+    SharedPreferences sharedPreferences;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_details);
+        sharedPreferences = getSharedPreferences("TripDetails", Context.MODE_PRIVATE);
+
+        String s = sharedPreferences.getString("AirportCodeFrom", "");
+        s = sharedPreferences.getString("cityFrom", "");
+        s = sharedPreferences.getString("countryFrom", "");
+
         TotalFare = findViewById(R.id.TotalFare);
         couponCode = findViewById(R.id.couponCode);
 
         Intent intent = getIntent();
-        intentId=intent.getStringExtra("intentId");
+        intentId = intent.getStringExtra("intentId");
 
         origin = intent.getStringExtra("origin");
         destination = intent.getStringExtra("destination");
@@ -100,21 +108,21 @@ public class PassengerDetails extends AppCompatActivity
         tokenp = intent.getStringExtra("tokenid");
         resultindp = intent.getStringExtra("resultindex");
         traceidonep = intent.getStringExtra("traceid");
-        departure=intent.getStringExtra("departure");
+        departure = intent.getStringExtra("departure");
         //arrivalTime,flightCode,flightName
-        arrivalTime=intent.getStringExtra("arrivalTime");
-        departure=intent.getStringExtra("flightDepartureTime");
-        flightCode=intent.getStringExtra("flightCode");
-        flightName=intent.getStringExtra("flightName");
-        countryFrom=intent.getStringExtra("countryFrom");
-        countryTo=intent.getStringExtra("countryTo");
+        arrivalTime = intent.getStringExtra("arrivalTime");
+        departure = intent.getStringExtra("flightDepartureTime");
+        flightCode = intent.getStringExtra("flightCode");
+        flightName = intent.getStringExtra("flightName");
+        countryFrom = intent.getStringExtra("countryFrom");
+        countryTo = intent.getStringExtra("countryTo");
         adultonep = intent.getStringExtra("adultone");
         childonep = intent.getStringExtra("childone");
         infantsonep = intent.getStringExtra("infantsone");
-        flightPrice=intent.getStringExtra("totalFare");
-        TotalFare.setText("₹"+intent.getStringExtra("totalFare"));
+        flightPrice = intent.getStringExtra("totalFare");
+        TotalFare.setText("₹" + intent.getStringExtra("totalFare"));
         airlineCode = intent.getStringExtra("airlineCode");
-        airlineName=intent.getStringExtra("airlineName");
+        airlineName = intent.getStringExtra("airlineName");
 
         awesomeValidation.validate();
 
@@ -169,15 +177,15 @@ public class PassengerDetails extends AppCompatActivity
         childSeventhLastName = (TextView) findViewById(R.id.child7_lastname);
         childEigthLastName = (TextView) findViewById(R.id.child8_lastname);
 
-        infantOneFirstName=(TextView)findViewById(R.id.infants1_firstname);
-        infantSecondFirstName=(TextView)findViewById(R.id.infants2_firstname);
-        infantThirdFirstName=(TextView)findViewById(R.id.infants3_firstname);
-        infantFourthFirstName=(TextView)findViewById(R.id.infants4_firstname);
-        infantFifthFirstName=(TextView)findViewById(R.id.infants5_firstname);
-        infantSixthFirstName=(TextView)findViewById(R.id.infants6_firstname);
-        infantSeventhFirstName=(TextView)findViewById(R.id.infants7_firstname);
-        infantEigthFirstName=(TextView)findViewById(R.id.infants8_firstname);
-        infantNinethFirstName=(TextView)findViewById(R.id.infants9_firstname);
+        infantOneFirstName = (TextView) findViewById(R.id.infants1_firstname);
+        infantSecondFirstName = (TextView) findViewById(R.id.infants2_firstname);
+        infantThirdFirstName = (TextView) findViewById(R.id.infants3_firstname);
+        infantFourthFirstName = (TextView) findViewById(R.id.infants4_firstname);
+        infantFifthFirstName = (TextView) findViewById(R.id.infants5_firstname);
+        infantSixthFirstName = (TextView) findViewById(R.id.infants6_firstname);
+        infantSeventhFirstName = (TextView) findViewById(R.id.infants7_firstname);
+        infantEigthFirstName = (TextView) findViewById(R.id.infants8_firstname);
+        infantNinethFirstName = (TextView) findViewById(R.id.infants9_firstname);
 
 //        infantOneLastName=(TextView)findViewById(R.id.infants1_lastname);
 //        infantSecondLastName=(TextView)findViewById(R.id.infants2_lastname);
@@ -214,15 +222,24 @@ public class PassengerDetails extends AppCompatActivity
         Linear_infant3 = (LinearLayout) findViewById(R.id.linear_infants3);
         Linear_infant4 = (LinearLayout) findViewById(R.id.linear_infants4);
 
-        linearP_1=findViewById(R.id.adultPassport1);
-        linearP_2=findViewById(R.id.adultPassport2);
-        linearP_3=findViewById(R.id.adultPassport3);
-        linearP_4=findViewById(R.id.adultPassport4);
-        linearP_5=findViewById(R.id.adultPassport5);
-        linearP_6=findViewById(R.id.adultPassport6);
-        linearP_7=findViewById(R.id.adultPassport7);
-        linearP_8=findViewById(R.id.adultPassport8);
-        linearP_9=findViewById(R.id.adultPassport9);
+        linearP_1 = findViewById(R.id.adultPassport1);
+        linearP_2 = findViewById(R.id.adultPassport2);
+        linearP_3 = findViewById(R.id.adultPassport3);
+        linearP_4 = findViewById(R.id.adultPassport4);
+        linearP_5 = findViewById(R.id.adultPassport5);
+        linearP_6 = findViewById(R.id.adultPassport6);
+        linearP_7 = findViewById(R.id.adultPassport7);
+        linearP_8 = findViewById(R.id.adultPassport8);
+        linearP_9 = findViewById(R.id.adultPassport9);
+        linearP_1.setVisibility(View.GONE);
+        linearP_2.setVisibility(View.GONE);
+        linearP_3.setVisibility(View.GONE);
+        linearP_4.setVisibility(View.GONE);
+        linearP_5.setVisibility(View.GONE);
+        linearP_6.setVisibility(View.GONE);
+        linearP_7.setVisibility(View.GONE);
+        linearP_8.setVisibility(View.GONE);
+        linearP_9.setVisibility(View.GONE);
 
         mobileNumber = findViewById(R.id.mobileNumber);
         emailId = findViewById(R.id.emailId);
@@ -237,9 +254,8 @@ public class PassengerDetails extends AppCompatActivity
 
         //for adults
 
-        if (adultonep.equals("1"))
-        {
-            if(!countryFrom.equals("india") || !countryTo.equals("india"))
+        if (adultonep.equals("1")) {
+            if (!countryTo.equals("India"))
             {
                 linearP_1.setVisibility(View.VISIBLE);
             }
@@ -254,10 +270,8 @@ public class PassengerDetails extends AppCompatActivity
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("2"))
-        {
-            if(countryFrom.equals("india") || countryTo.equals("india"))
-            {
+        if (adultonep.equals("2")) {
+            if (countryFrom.equals("india") || countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
             }
@@ -270,10 +284,8 @@ public class PassengerDetails extends AppCompatActivity
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("3"))
-        {
-            if(countryFrom.equals("india") || countryTo.equals("india"))
-            {
+        if (adultonep.equals("3")) {
+            if (countryFrom.equals("india") || countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -286,10 +298,8 @@ public class PassengerDetails extends AppCompatActivity
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("4"))
-        {
-            if(countryFrom.equals("india") || countryTo.equals("india"))
-            {
+        if (adultonep.equals("4")) {
+            if (countryFrom.equals("india") || countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -305,8 +315,7 @@ public class PassengerDetails extends AppCompatActivity
         }
         if (adultonep.equals("5")) {
 
-            if(countryFrom.equals("india") || countryTo.equals("india"))
-            {
+            if (countryFrom.equals("india") || countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -321,8 +330,7 @@ public class PassengerDetails extends AppCompatActivity
 
         }
         if (adultonep.equals("6")) {
-            if(countryFrom.equals("india") || countryTo.equals("india"))
-            {
+            if (countryFrom.equals("india") || countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -336,10 +344,8 @@ public class PassengerDetails extends AppCompatActivity
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("7"))
-        {
-            if(countryFrom.equals("india") || countryTo.equals("india"))
-            {
+        if (adultonep.equals("7")) {
+            if (countryFrom.equals("india") || countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -352,10 +358,8 @@ public class PassengerDetails extends AppCompatActivity
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("8"))
-        {
-            if(countryFrom.equals("india") || countryTo.equals("india"))
-            {
+        if (adultonep.equals("8")) {
+            if (countryFrom.equals("india") || countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -367,10 +371,8 @@ public class PassengerDetails extends AppCompatActivity
             }
             Linear_adult9.setVisibility(View.GONE);
         }
-        if(adultonep.equals("9"))
-        {
-            if(countryFrom.equals("india") || countryTo.equals("india"))
-            {
+        if (adultonep.equals("9")) {
+            if (countryFrom.equals("india") || countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -455,164 +457,116 @@ public class PassengerDetails extends AppCompatActivity
                 inr.putExtra("adultCount", adultonep);
                 inr.putExtra("childCount", childonep);
                 inr.putExtra("infantCount", infantsonep);
-                  inr.putExtra("flightPrice",flightPrice);
-                  inr.putExtra("flightDepartureTime",departure);
+                inr.putExtra("flightPrice", flightPrice);
+                inr.putExtra("flightDepartureTime", departure);
 
-                  //Log.i("PassengerDetails","departure",departure);
+                //Log.i("PassengerDetails","departure",departure);
 
-                  inr.putExtra("flightArrivalTime",arrivalTime);
-                  inr.putExtra("flightCode",airlineCode);
-                  inr.putExtra("flightName",flightName);
-                 inr.putExtra("flightNumber",flightNumber);//flightNumber,origin,destination
-                  inr.putExtra("origin",origin);
-                inr.putExtra("destination",destination);
+                inr.putExtra("flightArrivalTime", arrivalTime);
+                inr.putExtra("flightCode", airlineCode);
+                inr.putExtra("flightName", flightName);
+                inr.putExtra("flightNumber", flightNumber);//flightNumber,origin,destination
+                inr.putExtra("origin", origin);
+                inr.putExtra("destination", destination);
 
-                if(Integer.parseInt(adultonep)==1)
-                {
-                    inr.putExtra("adultOneFirstName",adultOneFirstName.getText().toString());
-                    inr.putExtra("adultOneLastName",adultOneLastName.getText().toString());
+                if (Integer.parseInt(adultonep) == 1) {
+                    inr.putExtra("adultOneFirstName", adultOneFirstName.getText().toString());
+                    inr.putExtra("adultOneLastName", adultOneLastName.getText().toString());
 
-                }
-                else if(Integer.parseInt(adultonep)==2)
-                {
-                    inr.putExtra("adultSecondFirstName",adultSecondFirstName.getText().toString());
-                    inr.putExtra("adultSecondLastName",adultSecondLastName.getText().toString());
+                } else if (Integer.parseInt(adultonep) == 2) {
+                    inr.putExtra("adultSecondFirstName", adultSecondFirstName.getText().toString());
+                    inr.putExtra("adultSecondLastName", adultSecondLastName.getText().toString());
 
-                }
-                else if(Integer.parseInt(adultonep)==3)
-                {
-                    inr.putExtra("adultThrirdFirstName",adultThirdFirstName.getText().toString());
-                    inr.putExtra("adultThrirdLastName",adultThirdLastName.getText().toString());
+                } else if (Integer.parseInt(adultonep) == 3) {
+                    inr.putExtra("adultThrirdFirstName", adultThirdFirstName.getText().toString());
+                    inr.putExtra("adultThrirdLastName", adultThirdLastName.getText().toString());
 
-                }
-                else if(Integer.parseInt(adultonep)==4)
-                {
-                    inr.putExtra("adultFourthFirstName",adultFourthFirstName.getText().toString());
-                    inr.putExtra("adultFourthLastName",adultFourthLastName.getText().toString());
+                } else if (Integer.parseInt(adultonep) == 4) {
+                    inr.putExtra("adultFourthFirstName", adultFourthFirstName.getText().toString());
+                    inr.putExtra("adultFourthLastName", adultFourthLastName.getText().toString());
 
-                }
-                else if(Integer.parseInt(adultonep)==5)
-                {
-                    inr.putExtra("adultFifthFirstName",adultFifthFirstName.getText().toString());
-                    inr.putExtra("adultFifthdLastName",adultFifthLastName.getText().toString());
+                } else if (Integer.parseInt(adultonep) == 5) {
+                    inr.putExtra("adultFifthFirstName", adultFifthFirstName.getText().toString());
+                    inr.putExtra("adultFifthdLastName", adultFifthLastName.getText().toString());
 
-                }
-                else if(Integer.parseInt(adultonep)==6)
-                {
-                    inr.putExtra("adultSixthFirstName",adultSixthFirstName.getText().toString());
-                    inr.putExtra("adultsixthLastName",adultSixthLastName.getText().toString());
+                } else if (Integer.parseInt(adultonep) == 6) {
+                    inr.putExtra("adultSixthFirstName", adultSixthFirstName.getText().toString());
+                    inr.putExtra("adultsixthLastName", adultSixthLastName.getText().toString());
 
-                }
-                else if(Integer.parseInt(adultonep)==7)
-                {
-                    inr.putExtra("adultSeventhFirstName",adultSeventhFirstName.getText().toString());
-                    inr.putExtra("adultSeventhLastName",adultSeventhLastName.getText().toString());
+                } else if (Integer.parseInt(adultonep) == 7) {
+                    inr.putExtra("adultSeventhFirstName", adultSeventhFirstName.getText().toString());
+                    inr.putExtra("adultSeventhLastName", adultSeventhLastName.getText().toString());
 
-                }
-                else if(Integer.parseInt(adultonep)==8)
-                {
-                    inr.putExtra("adultEigthFirstName",adultEigthFirstName.getText().toString());
-                    inr.putExtra("adultEigthLastName",adultEigthLastName.getText().toString());
+                } else if (Integer.parseInt(adultonep) == 8) {
+                    inr.putExtra("adultEigthFirstName", adultEigthFirstName.getText().toString());
+                    inr.putExtra("adultEigthLastName", adultEigthLastName.getText().toString());
 
-                }
-                else if(Integer.parseInt(adultonep)==8)
-                {
-                    inr.putExtra("adultNinethFirstName",adultNinethFirstName.getText().toString());
-                    inr.putExtra("adultNinethLastName",adultNinethLastName.getText().toString());
+                } else if (Integer.parseInt(adultonep) == 8) {
+                    inr.putExtra("adultNinethFirstName", adultNinethFirstName.getText().toString());
+                    inr.putExtra("adultNinethLastName", adultNinethLastName.getText().toString());
 
                 }
 
 
-                if(Integer.parseInt(childonep)==1)
-                {
-                    inr.putExtra("childOneFirstName",childOneFirstName.getText().toString());
-                    inr.putExtra("childTwoFirstName",childOneFirstName.getText().toString());
+                if (Integer.parseInt(childonep) == 1) {
+                    inr.putExtra("childOneFirstName", childOneFirstName.getText().toString());
+                    inr.putExtra("childTwoFirstName", childOneFirstName.getText().toString());
+
+                } else if (Integer.parseInt(childonep) == 2) {
+                    inr.putExtra("childThrirdFirstName", childSecondFirstName.getText().toString());
+                    inr.putExtra("childThrirdLastName", childSecondLastName.getText().toString());
+
+                } else if (Integer.parseInt(childonep) == 3) {
+                    inr.putExtra("childThrirdFirstName", childThirdFirstName.getText().toString());
+                    inr.putExtra("childThrirdLastName", childThirdLastName.getText().toString());
+
+                } else if (Integer.parseInt(childonep) == 4) {
+                    inr.putExtra("childFourthFirstName", childFourthFirstName.getText().toString());
+                    inr.putExtra("childFourthLastName", childFourthLastName.getText().toString());
+
+                } else if (Integer.parseInt(childonep) == 5) {
+                    inr.putExtra("childFifthFirstName", childFifthFirstName.getText().toString());
+                    inr.putExtra("childFifthdLastName", childFifthLastName.getText().toString());
+
+                } else if (Integer.parseInt(childonep) == 6) {
+                    inr.putExtra("childSixthFirstName", childSixthFirstName.getText().toString());
+                    inr.putExtra("childsixthLastName", childSixthLastName.getText().toString());
+
+                } else if (Integer.parseInt(childonep) == 7) {
+                    inr.putExtra("childSeventhFirstName", childSeventhFirstName.getText().toString());
+                    inr.putExtra("childSeventhLastName", childSeventhLastName.getText().toString());
+
+                } else if (Integer.parseInt(childonep) == 8) {
+                    inr.putExtra("childEigthFirstName", childEigthFirstName.getText().toString());
+                    inr.putExtra("childEigthLastName", childEigthLastName.getText().toString());
 
                 }
-                else if(Integer.parseInt(childonep)==2)
-                {
-                    inr.putExtra("childThrirdFirstName",childSecondFirstName.getText().toString());
-                    inr.putExtra("childThrirdLastName",childSecondLastName.getText().toString());
+                if (Integer.parseInt(infantsonep) == 1) {
+                    inr.putExtra("infantOneFirstName", infantOneFirstName.getText().toString());
+
+
+                } else if (Integer.parseInt(infantsonep) == 2) {
+                    inr.putExtra("infantSecondFirstName", infantSecondFirstName.getText().toString());
+
+                } else if (Integer.parseInt(infantsonep) == 3) {
+                    inr.putExtra("infantThrirdFirstName", infantThirdFirstName.getText().toString());
+
+                } else if (Integer.parseInt(infantsonep) == 4) {
+                    inr.putExtra("infantFourthFirstName", infantFourthFirstName.getText().toString());
+
+                } else if (Integer.parseInt(infantsonep) == 5) {
+                    inr.putExtra("infantFifthFirstName", infantFifthFirstName.getText().toString());
+
+                } else if (Integer.parseInt(infantsonep) == 6) {
+                    inr.putExtra("infantSixthFirstName", infantSixthFirstName.getText().toString());
+
+                } else if (Integer.parseInt(infantsonep) == 7) {
+                    inr.putExtra("infantSeventhFirstName", infantSeventhFirstName.getText().toString());
+
+                } else if (Integer.parseInt(infantsonep) == 8) {
+                    inr.putExtra("infantEigthFirstName", infantEigthFirstName.getText().toString());
 
                 }
-                else if(Integer.parseInt(childonep)==3)
-                {
-                    inr.putExtra("childThrirdFirstName",childThirdFirstName.getText().toString());
-                    inr.putExtra("childThrirdLastName",childThirdLastName.getText().toString());
-
-                }
-                else if(Integer.parseInt(childonep)==4)
-                {
-                    inr.putExtra("childFourthFirstName",childFourthFirstName.getText().toString());
-                    inr.putExtra("childFourthLastName",childFourthLastName.getText().toString());
-
-                }
-                else if(Integer.parseInt(childonep)==5)
-                {
-                    inr.putExtra("childFifthFirstName",childFifthFirstName.getText().toString());
-                    inr.putExtra("childFifthdLastName",childFifthLastName.getText().toString());
-
-                }
-                else if(Integer.parseInt(childonep)==6)
-                {
-                    inr.putExtra("childSixthFirstName",childSixthFirstName.getText().toString());
-                    inr.putExtra("childsixthLastName",childSixthLastName.getText().toString());
-
-                }
-                else if(Integer.parseInt(childonep)==7)
-                {
-                    inr.putExtra("childSeventhFirstName",childSeventhFirstName.getText().toString());
-                    inr.putExtra("childSeventhLastName",childSeventhLastName.getText().toString());
-
-                }
-                else if(Integer.parseInt(childonep)==8)
-                {
-                    inr.putExtra("childEigthFirstName",childEigthFirstName.getText().toString());
-                    inr.putExtra("childEigthLastName",childEigthLastName.getText().toString());
-
-                }
-                if(Integer.parseInt(infantsonep)==1)
-                {
-                    inr.putExtra("infantOneFirstName",infantOneFirstName.getText().toString());
-
-
-                }
-                else if(Integer.parseInt(infantsonep)==2)
-                {
-                    inr.putExtra("infantSecondFirstName",infantSecondFirstName.getText().toString());
-
-                }
-                else if(Integer.parseInt(infantsonep)==3)
-                {
-                    inr.putExtra("infantThrirdFirstName",infantThirdFirstName.getText().toString());
-
-                }
-                else if(Integer.parseInt(infantsonep)==4)
-                {
-                    inr.putExtra("infantFourthFirstName",infantFourthFirstName.getText().toString());
-
-                }
-                else if(Integer.parseInt(infantsonep)==5)
-                {
-                    inr.putExtra("infantFifthFirstName",infantFifthFirstName.getText().toString());
-
-                }
-                else if(Integer.parseInt(infantsonep)==6)
-                {
-                    inr.putExtra("infantSixthFirstName",infantSixthFirstName.getText().toString());
-
-                }
-                else if(Integer.parseInt(infantsonep)==7)
-                {
-                    inr.putExtra("infantSeventhFirstName",infantSeventhFirstName.getText().toString());
-
-                }
-                else if(Integer.parseInt(infantsonep)==8)
-                {
-                    inr.putExtra("infantEigthFirstName",infantEigthFirstName.getText().toString());
-
-                }
-
 
 
 //                inr.putExtra("infantOneLastName",infantOneLastName.getText().toString());
@@ -625,11 +579,10 @@ public class PassengerDetails extends AppCompatActivity
 //                inr.putExtra("infantEigthLastName",infantEigthLastName.getText().toString());
 //                inr.putExtra("infantNinethLastName",infantNinethLastName.getText().toString());
 
-                inr.putExtra("Id","oneWay");
+                inr.putExtra("Id", "oneWay");
                 inr.putExtra("adF", Adultstring);
                 inr.putExtra("adL", AdLstring);
-                if (isEmpty(adultOneFirstName.getText().toString()))
-                {
+                if (isEmpty(adultOneFirstName.getText().toString())) {
                     adultOneFirstName.setError("Please enter your first name");
                     adultOneFirstName.requestFocus();
                     return;
@@ -1376,7 +1329,7 @@ public class PassengerDetails extends AppCompatActivity
         infant_DOB1 = (TextView) findViewById(R.id.infants1_dob);
         infant_DOB2 = (TextView) findViewById(R.id.infants2_dob);
         infant_DOB3 = (TextView) findViewById(R.id.infants3_dob);
-      infant_DOB4 = (TextView) findViewById(R.id.infants4_dob);
+        infant_DOB4 = (TextView) findViewById(R.id.infants4_dob);
 
         infant_DOB1.setOnClickListener(new View.OnClickListener() {
             @Override

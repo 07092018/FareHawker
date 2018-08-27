@@ -38,7 +38,8 @@ public class Reviewdetails extends AppCompatActivity {
     RelativeLayout flightDetailsR_RelativeLayout;
     LinearLayout flightRLinearLayout;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviewdetails);
 
@@ -56,7 +57,7 @@ public class Reviewdetails extends AppCompatActivity {
         //flightNumber = intent.getStringExtra("flightNumber");
         origin = intent.getStringExtra("origin");
         destination = intent.getStringExtra("destination");
-         id=intent.getStringExtra("Id");
+        id=intent.getStringExtra("Id");
         //Return Flight Details
         if(id.equals("roundTrip"))
         {

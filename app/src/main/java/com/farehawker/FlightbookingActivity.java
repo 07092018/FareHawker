@@ -4,7 +4,9 @@ package com.farehawker;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -31,6 +33,8 @@ import java.util.List;
 
 public class FlightbookingActivity extends AppCompatActivity
 {
+    SharedPreferences sharedPreferences;
+    String TripDetails="TripDetails";
     static final int DATE_PICKER_ID = 1111;
     static final int Dialog_id = 111;
     //Tag used in Log
@@ -51,8 +55,10 @@ public class FlightbookingActivity extends AppCompatActivity
     ImageView Adults_btnminus,Adult_btnplus,child_btnminus,child_btnplus,infants_btnminus,infants_btnplus;
     TextView text_Adult,text_Child,text_infant;
     Button search_flightbtn;
-    String AirportcodeTO,citynameTO,countryTO,AirportcodeFROM,citynameFROM,countrynameFROm;
+    String AirportcodeTO,citynameTO,AirportcodeFROM,citynameFROM;
+    static String countryTO,countrynameFROm;
     int returwrong,departurewron;
+
     private int mday, yday;
     private int mmonth, ymonth;
     private int myear, yyear,n,c,i;
@@ -105,6 +111,9 @@ public class FlightbookingActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flightbooking);
 
+        //sharedPreferences
+        sharedPreferences=getSharedPreferences(TripDetails, Context.MODE_PRIVATE);
+
         text_onewaytrip=(TextView)findViewById(R.id.oneway_triptxt);
         text_roundtrip=(TextView)findViewById(R.id.round_triptxt);
 
@@ -152,11 +161,17 @@ public class FlightbookingActivity extends AppCompatActivity
         AirportcodeTO = getIntent().getStringExtra("airport_codedestination");
         citynameTO = getIntent().getStringExtra("citynamedestination");
         countryTO=getIntent().getStringExtra("Countrydes");
+
         //Get intent from Searchactivity
         AirportcodeFROM = getIntent().getStringExtra("airport_code");
         citynameFROM = getIntent().getStringExtra("cityname");
         countrynameFROm=getIntent().getStringExtra("countryname");
 
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+
+        editor.putString("AirportCodeFrom",AirportcodeFROM);
+        editor.putString("cityFrom",citynameFROM);
+        editor.putString("countryFrom",countrynameFROm);
         //set the total intent
         text_tolocation.setText(AirportcodeTO);
         text_tocountrycity.setText(citynameTO);
@@ -483,6 +498,8 @@ public class FlightbookingActivity extends AppCompatActivity
                             inr.putExtra("child", childc);
                             inr.putExtra("infants", infacntc);
                             inr.putExtra("cabinclass", cabinclas);
+                            inr.putExtra("countryFrom",countrynameFROm);
+                            inr.putExtra("countryTo",countryTO);
                             startActivity(inr);
                           //      Intent inr= new Intent(FlightbookingActivity.this,SomeEarlierMerchantActivity.class);
 //                                inr.putExtra("originround", "Delhi");

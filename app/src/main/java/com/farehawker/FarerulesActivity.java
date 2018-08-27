@@ -76,6 +76,7 @@ public class FarerulesActivity extends MyBaseActivity
     CheckBox checkBox;
     ListView origin_list;
     ListView return_list;
+    String countryTo;
     String resultindex_oneward,resultindex_return,tracidR,infantsR,enduserip_round,tokenid_round;
     int base_o, base_r, tex_o, text_r, total_o, total_r,otherch_o,otherch_r;
     private RecyclerView originrecyclerview, returnRecyclerview;
@@ -138,7 +139,7 @@ public class FarerulesActivity extends MyBaseActivity
         flightArrivalTimeR=intent.getStringExtra("flightDepartureTimeR");
         flightPriceR=intent.getStringExtra("flightPriceR");
         flightArrivalTime=intent.getStringExtra("flightArrivalTimeR");
-
+        countryTo=intent.getStringExtra("countryTo");
         final String departureR=intent.getStringExtra("departureround");
         final String retrunR=intent.getStringExtra("returnround");
 
@@ -171,7 +172,7 @@ public class FarerulesActivity extends MyBaseActivity
                 {
 
                     Intent intent = new Intent(getApplicationContext(),PassengerDetailsR.class);
-
+                    intent.putExtra("countryTo",countryTo);
                     intent.putExtra("intentId","RoundTrip");
                     intent.putExtra("originround", originR);
                     intent.putExtra("destinationround", destinationR);
