@@ -1045,6 +1045,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
+                            android:focusable="false"
+                            android:tag="1"
                             android:id="@+id/infants1_dob"
                             android:hint="DOB"
                             android:layout_weight="40"
@@ -1088,6 +1090,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
+                            android:tag="2"
+
+
+
                             android:focusableInTouchMode="true"
                             android:id="@+id/infants2_dob"
                             android:hint="DOB"
@@ -1132,6 +1138,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
+                            android:tag="3"
                             android:focusableInTouchMode="true"
                             android:id="@+id/infants3_dob"
                             android:hint="DOB"
@@ -1176,6 +1183,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
+                            android:tag="4"
                             android:focusableInTouchMode="true"
                             android:id="@+id/infants4_dob"
                             android:hint="DOB"
@@ -1219,6 +1227,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
+                            android:tag="5"
                             android:focusableInTouchMode="true"
                             android:id="@+id/infants5_dob"
                             android:hint="DOB"
@@ -1262,6 +1271,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
+                            android:tag="6"
                             android:focusableInTouchMode="true"
                             android:id="@+id/infants6_dob"
                             android:hint="DOB"
@@ -1305,6 +1315,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
+                            android:tag="7"
                             android:focusableInTouchMode="true"
                             android:id="@+id/infants7_dob"
                             android:hint="DOB"
@@ -1348,6 +1359,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
+                            android:tag="8"
                             android:focusableInTouchMode="true"
                             android:id="@+id/infants8_dob"
                             android:hint="DOB"
@@ -1391,7 +1403,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <EditText
-
+                            android:focusable="false"
+                            android:tag="9"
                             android:id="@+id/infants9_dob"
                             android:hint="DOB"
                             android:focusableInTouchMode="true"

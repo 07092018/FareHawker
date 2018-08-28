@@ -37,6 +37,7 @@ public class Reviewdetails extends AppCompatActivity {
     Button makePayment;
     RelativeLayout flightDetailsR_RelativeLayout;
     LinearLayout flightRLinearLayout;
+    TextView destination1;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -168,7 +169,7 @@ public class Reviewdetails extends AppCompatActivity {
 
         flightCodeT = findViewById(R.id.flightCode2);
 
-        destinationT = findViewById(R.id.destination1);
+        destination1 = findViewById(R.id.destination1);
 
         flightNameRT = findViewById(R.id.flightName2);
         arrivalTimeRT = findViewById(R.id.arrivalTime2);
@@ -178,7 +179,7 @@ public class Reviewdetails extends AppCompatActivity {
         originRT = findViewById(R.id.origin2);
         flightNameRT.setText(flightNameR);
         originT = findViewById(R.id.origin1);
-        destinationT =findViewById(R.id.destination1);
+        destinationT =findViewById(R.id.destination);
         flightDetailsR = findViewById(R.id.flightDetailsR_RelativeLayout);
         flightRLinearLayout=findViewById(R.id.flightRLinearLayout);
         makePayment=findViewById(R.id.makeButton);
@@ -196,6 +197,7 @@ public class Reviewdetails extends AppCompatActivity {
         arrivalTimeT.setText(flightArrivalTime);
         departureT.setText(flightDepartureTime);
         destinationT.setText(destination);
+        destination1.setText(destination);
         originT.setText(origin);
         flightCodeT.setText(flightCode);
         flightDetailsR_RelativeLayout.setVisibility(View.GONE);
