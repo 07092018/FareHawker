@@ -90,9 +90,11 @@ public class PassengerDetails extends AppCompatActivity {
     String airlineCode, airlineName, flightPrice, departure, arrivalTime, flightCode, flightName;
     AwesomeValidation awesomeValidation = new AwesomeValidation(BASIC);
     SharedPreferences sharedPreferences;
+    Passport passports[]=new Passport[26];
     int tag;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_details);
         sharedPreferences = getSharedPreferences("TripDetails", Context.MODE_PRIVATE);
@@ -110,9 +112,67 @@ public class PassengerDetails extends AppCompatActivity {
         infant_DOB7=findViewById(R.id.infants7_dob);
         infant_DOB8=findViewById(R.id.infants8_dob);
         infant_DOB9=findViewById(R.id.infants9_dob);
+
+        //Adult Passport numbers and their Passport Expiry dates
+        passports[0].passportNoT=findViewById(R.id.aPassportNo1);
+        passports[1].passportNoT=findViewById(R.id.aPassportNo2);
+        passports[2].passportNoT=findViewById(R.id.aPassportNo3);
+        passports[3].passportNoT=findViewById(R.id.aPassportNo4);
+        passports[4].passportNoT=findViewById(R.id.aPassportNo5);
+        passports[5].passportNoT=findViewById(R.id.aPassportNo6);
+        passports[6].passportNoT=findViewById(R.id.aPassportNo7);
+        passports[7].passportNoT=findViewById(R.id.aPassportNo8);
+        passports[8].passportNoT=findViewById(R.id.aPassportNo9);
+
+        passports[0].passportExpT=findViewById(R.id.aPassportEx1);
+        passports[1].passportExpT=findViewById(R.id.aPassportEx2);
+        passports[2].passportExpT=findViewById(R.id.aPassportEx3);
+        passports[3].passportExpT=findViewById(R.id.aPassportEx4);
+        passports[4].passportExpT=findViewById(R.id.aPassportEx5);
+        passports[5].passportExpT=findViewById(R.id.aPassportEx6);
+        passports[6].passportExpT=findViewById(R.id.aPassportEx7);
+        passports[7].passportExpT=findViewById(R.id.aPassportEx8);
+        passports[8].passportExpT=findViewById(R.id.aPassportEx9);
+
+        //Children Passport details and Passport dates of expiry
+        passports[9].passportNoT=findViewById(R.id.cPassportNo1);
+        passports[10].passportNoT=findViewById(R.id.cPassportNo2);
+        passports[11].passportNoT=findViewById(R.id.cPassportNo3);
+        passports[12].passportNoT=findViewById(R.id.cPassportNo4);
+        passports[13].passportNoT=findViewById(R.id.cPassportNo5);
+        passports[14].passportNoT=findViewById(R.id.cPassportNo6);
+        passports[15].passportNoT=findViewById(R.id.cPassportNo7);
+        passports[16].passportNoT=findViewById(R.id.cPassportNo8);
+
+        passports[9].passportExpT=findViewById(R.id.cPassportExp1);
+        passports[10].passportExpT=findViewById(R.id.cPassportExp2);
+        passports[11].passportExpT=findViewById(R.id.cPassportExp3);
+        passports[12].passportExpT=findViewById(R.id.cPassportExp4);
+        passports[13].passportExpT=findViewById(R.id.cPassportExp5);
+        passports[14].passportExpT=findViewById(R.id.cPassportExp6);
+        passports[15].passportExpT=findViewById(R.id.cPassportExp7);
+        passports[16].passportExpT=findViewById(R.id.cPassportExp8);
+
+        //Infants passports and date of expiry details
+        passports[17].passportNoT=findViewById(R.id.iPassportNo1);
+        passports[17].passportExpT=findViewById(R.id.iPassportExp1);
+        passports[18].passportNoT=findViewById(R.id.iPassportNo2);
+        passports[18].passportExpT=findViewById(R.id.iPassportExp2);
+        passports[19].passportNoT=findViewById(R.id.iPassport3);
+        passports[19].passportExpT=findViewById(R.id.iPassportExp3);
+        passports[20].passportNoT=findViewById(R.id.iPassport4);
+        passports[20].passportExpT=findViewById(R.id.iPassportExp4);
+        passports[21].passportNoT=findViewById(R.id.iPassport5);
+        passports[21].passportExpT=findViewById(R.id.iPassportExp5);
+        passports[22].passportNoT=findViewById(R.id.iPassport6);
+        passports[22].passportExpT=findViewById(R.id.iPassportExp6);
+        passports[23].passportNoT=findViewById(R.id.iPassport7);
+        passports[23].passportExpT=findViewById(R.id.iPassportExp7);
+
         final DatePickerDialog.OnDateSetListener date= new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth)
+            {
                 calendar.set(Calendar.YEAR,year);
                 calendar.set(Calendar.MONTH,month);
                 calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
@@ -743,7 +803,6 @@ public class PassengerDetails extends AppCompatActivity {
                 inr.putExtra("flightPrice", flightPrice);
                 inr.putExtra("flightDepartureTime", departure);
 
-                //Log.i("PassengerDetails","departure",departure);
 
                 inr.putExtra("flightArrivalTime", arrivalTime);
                 inr.putExtra("flightCode", airlineCode);
@@ -846,13 +905,18 @@ public class PassengerDetails extends AppCompatActivity {
                     inr.putExtra("infantOneFirstName", infantOneFirstName.getText().toString());
 
 
-                } else if (Integer.parseInt(infantsonep) == 2) {
+                }
+                else if (Integer.parseInt(infantsonep) == 2)
+                {
                     inr.putExtra("infantSecondFirstName", infantSecondFirstName.getText().toString());
 
-                } else if (Integer.parseInt(infantsonep) == 3) {
+                }
+                else if (Integer.parseInt(infantsonep) == 3)
+                {
                     inr.putExtra("infantThrirdFirstName", infantThirdFirstName.getText().toString());
 
-                } else if (Integer.parseInt(infantsonep) == 4) {
+                }
+                else if (Integer.parseInt(infantsonep) == 4) {
                     inr.putExtra("infantFourthFirstName", infantFourthFirstName.getText().toString());
 
                 } else if (Integer.parseInt(infantsonep) == 5) {

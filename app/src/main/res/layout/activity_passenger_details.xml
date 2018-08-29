@@ -16,617 +16,769 @@
             android:orientation="vertical"
             android:layout_weight="90"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:id="@+id/adultmain_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/adultCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#efe6e6"
                     android:layout_gravity="center"
+                    android:background="#efe6e6"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="Adult "/>
+                        android:text="Adult "
+                        android:textSize="20sp" />
+
                     <TextView
                         android:id="@+id/maincount_adult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="1"/>
+                        android:text="1"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linear_adult1"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adult 1" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5sp"
                         android:gravity="center"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/spinner_adult"
                             android:layout_width="wrap_content"
-                            android:layout_weight="10"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10" />
+
                         <EditText
-                            android:digits="abcdefghijklmnopquvrstwxyzABCDEFGHIJKLMNOPQUVRSTWXYZ"
                             android:id="@+id/adult_firstname"
-                            android:hint="Fist name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:digits="abcdefghijklmnopquvrstwxyzABCDEFGHIJKLMNOPQUVRSTWXYZ"
+                            android:hint="Fist name" />
 
                         <EditText
                             android:id="@+id/adult_lastname"
-                            android:hint="Last name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Last name" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/adultPassport1"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        >
+
                         <EditText
-                            android:id="@+id/Passport1"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginLeft="10dp"
+                            android:id="@+id/aPassportNo1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Passport"/>
-                        <EditText
-                            android:id="@+id/adultDob1"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="10dp"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Passport No." />
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="DOB"/>
+                            />
+                        <EditText
+                            android:id="@+id/aPassportEx1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="DD/MM/YYYY" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
+                        android:layout_height="2dp"
                         android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
+                        android:layout_marginTop="5sp"
+                        android:background="@color/bgBottomNavigation" />
                 </LinearLayout>
 
 
                 <LinearLayout
                     android:id="@+id/linear_adult2"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adult 2" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5sp"
                         android:gravity="center"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/spinner_adult2"
                             android:layout_width="wrap_content"
-                            android:layout_weight="10"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10" />
+
                         <EditText
                             android:id="@+id/adult2_firstname"
-                            android:hint="Fist name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Fist name" />
+
                         <EditText
                             android:id="@+id/adult2_lastname"
-                            android:hint="Last name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Last name" />
                     </LinearLayout>
+
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/adultPassport2"
+
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        >
+
                         <EditText
-                            android:id="@+id/Passport2"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginLeft="10dp"
+                            android:id="@+id/aPassportNo2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Passport"/>
-                        <EditText
-                            android:id="@+id/adultDob2"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="10dp"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Passport No." />
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="DOB"/>
+                            />
+                        <EditText
+                            android:id="@+id/aPassportEx2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="DD/MM/YYYY" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
+                        android:layout_height="2dp"
                         android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
+                        android:layout_marginTop="5sp"
+                        android:background="@color/bgBottomNavigation" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linear_adult3"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adult 3" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5sp"
                         android:gravity="center"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/spinner_adult3"
                             android:layout_width="wrap_content"
-                            android:layout_weight="10"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10" />
+
                         <EditText
                             android:id="@+id/adult3_firstname"
-                            android:hint="Fist name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Fist name" />
+
                         <EditText
                             android:id="@+id/adult3_lastname"
-                            android:hint="Last name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Last name" />
                     </LinearLayout>
+
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/adultPassport3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        >
+
                         <EditText
-                            android:id="@+id/Passport3"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginLeft="10dp"
+                            android:id="@+id/aPassportNo3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Passport"/>
-                        <EditText
-                            android:id="@+id/adultDob3"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="10dp"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Passport No." />
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="DOB"/>
+                            />
+                        <EditText
+                            android:id="@+id/aPassportEx3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="DD/MM/YYYY" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
+                        android:layout_height="2dp"
                         android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
+                        android:layout_marginTop="5sp"
+                        android:background="@color/bgBottomNavigation" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/linear_adult4"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adult 4" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5sp"
                         android:gravity="center"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/spinner_adult4"
                             android:layout_width="wrap_content"
-                            android:layout_weight="10"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10" />
+
                         <EditText
                             android:id="@+id/adult4_firstname"
-                            android:hint="Fist name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Fist name" />
+
                         <EditText
                             android:id="@+id/adult4_lastname"
-                            android:hint="Last name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Last name" />
+                        <LinearLayout
+                            android:id="@+id/adultPassport4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+
+                            <EditText
+                                android:id="@+id/aPassportNo4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="5dp"
+                                android:hint="Passport No." />
+                            <TextView
+                                android:gravity="center_horizontal"
+                                android:text="Date of Expiry"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                />
+                            <EditText
+                                android:id="@+id/aPassportEx4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="5dp"
+                                android:hint="DD/MM/YYYY" />
+                        </LinearLayout>
+
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
+                        android:layout_height="2dp"
                         android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
+                        android:layout_marginTop="5sp"
+                        android:background="@color/bgBottomNavigation" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/adultPassport4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/Passport4"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Passport"/>
-                    <EditText
-                        android:id="@+id/adultDob4"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DOB"/>
-                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/linear_adult5"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adult 5" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5sp"
                         android:gravity="center"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/spinner_adult5"
                             android:layout_width="wrap_content"
-                            android:layout_weight="10"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10" />
+
                         <EditText
                             android:id="@+id/adult5_firstname"
-                            android:hint="Fist name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Fist name" />
+
                         <EditText
                             android:id="@+id/adult5_lastname"
-                            android:hint="Last name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Last name" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
+                        android:layout_height="2dp"
                         android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/adultPassport5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/Passport5"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5sp"
+                        android:background="@color/bgBottomNavigation" />
+                    <LinearLayout
+                        android:id="@+id/adultPassport5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Passport"/>
-                    <EditText
-                        android:id="@+id/adultDob5"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DOB"/>
+                        android:orientation="vertical"
+                        >
+
+                        <EditText
+                            android:id="@+id/aPassportNo5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Passport No." />
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/aPassportEx5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="DD/MM/YYYY" />
+                    </LinearLayout>
                 </LinearLayout>
+
+
+
                 <LinearLayout
                     android:id="@+id/linear_adult6"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adult 6" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5sp"
                         android:gravity="center"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/spinner_adult6"
                             android:layout_width="wrap_content"
-                            android:layout_weight="10"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10" />
+
                         <EditText
                             android:id="@+id/adult6_firstname"
-                            android:hint="Fist name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Fist name" />
+
                         <EditText
                             android:id="@+id/adult6_lastname"
-                            android:hint="Last name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Last name" />
                     </LinearLayout>
+
+
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
+                        android:layout_height="2dp"
                         android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/adultPassport6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/Passport6"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5sp"
+                        android:background="@color/bgBottomNavigation" />
+                    <LinearLayout
+                        android:id="@+id/adultPassport6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Passport"/>
-                    <EditText
-                        android:id="@+id/adultDob6"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DOB"/>
+                        android:orientation="vertical"
+                        >
+
+                        <EditText
+                            android:id="@+id/aPassportNo6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Passport No." />
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/aPassportEx6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="DD/MM/YYYY" />
+                    </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/linear_adult7"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adult 7" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5sp"
                         android:gravity="center"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/spinner_adult7"
                             android:layout_width="wrap_content"
-                            android:layout_weight="10"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10" />
+
                         <EditText
                             android:id="@+id/adult7_firstname"
-                            android:hint="Fist name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Fist name" />
+
                         <EditText
                             android:id="@+id/adult7_lastname"
-                            android:hint="Last name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Last name" />
                     </LinearLayout>
+
+
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
+                        android:layout_height="2dp"
                         android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/adultPassport7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/Passport7"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5sp"
+                        android:background="@color/bgBottomNavigation" />
+                    <LinearLayout
+                        android:id="@+id/adultPassport7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Passport"/>
-                    <EditText
-                        android:id="@+id/adultDob7"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DOB"/>
+                        android:orientation="vertical"
+                        >
+
+                        <EditText
+                            android:id="@+id/aPassportNo7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Passport No." />
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/aPassportEx7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="DD/MM/YYYY" />
+                    </LinearLayout>
                 </LinearLayout>
+
+
+
+
+
+
                 <LinearLayout
                     android:id="@+id/linear_adult8"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adult 8" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5sp"
                         android:gravity="center"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/spinner_adult8"
                             android:layout_width="wrap_content"
-                            android:layout_weight="10"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10" />
+
                         <EditText
                             android:id="@+id/adult8_firstname"
-                            android:hint="Fist name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Fist name" />
+
                         <EditText
                             android:id="@+id/adult8_lastname"
-                            android:hint="Last name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Last name" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
+                        android:layout_height="2dp"
                         android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/adultPassport8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/Passport8"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5sp"
+                        android:background="@color/bgBottomNavigation" />
+                    <LinearLayout
+                        android:id="@+id/adultPassport8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Passport"/>
-                    <EditText
-                        android:id="@+id/adultDob8"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DOB"/>
+                        android:orientation="vertical"
+                        >
+
+                        <EditText
+                            android:id="@+id/aPassportNo8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Passport No." />
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/aPassportEx8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="DD/MM/YYYY" />
+                    </LinearLayout>
                 </LinearLayout>
+
+
+
                 <LinearLayout
                     android:id="@+id/linear_adult9"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Adult 9" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5sp"
                         android:gravity="center"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <Spinner
                             android:id="@+id/spinner_adult9"
                             android:layout_width="wrap_content"
-                            android:layout_weight="10"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10" />
+
                         <EditText
                             android:id="@+id/adult9_firstname"
-                            android:hint="Fist name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Fist name" />
+
                         <EditText
                             android:id="@+id/adult9_lastname"
-                            android:hint="Last name"
-                            android:layout_weight="40"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="40"
+                            android:hint="Last name" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
+                        android:layout_height="2dp"
                         android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
+                        android:layout_marginTop="5sp"
+                        android:background="@color/bgBottomNavigation" />
+                    <LinearLayout
+                        android:id="@+id/adultPassport9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <EditText
+                            android:id="@+id/aPassportNo9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Passport No." />
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/aPassportEx9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="DD/MM/YYYY" />
+                    </LinearLayout>
                 </LinearLayout>
+
             </LinearLayout>
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/adultPassport9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <EditText
-                    android:id="@+id/Passport9"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Passport"/>
-                <EditText
-                    android:id="@+id/adultDob9"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="DOB"/>
-            </LinearLayout>
+
 
 
             <LinearLayout
@@ -635,34 +787,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:id="@+id/childCount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#efe6e6"
-                    android:layout_gravity="center"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/children"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="Child "/>
-                    <TextView
-                        android:id="@+id/maincount_child"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="1"
-                    />
-                </LinearLayout>
-                <LinearLayout
                     android:id="@+id/linear_child1"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="child 1" />
                     <LinearLayout
@@ -689,6 +820,48 @@
                             android:layout_weight="40"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/childPassport1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/cPassportNo1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of expiry"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            />
+                        <EditText
+                            android:id="@+id/cPassportExp1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DD/MM/YYYY"/>
+
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/childDob1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
@@ -731,6 +904,47 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/childPassport2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/cPassportNo2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport No."/>
+                        <TextView
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"/>
+                        <EditText
+                            android:id="@+id/cPassportExp2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DD/MM/YYYY"/>
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/childDob2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:background="@color/bgBottomNavigation"
@@ -738,7 +952,6 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                 </LinearLayout>
-
                 <LinearLayout
                     android:id="@+id/linear_child3"
                     android:layout_width="match_parent"
@@ -772,6 +985,46 @@
                             android:layout_weight="40"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/childPassport3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/cPassportNo3"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/cPassportExp3"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DD/MM/YYYY"/>
+
+                        <TextView
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/childDob3"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
@@ -814,6 +1067,45 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/childPassport4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/cPassportNo4"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of expiry"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            />
+                        <EditText
+                            android:id="@+id/cPassportExp4"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/childDob4"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:background="@color/bgBottomNavigation"
@@ -854,6 +1146,45 @@
                             android:layout_weight="40"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/childPassport5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/cPassportNo5"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of expiry"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            />
+                        <EditText
+                            android:id="@+id/cPassportExp5"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/childDob5"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
@@ -896,6 +1227,46 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/childPassport6"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/cPassportNo6"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of expiry"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            />
+                        <EditText
+                            android:id="@+id/cPassportExp6"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/childDob6"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:background="@color/bgBottomNavigation"
@@ -937,6 +1308,46 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/childPassport7"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/cPassportNo7"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of expiry"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            />
+                        <EditText
+                            android:id="@+id/cPassportExp7"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/childDob7"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:background="@color/bgBottomNavigation"
@@ -977,6 +1388,46 @@
                             android:layout_weight="40"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/childPassport8"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/cPassportNo8"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport No."/>
+                        <TextView
+                            android:text="Date of expiry"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            />
+                        <EditText
+                            android:id="@+id/cPassportExp8"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/childDob8"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
@@ -1054,12 +1505,39 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:background="@color/bgBottomNavigation"
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
+                    <LinearLayout
+                        android:id="@+id/infantPassport1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/iPassportNo1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport No."/>
+                        <TextView
+                            android:text="Date of expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/iPassportExp1"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DD/MM/YYYY"/>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -1091,9 +1569,6 @@
                             android:layout_height="wrap_content" />
                         <EditText
                             android:tag="2"
-
-
-
                             android:focusableInTouchMode="true"
                             android:id="@+id/infants2_dob"
                             android:hint="DOB"
@@ -1102,13 +1577,41 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:background="@color/bgBottomNavigation"
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
+                    <LinearLayout
+                        android:id="@+id/infantPassport2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/iPassportNo2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport No."/>
+                        <TextView
+                            android:text="Date of expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/iPassportExp2"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DD/MM/YYYY"/>
+                    </LinearLayout>
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/linear_infants3"
@@ -1153,6 +1656,33 @@
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
+                    <LinearLayout
+                        android:id="@+id/infantPassport3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/iPassportNo3"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/infantDob3"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -1200,6 +1730,32 @@
                         android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/infantPassport4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/iPassportNo4"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <TextView
+                        android:text="Date of Birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/infantDob4"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
+                </LinearLayout>
+                <LinearLayout
                     android:id="@+id/linear_infants5"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
@@ -1242,6 +1798,32 @@
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/infantPassport5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/iPassportNo5"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <TextView
+                        android:text="Date of Birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/infantDob5"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_infants6"
@@ -1288,6 +1870,32 @@
                         android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/infantPassport6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/iPassportNo6"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <TextView
+                        android:text="Date of Birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/infantDob6"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
+                </LinearLayout>
+                <LinearLayout
                     android:id="@+id/linear_infants7"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
@@ -1330,6 +1938,32 @@
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/infantPassport7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/iPassportNo7"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <TextView
+                        android:text="Date of Birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/infantDob7"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_infants8"
@@ -1376,6 +2010,34 @@
                         android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/infantPassport8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/iPassportNo8"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:text="Date of Birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/infantDob8"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/linear_infants9"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
@@ -1418,6 +2080,32 @@
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/infantPassport9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/iPassportNo9"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Passport"/>
+                    <TextView
+                        android:text="Date of Birth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/infantDob9"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOB"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
