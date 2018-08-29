@@ -158,7 +158,7 @@ public class PassengerDetails extends AppCompatActivity {
         passports[17].passportExpT=findViewById(R.id.iPassportExp1);
         passports[18].passportNoT=findViewById(R.id.iPassportNo2);
         passports[18].passportExpT=findViewById(R.id.iPassportExp2);
-        passports[19].passportNoT=findViewById(R.id.iPassport3);
+        passports[19].passportNoT=findViewById(R.id.iPassportNo3);
         passports[19].passportExpT=findViewById(R.id.iPassportExp3);
         passports[20].passportNoT=findViewById(R.id.iPassport4);
         passports[20].passportExpT=findViewById(R.id.iPassportExp4);

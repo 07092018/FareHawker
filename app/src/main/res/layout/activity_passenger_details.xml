@@ -1670,11 +1670,11 @@
                             android:layout_height="wrap_content"
                             android:hint="Passport"/>
                         <TextView
-                            android:text="Date of Birth"
+                            android:text="Date of expiry"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                         <EditText
-                            android:id="@+id/infantDob3"
+                            android:id="@+id/iPassportExp3"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="10dp"
                             android:layout_marginLeft="10dp"
@@ -1728,33 +1728,34 @@
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/infantPassport4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/iPassportNo4"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
+                    <LinearLayout
+                        android:id="@+id/infantPassport4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Passport"/>
-                    <TextView
-                        android:text="Date of Birth"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                    <EditText
-                        android:id="@+id/infantDob4"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DOB"/>
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/iPassportNo4"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of Expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/iPassportExp4"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DD/MM/YYYY"/>
+                    </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/linear_infants5"
                     android:layout_width="match_parent"
@@ -1798,33 +1799,34 @@
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/infantPassport5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/iPassportNo5"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
+                    <LinearLayout
+                        android:id="@+id/infantPassport5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Passport"/>
-                    <TextView
-                        android:text="Date of Birth"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                    <EditText
-                        android:id="@+id/infantDob5"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DOB"/>
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/iPassportNo5"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/iPassportExp5"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DD/MM/YYYY"/>
+                    </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/linear_infants6"
                     android:layout_width="match_parent"
@@ -1868,33 +1870,34 @@
                         android:layout_marginTop="5sp"
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/infantPassport6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/iPassportNo6"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
+                    <LinearLayout
+                        android:id="@+id/infantPassport6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Passport"/>
-                    <TextView
-                        android:text="Date of Birth"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                    <EditText
-                        android:id="@+id/infantDob6"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DOB"/>
+                        android:orientation="vertical">
+                        <EditText
+                            android:id="@+id/iPassportNo6"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of Birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/infantDob6"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DOB"/>
+                    </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/linear_infants7"
                     android:layout_width="match_parent"
