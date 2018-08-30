@@ -56,7 +56,7 @@ public class FlightbookingActivity extends AppCompatActivity
     TextView text_Adult,text_Child,text_infant;
     Button search_flightbtn;
     String AirportcodeTO,citynameTO,AirportcodeFROM,citynameFROM;
-    static String countryTO,countrynameFROm;
+    static String countryTO="India",countrynameFROm="India";
     int returwrong,departurewron;
 
     private int mday, yday;
@@ -84,7 +84,7 @@ public class FlightbookingActivity extends AppCompatActivity
             text_departure.setText(new StringBuilder().append(selectedYear).append("-").append((fm)).append("-").append(fd));
         }
     };
-    //for return trip date
+    //for Return trip date
     private DatePickerDialog.OnDateSetListener datePickerListener2 = new DatePickerDialog.OnDateSetListener()
     {
         public void onDateSet(DatePicker viewv, int xselectedYear, int xselectedMonth, int xselectedDay)
@@ -110,8 +110,7 @@ public class FlightbookingActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flightbooking);
-
-        //sharedPreferences
+        //SharedPreferences
         sharedPreferences=getSharedPreferences(TripDetails, Context.MODE_PRIVATE);
 
         text_onewaytrip=(TextView)findViewById(R.id.oneway_triptxt);
@@ -160,26 +159,27 @@ public class FlightbookingActivity extends AppCompatActivity
         //get intent from DestinationsearchActivity
         AirportcodeTO = getIntent().getStringExtra("airport_codedestination");
         citynameTO = getIntent().getStringExtra("citynamedestination");
-        countryTO=getIntent().getStringExtra("Countrydes");
 
-        //Get intent from Searchactivity
+        //Countrydes countryname
+        //Get intent from Search Activity
         AirportcodeFROM = getIntent().getStringExtra("airport_code");
         citynameFROM = getIntent().getStringExtra("cityname");
-        countrynameFROm=getIntent().getStringExtra("countryname");
 
-        SharedPreferences.Editor editor= sharedPreferences.edit();
+            countryTO=getIntent().getStringExtra("Countrydes");//countryname
+            countrynameFROm=getIntent().getStringExtra("countryname");
+           SharedPreferences.Editor editor= sharedPreferences.edit();
 
         editor.putString("AirportCodeFrom",AirportcodeFROM);
         editor.putString("cityFrom",citynameFROM);
         editor.putString("countryFrom",countrynameFROm);
-        //set the total intent
+        //Set the total intent
         text_tolocation.setText(AirportcodeTO);
         text_tocountrycity.setText(citynameTO);
         text_tocountry.setText(countryTO);
         text_fromlocation.setText(AirportcodeFROM);
         text_fromcountrycity.setText(citynameFROM);
         text_fromcountry.setText(countrynameFROm);
-        //Receive  the intent to the searchactivity
+        //Receive  the intent to the Searchactivity
             String returnair=getIntent().getStringExtra("duprair");
             String returncity=getIntent().getStringExtra("duprcity");
             String returncountry=getIntent().getStringExtra("dupcountry");
@@ -439,19 +439,19 @@ public class FlightbookingActivity extends AppCompatActivity
                     String cabinclas = String.valueOf(spn_count);
                     if ((linear_return.isShown()) && ((!text_fromcountry.getText().toString().equals("India")) || (!text_tocountry.getText().toString().equals("India"))))
                     {
-//                        Toast.makeText(getApplicationContext(), "this is third segment ", Toast.LENGTH_SHORT).show();
-//                        Intent in =new Intent(FlightbookingActivity.this,International_Roundtrip.class);
-//
-//                        in.putExtra("origin",fromc);
-//                        in.putExtra("destination",toc);
-//                        in.putExtra("adultCount",adultc);
-//                        in.putExtra("childCount",childc);
-//                        in.putExtra("infantCount",infantc);
-//                        in.putExtra("departureDate",depadate);
-//                        in.putExtra("returnDate",retunrdate);
-//                        in.putExtra("cabinClass",cabinclas);
-//
-//                        startActivity(in);
+                        Intent in = new Intent(FlightbookingActivity.this, RoundTripActivity.class);
+                        //In case of International flights country will be other than India
+                        in.putExtra("countryTo",countryTO);
+                        in.putExtra("countryFrom",countrynameFROm);
+                        in.putExtra("originround", fromc);
+                        in.putExtra("destinationround", toc);
+                        in.putExtra("departureround", depadate);
+                        in.putExtra("returnround", retunrdate);
+                        in.putExtra("adultround", adultc);
+                        in.putExtra("childround", childc);
+                        in.putExtra("infantsround", infacntc);
+                        in.putExtra("cabinclass", cabinclas);
+                        startActivity(in);
                     }
                     else
                         {
@@ -472,7 +472,7 @@ public class FlightbookingActivity extends AppCompatActivity
                             else
                                 {
                                 Intent in = new Intent(FlightbookingActivity.this, RoundTripActivity.class);
-                                //in case of international flights country will be other than India
+                                //In case of international flights country will be other than India
                                 in.putExtra("countryTo",countryTO);
                                 in.putExtra("countryFrom",countrynameFROm);
                                 in.putExtra("originround", fromc);
@@ -487,10 +487,12 @@ public class FlightbookingActivity extends AppCompatActivity
                             }
                         } else
                             {
-                            Log.i("471","Inside else");
+
                             Intent inr = new Intent(FlightbookingActivity.this, OnewayActivityresult.class);
+
                             inr.putExtra("countryTo",countryTO);
                             inr.putExtra("countryFrom",countrynameFROm);
+
                             inr.putExtra("origin", fromc);
                             inr.putExtra("destination", toc);
                             inr.putExtra("departure", depadate);

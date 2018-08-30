@@ -171,7 +171,7 @@ public class FarerulesActivity extends MyBaseActivity
                 else
                 {
 
-                    Intent intent = new Intent(getApplicationContext(),PassengerDetailsR.class);
+                    Intent intent = new Intent(FarerulesActivity.this,PassengerDetails.class);
                     intent.putExtra("countryTo",countryTo);
                     intent.putExtra("intentId","RoundTrip");
                     intent.putExtra("originround", originR);

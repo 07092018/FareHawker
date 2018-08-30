@@ -39,28 +39,45 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
 import static android.text.TextUtils.isEmpty;
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
-public class PassengerDetails extends AppCompatActivity {
-    Calendar calendar=Calendar.getInstance();
+public class PassengerDetails extends AppCompatActivity
+{
+    String flightCodeR;
+    String flightNameR;
+    String flightNumberR;
+    String flightSeatLeftR;
+    String flightDepartureTimeR;
+    String flightArrivalTimeR;
+    String flightPriceR;
+    String originR;
+    String destinationR;
+
+    Calendar calendar = Calendar.getInstance();
     String intentId;
-    String countryFrom, countryTo;
+    String countryFrom = "India", countryTo = "India";
     EditText couponCode;
     static int couponValidity = 1;
     String TAG = "PassengerDetails";
     TextView TotalFare;
     private String edit_txt;
-
+  /*
+  *  status variable is used to show or hide GST Linear layout.
+  *  status  equals to one means hide GST Linear layout
+   *  status equals to zero means unhide GST Linear Layout
+   */
     static int status = 0;
     String orignp, destp, endipp, tokenp, resultindp, traceidonep, adultonep, childonep, infantsonep;
     String flightNumber, origin, destination;
     LinearLayout childmain, infantsmain;
     LinearLayout Linear_adult1, Linear_adult2, Linear_adult3, Linear_adult4, Linear_adult5, Linear_adult6, Linear_adult7, Linear_adult8, Linear_adult9;
     LinearLayout linear_child1, linear_child2, linear_child3, linear_child4, linear_child5, linear_child6, linear_child7, linear_child8;
-    LinearLayout Linear_infant1, Linear_infant2, Linear_infant3, Linear_infant4,Linear_infant5,Linear_infant6,Linear_infant7,Linear_infant8,Linear_infant9;
+    LinearLayout Linear_infant1, Linear_infant2, Linear_infant3, Linear_infant4, Linear_infant5, Linear_infant6, Linear_infant7, Linear_infant8, Linear_infant9;
     LinearLayout gstLinearLayout;
-    TextView infant_DOB1, infant_DOB2, infant_DOB3, infant_DOB4,infant_DOB5,infant_DOB6,infant_DOB7,infant_DOB8,infant_DOB9;
+    TextView child_DOB1, child_DOB2, child_DOB3, child_DOB4, child_DOB5, child_DOB6, child_DOB7, child_DOB8;
+    TextView infant_DOB1, infant_DOB2, infant_DOB3, infant_DOB4, infant_DOB5, infant_DOB6, infant_DOB7, infant_DOB8, infant_DOB9;
     Spinner adult_sp1, adult_sp2, adult_sp3, adult_sp4, adult_sp5, adult_sp6, adult_sp7, adult_sp8, adult_sp9, child_sp1, child_sp2, child_sp3, child_sp4, child_sp5, child_sp6, child_sp7, child_sp8,
             infant_sp1, infant_sp2, infant_sp3, infant_sp4;
     String item, itemA2, itemA3, itemA4, itemA5, itemA6, itemA7, itemA8, itemA9, itemC1, itemC2, itemC3, itemC4, itemC5, itemC6, itemC7, itemC8, itemI1, itemI2, itemI3, itemI4;
@@ -76,25 +93,33 @@ public class PassengerDetails extends AppCompatActivity {
     TextView infantOneLastName, infantSecondLastName, infantThirdLastName, infantFourthLastName, infantFifthLastName, infantSixthLastName, infantSeventhLastName, infantEigthLastName, infantNinethLastName;
 
     TextView mobileNumber, emailId;
-    LinearLayout linearP_1, linearP_2, linearP_3, linearP_4, linearP_5, linearP_6, linearP_7, linearP_8, linearP_9;
+    LinearLayout linearP_1, linearP_2, linearP_3, linearP_4, linearP_5, linearP_6, linearP_7, linearP_8, linearP_9,
+            clinearP_1, clinearP_2, clinearP_3, clinearP_4, clinearP_5, clinearP_6, clinearP_7, clinearP_8, ilinearP_1, ilinearP_2, ilinearP_3, ilinearP_4, ilinearP_5, ilinearP_6, ilinearP_7, ilinearP_8, ilinearP_9;
     String Adultstring, Adultstring2, Adultstring3, Adultstring4, Adultstring5, Adultstring6, Adultstring7, Adultstring8, Adultstring9,
             childstring, childstring2, childstring3, childstring4, childstring5, childstring6, childstring7, childstring8,
             infantstring, infantstring2, infantstring3, infantstring4, AdLstring, AdLstring2, AdLstring3, AdLstring4,
-            AdLstring5, AdLstring6, AdLstring7, AdLstring8, AdLstring9,
-            ChL, ChL2, ChL3, ChL4, ChL5, ChL6, ChL7, ChL8, INL, INL2, INL3, INL4;
+            AdLstring5, AdLstring6, AdLstring7, AdLstring8, AdLstring9, ChL, ChL2, ChL3, ChL4, ChL5, ChL6, ChL7, ChL8, INL, INL2, INL3, INL4;
     String spn_adult1, spn_adult2, spn_adult3, spn_adult4, spn_adult5, spn_adult6, spn_adult7, spn_adult8, spn_adult9,
             spn_child1, spn_child2, spn_child3, spn_child4, spn_child5, spn_child6, spn_child7, spn_child8,
             spn_infant1, spn_infant2, spn_infant3, spn_infant4;
-    EditText infantBd1,infantBd2,infantBd3,infantBd4,infantBd5,infantBd6,infantBd7,infantBd8,infantBd9;
+    EditText infantBd1, infantBd2, infantBd3, infantBd4, infantBd5, infantBd6, infantBd7, infantBd8, infantBd9;
     Button continueBookingButton;
     String airlineCode, airlineName, flightPrice, departure, arrivalTime, flightCode, flightName;
     AwesomeValidation awesomeValidation = new AwesomeValidation(BASIC);
     SharedPreferences sharedPreferences;
-    Passport passports[]=new Passport[26];
+    EditText aPassportNo1, aPassportNo2, aPassportNo3, aPassportNo4, aPassportNo5, aPassportNo6, aPassportNo7,
+            aPassportNo8, aPassportNo9, cPassportNo8, cPassportNo1, cPassportNo2, cPassportNo3, cPassportNo4,
+            cPassportNo5, cPassportNo6, cPassportNo7, iPassportNo1, iPassportNo2, iPassportNo3, iPassportNo4,
+            iPassportNo5, iPassportNo6, iPassportNo7, iPassportNo8, iPassportNo9, aPassportExp1, aPassportExp2,
+            aPassportExp3, aPassportExp4, aPassportExp5, aPassportExp6, aPassportExp7, aPassportExp8, aPassportExp9,
+            iPassportExp1, iPassportExp2, iPassportExp3, iPassportExp4, iPassportExp5, iPassportExp6, iPassportExp7,
+            iPassportExp8, iPassportExp9, cPassportExp1, cPassportExp2, cPassportExp3, cPassportExp4, cPassportExp5,
+            cPassportExp6, cPassportExp7, cPassportExp8;
+
     int tag;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_details);
         sharedPreferences = getSharedPreferences("TripDetails", Context.MODE_PRIVATE);
@@ -103,99 +128,182 @@ public class PassengerDetails extends AppCompatActivity {
         s = sharedPreferences.getString("cityFrom", "");
         s = sharedPreferences.getString("countryFrom", "");
 
-        infant_DOB1=findViewById(R.id.infants1_dob);
-        infant_DOB2=findViewById(R.id.infants2_dob);
-        infant_DOB3=findViewById(R.id.infants3_dob);
-        infant_DOB4=findViewById(R.id.infants4_dob);
-        infant_DOB5=findViewById(R.id.infants5_dob);
-        infant_DOB6=findViewById(R.id.infants6_dob);
-        infant_DOB7=findViewById(R.id.infants7_dob);
-        infant_DOB8=findViewById(R.id.infants8_dob);
-        infant_DOB9=findViewById(R.id.infants9_dob);
+        //LinearLayouts of Children and infants Passport details
+        clinearP_1 = findViewById(R.id.childPassport1);
+        clinearP_2 = findViewById(R.id.childPassport2);
+        clinearP_3 = findViewById(R.id.childPassport3);
+        clinearP_4 = findViewById(R.id.childPassport4);
+        clinearP_5 = findViewById(R.id.childPassport5);
+        clinearP_6 = findViewById(R.id.childPassport6);
+        clinearP_7 = findViewById(R.id.childPassport7);
+        clinearP_8 = findViewById(R.id.childPassport8);
+
+        ilinearP_1 = findViewById(R.id.infantPassport1);
+        ilinearP_2 = findViewById(R.id.infantPassport2);
+        ilinearP_3 = findViewById(R.id.infantPassport3);
+        ilinearP_4 = findViewById(R.id.infantPassport4);
+        ilinearP_5 = findViewById(R.id.infantPassport5);
+        ilinearP_6 = findViewById(R.id.infantPassport6);
+        ilinearP_7 = findViewById(R.id.infantPassport7);
+        ilinearP_8 = findViewById(R.id.infantPassport8);
+        ilinearP_9 = findViewById(R.id.infantPassport9);
+
+        //Connecting Passport numbers and Passport expiry dates
+        aPassportNo1=findViewById(R.id.aPassportNo1);
+        aPassportNo2=findViewById(R.id.aPassportNo2);
+        aPassportNo3=findViewById(R.id.aPassportNo3);
+        aPassportNo4=findViewById(R.id.aPassportNo4);
+        aPassportNo5=findViewById(R.id.aPassportNo5);
+        aPassportNo6=findViewById(R.id.aPassportNo6);
+        aPassportNo7=findViewById(R.id.aPassportNo7);
+        aPassportNo8=findViewById(R.id.aPassportNo8);
+        aPassportNo9=findViewById(R.id.aPassportNo9);
+
+        aPassportExp1=findViewById(R.id.aPassportEx1);
+        aPassportExp2=findViewById(R.id.aPassportEx2);
+        aPassportExp3=findViewById(R.id.aPassportEx3);
+        aPassportExp4=findViewById(R.id.aPassportEx4);
+        aPassportExp5=findViewById(R.id.aPassportEx5);
+        aPassportExp6=findViewById(R.id.aPassportEx6);
+        aPassportExp7=findViewById(R.id.aPassportEx7);
+        aPassportExp8=findViewById(R.id.aPassportEx8);
+        aPassportExp9=findViewById(R.id.aPassportEx9);
+
+        cPassportNo1=findViewById(R.id.cPassportNo1);
+        cPassportNo2=findViewById(R.id.cPassportNo2);
+        cPassportNo3=findViewById(R.id.cPassportNo3);
+        cPassportNo4=findViewById(R.id.cPassportNo4);
+        cPassportNo5=findViewById(R.id.cPassportNo5);
+        cPassportNo6=findViewById(R.id.cPassportNo6);
+        cPassportNo7=findViewById(R.id.cPassportNo7);
+        cPassportNo8=findViewById(R.id.cPassportNo8);
+
+        cPassportExp1=findViewById(R.id.cPassportExp1);
+        cPassportExp2=findViewById(R.id.cPassportExp2);
+        cPassportExp3=findViewById(R.id.cPassportExp3);
+        cPassportExp4=findViewById(R.id.cPassportExp4);
+        cPassportExp5=findViewById(R.id.cPassportExp5);
+        cPassportExp6=findViewById(R.id.cPassportExp6);
+        cPassportExp7=findViewById(R.id.cPassportExp7);
+        cPassportExp8=findViewById(R.id.cPassportExp8);
+
+        iPassportNo1=findViewById(R.id.iPassportNo1);
+        iPassportNo2=findViewById(R.id.iPassportNo2);
+        iPassportNo3=findViewById(R.id.iPassportNo3);
+        iPassportNo4=findViewById(R.id.iPassportNo4);
+        iPassportNo5=findViewById(R.id.iPassportNo5);
+        iPassportNo6=findViewById(R.id.iPassportNo6);
+        iPassportNo7=findViewById(R.id.iPassportNo7);
+        iPassportNo8=findViewById(R.id.iPassportNo8);
+        iPassportNo9=findViewById(R.id.iPassportNo9);
+
+        iPassportExp1=findViewById(R.id.iPassportExp1);
+        iPassportExp2=findViewById(R.id.iPassportExp2);
+        iPassportExp3=findViewById(R.id.iPassportExp3);
+        iPassportExp4=findViewById(R.id.iPassportExp4);
+        iPassportExp5=findViewById(R.id.iPassportExp5);
+        iPassportExp6=findViewById(R.id.iPassportExp6);
+        iPassportExp7=findViewById(R.id.iPassportExp7);
+        iPassportExp8=findViewById(R.id.iPassportExp8);
+        iPassportExp9=findViewById(R.id.iPassportExp9);
+
+        infant_DOB1 = findViewById(R.id.infants1_dob);
+        infant_DOB2 = findViewById(R.id.infants2_dob);
+        infant_DOB3 = findViewById(R.id.infants3_dob);
+        infant_DOB4 = findViewById(R.id.infants4_dob);
+        infant_DOB5 = findViewById(R.id.infants5_dob);
+        infant_DOB6 = findViewById(R.id.infants6_dob);
+        infant_DOB7 = findViewById(R.id.infants7_dob);
+        infant_DOB8 = findViewById(R.id.infants8_dob);
+        infant_DOB9 = findViewById(R.id.infants9_dob);
 
         //Adult Passport numbers and their Passport Expiry dates
-        passports[0].passportNoT=findViewById(R.id.aPassportNo1);
-        passports[1].passportNoT=findViewById(R.id.aPassportNo2);
-        passports[2].passportNoT=findViewById(R.id.aPassportNo3);
-        passports[3].passportNoT=findViewById(R.id.aPassportNo4);
-        passports[4].passportNoT=findViewById(R.id.aPassportNo5);
-        passports[5].passportNoT=findViewById(R.id.aPassportNo6);
-        passports[6].passportNoT=findViewById(R.id.aPassportNo7);
-        passports[7].passportNoT=findViewById(R.id.aPassportNo8);
-        passports[8].passportNoT=findViewById(R.id.aPassportNo9);
+        aPassportNo1 = findViewById(R.id.aPassportNo1);
+        aPassportNo2 = findViewById(R.id.aPassportNo2);
+        aPassportNo3 = findViewById(R.id.aPassportNo3);
+        aPassportNo4 = findViewById(R.id.aPassportNo4);
+        aPassportNo5 = findViewById(R.id.aPassportNo5);
+        aPassportNo6 = findViewById(R.id.aPassportNo6);
+        aPassportNo7 = findViewById(R.id.aPassportNo7);
+        aPassportNo8 = findViewById(R.id.aPassportNo8);
+        aPassportNo9 = findViewById(R.id.aPassportNo9);
 
-        passports[0].passportExpT=findViewById(R.id.aPassportEx1);
-        passports[1].passportExpT=findViewById(R.id.aPassportEx2);
-        passports[2].passportExpT=findViewById(R.id.aPassportEx3);
-        passports[3].passportExpT=findViewById(R.id.aPassportEx4);
-        passports[4].passportExpT=findViewById(R.id.aPassportEx5);
-        passports[5].passportExpT=findViewById(R.id.aPassportEx6);
-        passports[6].passportExpT=findViewById(R.id.aPassportEx7);
-        passports[7].passportExpT=findViewById(R.id.aPassportEx8);
-        passports[8].passportExpT=findViewById(R.id.aPassportEx9);
+        aPassportExp1 = findViewById(R.id.aPassportEx1);
+        aPassportExp2 = findViewById(R.id.aPassportEx2);
+        aPassportExp3 = findViewById(R.id.aPassportEx3);
+        aPassportExp4 = findViewById(R.id.aPassportEx4);
+        aPassportExp5 = findViewById(R.id.aPassportEx5);
+        aPassportExp6 = findViewById(R.id.aPassportEx6);
+        aPassportExp7 = findViewById(R.id.aPassportEx7);
+        aPassportExp8 = findViewById(R.id.aPassportEx8);
+        aPassportExp9 = findViewById(R.id.aPassportEx9);
 
-        //Children Passport details and Passport dates of expiry
-        passports[9].passportNoT=findViewById(R.id.cPassportNo1);
-        passports[10].passportNoT=findViewById(R.id.cPassportNo2);
-        passports[11].passportNoT=findViewById(R.id.cPassportNo3);
-        passports[12].passportNoT=findViewById(R.id.cPassportNo4);
-        passports[13].passportNoT=findViewById(R.id.cPassportNo5);
-        passports[14].passportNoT=findViewById(R.id.cPassportNo6);
-        passports[15].passportNoT=findViewById(R.id.cPassportNo7);
-        passports[16].passportNoT=findViewById(R.id.cPassportNo8);
+        //Children Passport numbers and their Passport Expiry dates
+        cPassportNo1 = findViewById(R.id.cPassportNo1);
+        cPassportNo2 = findViewById(R.id.cPassportNo2);
+        cPassportNo3 = findViewById(R.id.cPassportNo3);
+        cPassportNo4 = findViewById(R.id.cPassportNo4);
+        cPassportNo5 = findViewById(R.id.cPassportNo5);
+        cPassportNo6 = findViewById(R.id.cPassportNo6);
+        cPassportNo7 = findViewById(R.id.cPassportNo7);
+        cPassportNo8 = findViewById(R.id.cPassportNo8);
 
-        passports[9].passportExpT=findViewById(R.id.cPassportExp1);
-        passports[10].passportExpT=findViewById(R.id.cPassportExp2);
-        passports[11].passportExpT=findViewById(R.id.cPassportExp3);
-        passports[12].passportExpT=findViewById(R.id.cPassportExp4);
-        passports[13].passportExpT=findViewById(R.id.cPassportExp5);
-        passports[14].passportExpT=findViewById(R.id.cPassportExp6);
-        passports[15].passportExpT=findViewById(R.id.cPassportExp7);
-        passports[16].passportExpT=findViewById(R.id.cPassportExp8);
+        cPassportExp1 = findViewById(R.id.cPassportExp1);
+        cPassportExp2 = findViewById(R.id.cPassportExp2);
+        cPassportExp3 = findViewById(R.id.cPassportExp3);
+        cPassportExp4 = findViewById(R.id.cPassportExp4);
+        cPassportExp5 = findViewById(R.id.cPassportExp5);
+        cPassportExp6 = findViewById(R.id.cPassportExp6);
+        cPassportExp7 = findViewById(R.id.cPassportExp7);
+        cPassportExp8 = findViewById(R.id.cPassportExp8);
 
         //Infants passports and date of expiry details
-        passports[17].passportNoT=findViewById(R.id.iPassportNo1);
-        passports[17].passportExpT=findViewById(R.id.iPassportExp1);
-        passports[18].passportNoT=findViewById(R.id.iPassportNo2);
-        passports[18].passportExpT=findViewById(R.id.iPassportExp2);
-        passports[19].passportNoT=findViewById(R.id.iPassportNo3);
-        passports[19].passportExpT=findViewById(R.id.iPassportExp3);
-        passports[20].passportNoT=findViewById(R.id.iPassport4);
-        passports[20].passportExpT=findViewById(R.id.iPassportExp4);
-        passports[21].passportNoT=findViewById(R.id.iPassport5);
-        passports[21].passportExpT=findViewById(R.id.iPassportExp5);
-        passports[22].passportNoT=findViewById(R.id.iPassport6);
-        passports[22].passportExpT=findViewById(R.id.iPassportExp6);
-        passports[23].passportNoT=findViewById(R.id.iPassport7);
-        passports[23].passportExpT=findViewById(R.id.iPassportExp7);
+        iPassportNo1 = findViewById(R.id.iPassportNo1);
+        iPassportNo2 = findViewById(R.id.iPassportNo2);
+        iPassportNo3 = findViewById(R.id.iPassportNo3);
+        iPassportNo4 = findViewById(R.id.iPassportNo4);
+        iPassportNo5 = findViewById(R.id.iPassportNo5);
+        iPassportNo6 = findViewById(R.id.iPassportNo6);
+        iPassportNo7 = findViewById(R.id.iPassportNo7);
+        iPassportNo8 = findViewById(R.id.iPassportNo8);
+        iPassportNo9 = findViewById(R.id.iPassportNo9);
 
-        final DatePickerDialog.OnDateSetListener date= new DatePickerDialog.OnDateSetListener() {
+        iPassportExp1 = findViewById(R.id.iPassportExp1);
+        iPassportExp2 = findViewById(R.id.iPassportExp2);
+        iPassportExp3 = findViewById(R.id.iPassportExp3);
+        iPassportExp4 = findViewById(R.id.iPassportExp4);
+        iPassportExp5 = findViewById(R.id.iPassportExp5);
+        iPassportExp6 = findViewById(R.id.iPassportExp6);
+        iPassportExp7 = findViewById(R.id.iPassportExp7);
+        iPassportExp8 = findViewById(R.id.iPassportExp8);
+        iPassportExp9 = findViewById(R.id.iPassportExp9);
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth)
-            {
-                calendar.set(Calendar.YEAR,year);
-                calendar.set(Calendar.MONTH,month);
-                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateLabel(tag);
             }
 
         };
-       final Calendar c= Calendar.getInstance();
-        c.add(Calendar.YEAR,-2);
-        c.add(Calendar.MONTH,-24);
-        c.add(Calendar.DAY_OF_MONTH,728);
+        final Calendar c = Calendar.getInstance();
+        c.add(Calendar.YEAR, -2);
+        c.add(Calendar.MONTH, -24);
+        c.add(Calendar.DAY_OF_MONTH, 728);
         infant_DOB1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                tag=1;
-                DatePickerDialog datePickerDialog=new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                tag = 1;
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH));
 
 
-               datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
 
-              // datePickerDialog.show();
+                // datePickerDialog.show();
 
             }
         });
@@ -203,126 +311,112 @@ public class PassengerDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                DatePickerDialog datePickerDialog=new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH));
 
 
                 datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
                 datePickerDialog.show();
-                tag=2;
+                tag = 2;
             }
         });
-        infant_DOB3.setOnClickListener(new OnClickListener()
-                                       {
+        infant_DOB3.setOnClickListener(new OnClickListener() {
                                            @Override
-                                           public void onClick(View v)
-                                           {
+                                           public void onClick(View v) {
 
-                                               DatePickerDialog datePickerDialog=new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                                               DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                                                        calendar.get(Calendar.DAY_OF_MONTH));
 
 
                                                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
                                                datePickerDialog.show();
-                                               tag=3;
+                                               tag = 3;
                                            }
                                        }
         );
-        infant_DOB4.setOnClickListener(new OnClickListener()
-                                       {
+        infant_DOB4.setOnClickListener(new OnClickListener() {
                                            @Override
-                                           public void onClick(View v)
-                                           {
+                                           public void onClick(View v) {
 
-                                               DatePickerDialog datePickerDialog=new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                                               DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                                                        calendar.get(Calendar.DAY_OF_MONTH));
 
 
                                                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
                                                datePickerDialog.show();
-                                               tag=4;
+                                               tag = 4;
                                            }
 
                                        }
         );
-        infant_DOB5.setOnClickListener(new OnClickListener()
-                                       {
+        infant_DOB5.setOnClickListener(new OnClickListener() {
                                            @Override
-                                           public void onClick(View v)
-                                           {
+                                           public void onClick(View v) {
 
-                                               DatePickerDialog datePickerDialog=new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                                               DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                                                        calendar.get(Calendar.DAY_OF_MONTH));
 
 
                                                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
                                                datePickerDialog.show();
-                                               tag=5;
+                                               tag = 5;
                                            }
 
                                        }
         );
-        infant_DOB6.setOnClickListener(new OnClickListener()
-                                       {
+        infant_DOB6.setOnClickListener(new OnClickListener() {
                                            @Override
-                                           public void onClick(View v)
-                                           {
+                                           public void onClick(View v) {
 
-                                               DatePickerDialog datePickerDialog=new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                                               DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                                                        calendar.get(Calendar.DAY_OF_MONTH));
 
 
                                                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
-                                               tag=6;
+                                               tag = 6;
                                                datePickerDialog.show();
                                            }
                                        }
         );
-        infant_DOB7.setOnClickListener(new OnClickListener()
-                                       {
+        infant_DOB7.setOnClickListener(new OnClickListener() {
                                            @Override
-                                           public void onClick(View v)
-                                           {
+                                           public void onClick(View v) {
 
-                                               DatePickerDialog datePickerDialog=new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                                               DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                                                        calendar.get(Calendar.DAY_OF_MONTH));
 
 
                                                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
-                                               tag=7;
+                                               tag = 7;
                                                datePickerDialog.show();
                                            }
                                        }
         );
-        infant_DOB8.setOnClickListener(new OnClickListener()
-                                       {
+        infant_DOB8.setOnClickListener(new OnClickListener() {
                                            @Override
-                                           public void onClick(View v)
-                                           {
+                                           public void onClick(View v) {
 
-                                               DatePickerDialog datePickerDialog=new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                                               DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                                                        calendar.get(Calendar.DAY_OF_MONTH));
 
 
                                                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
                                                datePickerDialog.show();
-                                               tag=8;
+                                               tag = 8;
                                            }
                                        }
         );
-        infant_DOB9.setOnClickListener(new OnClickListener()
-                                       {
+        infant_DOB9.setOnClickListener(new OnClickListener() {
                                            @Override
-                                           public void onClick(View v)
-                                           {
+                                           public void onClick(View v) {
 
-                                               DatePickerDialog datePickerDialog=new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                                               DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                                                        calendar.get(Calendar.DAY_OF_MONTH));
 
 
                                                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
                                                datePickerDialog.show();
-                                               tag=9;
+                                               tag = 9;
                                            }
                                        }
         );
@@ -333,7 +427,6 @@ public class PassengerDetails extends AppCompatActivity {
 
         Intent intent = getIntent();
         intentId = intent.getStringExtra("intentId");
-
         origin = intent.getStringExtra("origin");
         destination = intent.getStringExtra("destination");
         endipp = intent.getStringExtra("enduserip");
@@ -341,13 +434,26 @@ public class PassengerDetails extends AppCompatActivity {
         resultindp = intent.getStringExtra("resultindex");
         traceidonep = intent.getStringExtra("traceid");
         departure = intent.getStringExtra("departure");
-        //arrivalTime,flightCode,flightName
+        //ArrivalTime,flightCode,flightName
         arrivalTime = intent.getStringExtra("arrivalTime");
         departure = intent.getStringExtra("flightDepartureTime");
         flightCode = intent.getStringExtra("flightCode");
         flightName = intent.getStringExtra("flightName");
         countryFrom = intent.getStringExtra("countryFrom");
         countryTo = intent.getStringExtra("countryTo");
+        //Return flight Details
+        flightPriceR=intent.getStringExtra("flightPriceR");
+        flightDepartureTimeR=intent.getStringExtra("flightDepartureTimeR");
+        flightArrivalTimeR=intent.getStringExtra("flightArrivalTimeR");
+        flightCodeR=intent.getStringExtra("flightCodeR");
+        flightNameR=intent.getStringExtra("flightNameR");
+        flightNumberR=intent.getStringExtra("flightNumberR");
+
+//        originR=intent.getStringExtra("originround");
+//        destinationR=intent.getStringExtra("destinationround");
+
+
+
         adultonep = intent.getStringExtra("adultone");
         childonep = intent.getStringExtra("childone");
         infantsonep = intent.getStringExtra("infantsone");
@@ -364,10 +470,10 @@ public class PassengerDetails extends AppCompatActivity {
         chilld_sappier();
         infants_sappier();
         adultcount = (TextView) findViewById(R.id.maincount_adult);
-        childcount = (TextView) findViewById(R.id.maincount_child);
+        //childcount = (TextView) findViewById(R.id.maincount_child);
         infantscount = (TextView) findViewById(R.id.maincount_infant);
         adultcount.setText(adultonep);
-        childcount.setText(childonep);
+        //childcount.setText(childonep);
         infantscount.setText(infantsonep);
         childmain = (LinearLayout) findViewById(R.id.childmain_main);
         infantsmain = (LinearLayout) findViewById(R.id.infants_main);
@@ -489,9 +595,10 @@ public class PassengerDetails extends AppCompatActivity {
             infantsmain.setVisibility(View.GONE);
         }
 
-        //for adults
+        //for Adults
 
-        if (adultonep.equals("1")) {
+        if (adultonep.equals("1"))
+        {
             if (!countryTo.equals("India"))
             {
                 linearP_1.setVisibility(View.VISIBLE);
@@ -508,7 +615,7 @@ public class PassengerDetails extends AppCompatActivity {
 
         }
         if (adultonep.equals("2")) {
-            if (countryFrom.equals("india") || countryTo.equals("india")) {
+            if (!countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
             }
@@ -522,7 +629,7 @@ public class PassengerDetails extends AppCompatActivity {
 
         }
         if (adultonep.equals("3")) {
-            if (countryFrom.equals("india") || countryTo.equals("india")) {
+            if (!countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -536,7 +643,7 @@ public class PassengerDetails extends AppCompatActivity {
 
         }
         if (adultonep.equals("4")) {
-            if (countryFrom.equals("india") || countryTo.equals("india")) {
+            if (!countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -552,7 +659,7 @@ public class PassengerDetails extends AppCompatActivity {
         }
         if (adultonep.equals("5")) {
 
-            if (countryFrom.equals("india") || countryTo.equals("india")) {
+            if (!countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -567,7 +674,7 @@ public class PassengerDetails extends AppCompatActivity {
 
         }
         if (adultonep.equals("6")) {
-            if (countryFrom.equals("india") || countryTo.equals("india")) {
+            if (!countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -582,7 +689,7 @@ public class PassengerDetails extends AppCompatActivity {
 
         }
         if (adultonep.equals("7")) {
-            if (countryFrom.equals("india") || countryTo.equals("india")) {
+            if (!countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -596,7 +703,7 @@ public class PassengerDetails extends AppCompatActivity {
 
         }
         if (adultonep.equals("8")) {
-            if (countryFrom.equals("india") || countryTo.equals("india")) {
+            if (!countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -609,7 +716,7 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_adult9.setVisibility(View.GONE);
         }
         if (adultonep.equals("9")) {
-            if (countryFrom.equals("india") || countryTo.equals("india")) {
+            if (!countryTo.equals("india")) {
                 linearP_1.setVisibility(View.VISIBLE);
                 linearP_2.setVisibility(View.VISIBLE);
                 linearP_3.setVisibility(View.VISIBLE);
@@ -632,6 +739,18 @@ public class PassengerDetails extends AppCompatActivity {
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
 
+            if (!countryTo.equals("India")) {
+                clinearP_1.setVisibility(View.VISIBLE);
+                clinearP_2.setVisibility(View.GONE);
+                clinearP_3.setVisibility(View.GONE);
+                clinearP_4.setVisibility(View.GONE);
+                clinearP_5.setVisibility(View.GONE);
+                clinearP_6.setVisibility(View.GONE);
+                clinearP_7.setVisibility(View.GONE);
+                clinearP_8.setVisibility(View.GONE);
+            }
+
+
         }
         if (childonep.equals("2")) {
             linear_child3.setVisibility(View.GONE);
@@ -641,6 +760,17 @@ public class PassengerDetails extends AppCompatActivity {
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
 
+            if (!countryTo.equals("India") ) {
+                clinearP_1.setVisibility(View.VISIBLE);
+                clinearP_2.setVisibility(View.VISIBLE);
+                clinearP_3.setVisibility(View.GONE);
+                clinearP_4.setVisibility(View.GONE);
+                clinearP_5.setVisibility(View.GONE);
+                clinearP_6.setVisibility(View.GONE);
+                clinearP_7.setVisibility(View.GONE);
+                clinearP_8.setVisibility(View.GONE);
+            }
+
         }
         if (childonep.equals("3")) {
             linear_child4.setVisibility(View.GONE);
@@ -648,6 +778,16 @@ public class PassengerDetails extends AppCompatActivity {
             linear_child6.setVisibility(View.GONE);
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
+            if (!countryTo.equals("India")) {
+                clinearP_1.setVisibility(View.VISIBLE);
+                clinearP_2.setVisibility(View.VISIBLE);
+                clinearP_3.setVisibility(View.VISIBLE);
+                clinearP_4.setVisibility(View.GONE);
+                clinearP_5.setVisibility(View.GONE);
+                clinearP_6.setVisibility(View.GONE);
+                clinearP_7.setVisibility(View.GONE);
+                clinearP_8.setVisibility(View.GONE);
+            }
 
         }
         if (childonep.equals("4")) {
@@ -655,20 +795,76 @@ public class PassengerDetails extends AppCompatActivity {
             linear_child6.setVisibility(View.GONE);
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
+            if (!countryTo.equals("India")) {
+                clinearP_1.setVisibility(View.VISIBLE);
+                clinearP_2.setVisibility(View.VISIBLE);
+                clinearP_3.setVisibility(View.VISIBLE);
+                clinearP_4.setVisibility(View.VISIBLE);
+                clinearP_5.setVisibility(View.GONE);
+                clinearP_6.setVisibility(View.GONE);
+                clinearP_7.setVisibility(View.GONE);
+                clinearP_8.setVisibility(View.GONE);
+            }
 
         }
         if (childonep.equals("5")) {
             linear_child6.setVisibility(View.GONE);
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
+            if (!countryTo.equals("India")) {
+                clinearP_1.setVisibility(View.VISIBLE);
+                clinearP_2.setVisibility(View.VISIBLE);
+                clinearP_3.setVisibility(View.VISIBLE);
+                clinearP_4.setVisibility(View.VISIBLE);
+                clinearP_5.setVisibility(View.VISIBLE);
+                clinearP_6.setVisibility(View.GONE);
+                clinearP_7.setVisibility(View.GONE);
+                clinearP_8.setVisibility(View.GONE);
+            }
+
 
         }
         if (childonep.equals("6")) {
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
+            if (!countryTo.equals("India")) {
+                clinearP_1.setVisibility(View.VISIBLE);
+                clinearP_2.setVisibility(View.VISIBLE);
+                clinearP_3.setVisibility(View.VISIBLE);
+                clinearP_4.setVisibility(View.VISIBLE);
+                clinearP_5.setVisibility(View.VISIBLE);
+                clinearP_6.setVisibility(View.VISIBLE);
+                clinearP_7.setVisibility(View.GONE);
+                clinearP_8.setVisibility(View.GONE);
+            }
+
         }
         if (childonep.equals("7")) {
             linear_child8.setVisibility(View.GONE);
+            if (!countryTo.equals("India")) {
+                clinearP_1.setVisibility(View.VISIBLE);
+                clinearP_2.setVisibility(View.VISIBLE);
+                clinearP_3.setVisibility(View.VISIBLE);
+                clinearP_4.setVisibility(View.VISIBLE);
+                clinearP_5.setVisibility(View.VISIBLE);
+                clinearP_6.setVisibility(View.VISIBLE);
+                clinearP_7.setVisibility(View.VISIBLE);
+                clinearP_8.setVisibility(View.GONE);
+            }
+
+        }
+        if (childonep.equals("8")) {
+            if ( !countryTo.equals("India")) {
+                clinearP_1.setVisibility(View.VISIBLE);
+                clinearP_2.setVisibility(View.VISIBLE);
+                clinearP_3.setVisibility(View.VISIBLE);
+                clinearP_4.setVisibility(View.VISIBLE);
+                clinearP_5.setVisibility(View.VISIBLE);
+                clinearP_6.setVisibility(View.VISIBLE);
+                clinearP_7.setVisibility(View.VISIBLE);
+                clinearP_8.setVisibility(View.VISIBLE);
+            }
+
         }
         //for infants
         if (infantsonep.equals("1")) {
@@ -681,7 +877,21 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.GONE);
             Linear_infant8.setVisibility(View.GONE);
             Linear_infant9.setVisibility(View.GONE);
-        }
+
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.GONE);
+                ilinearP_3.setVisibility(View.GONE);
+                ilinearP_4.setVisibility(View.GONE);
+                ilinearP_5.setVisibility(View.GONE);
+                ilinearP_6.setVisibility(View.GONE);
+                ilinearP_7.setVisibility(View.GONE);
+                ilinearP_8.setVisibility(View.GONE);
+                ilinearP_9.setVisibility(View.GONE);
+            }
+
+        }//End of outermost if
+
         if (infantsonep.equals("2")) {
             Linear_infant1.setVisibility(View.VISIBLE);
             Linear_infant2.setVisibility(View.VISIBLE);
@@ -692,6 +902,17 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.GONE);
             Linear_infant8.setVisibility(View.GONE);
             Linear_infant9.setVisibility(View.GONE);
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.VISIBLE);
+                ilinearP_3.setVisibility(View.GONE);
+                ilinearP_4.setVisibility(View.GONE);
+                ilinearP_5.setVisibility(View.GONE);
+                ilinearP_6.setVisibility(View.GONE);
+                ilinearP_7.setVisibility(View.GONE);
+                ilinearP_8.setVisibility(View.GONE);
+                ilinearP_9.setVisibility(View.GONE);
+            }
         }
         if (infantsonep.equals("3")) {
 
@@ -704,8 +925,18 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.GONE);
             Linear_infant8.setVisibility(View.GONE);
             Linear_infant9.setVisibility(View.GONE);
-        }
-        else if (infantsonep.equals("4")) {
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.VISIBLE);
+                ilinearP_3.setVisibility(View.VISIBLE);
+                ilinearP_4.setVisibility(View.GONE);
+                ilinearP_5.setVisibility(View.GONE);
+                ilinearP_6.setVisibility(View.GONE);
+                ilinearP_7.setVisibility(View.GONE);
+                ilinearP_8.setVisibility(View.GONE);
+                ilinearP_9.setVisibility(View.GONE);
+            }
+        } else if (infantsonep.equals("4")) {
 
             Linear_infant1.setVisibility(View.VISIBLE);
             Linear_infant2.setVisibility(View.VISIBLE);
@@ -716,8 +947,18 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.GONE);
             Linear_infant8.setVisibility(View.GONE);
             Linear_infant9.setVisibility(View.GONE);
-        }
-        else if (infantsonep.equals("5")) {
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.VISIBLE);
+                ilinearP_3.setVisibility(View.VISIBLE);
+                ilinearP_4.setVisibility(View.GONE);
+                ilinearP_5.setVisibility(View.GONE);
+                ilinearP_6.setVisibility(View.GONE);
+                ilinearP_7.setVisibility(View.GONE);
+                ilinearP_8.setVisibility(View.GONE);
+                ilinearP_9.setVisibility(View.GONE);
+            }
+        } else if (infantsonep.equals("5")) {
 
             Linear_infant1.setVisibility(View.VISIBLE);
             Linear_infant2.setVisibility(View.VISIBLE);
@@ -728,8 +969,18 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.GONE);
             Linear_infant8.setVisibility(View.GONE);
             Linear_infant9.setVisibility(View.GONE);
-        }
-        else if (infantsonep.equals("5")) {
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.VISIBLE);
+                ilinearP_3.setVisibility(View.VISIBLE);
+                ilinearP_4.setVisibility(View.VISIBLE);
+                ilinearP_5.setVisibility(View.GONE);
+                ilinearP_6.setVisibility(View.GONE);
+                ilinearP_7.setVisibility(View.GONE);
+                ilinearP_8.setVisibility(View.GONE);
+                ilinearP_9.setVisibility(View.GONE);
+            }
+        } else if (infantsonep.equals("5")) {
 
             Linear_infant1.setVisibility(View.VISIBLE);
             Linear_infant2.setVisibility(View.VISIBLE);
@@ -740,8 +991,18 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.GONE);
             Linear_infant8.setVisibility(View.GONE);
             Linear_infant9.setVisibility(View.GONE);
-        }
-        else if (infantsonep.equals("6")) {
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.VISIBLE);
+                ilinearP_3.setVisibility(View.VISIBLE);
+                ilinearP_4.setVisibility(View.VISIBLE);
+                ilinearP_5.setVisibility(View.VISIBLE);
+                ilinearP_6.setVisibility(View.GONE);
+                ilinearP_7.setVisibility(View.GONE);
+                ilinearP_8.setVisibility(View.GONE);
+                ilinearP_9.setVisibility(View.GONE);
+            }
+        } else if (infantsonep.equals("6")) {
 
             Linear_infant1.setVisibility(View.VISIBLE);
             Linear_infant2.setVisibility(View.VISIBLE);
@@ -752,8 +1013,18 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.GONE);
             Linear_infant8.setVisibility(View.GONE);
             Linear_infant9.setVisibility(View.GONE);
-        }
-        else if (infantsonep.equals("7")) {
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.VISIBLE);
+                ilinearP_3.setVisibility(View.VISIBLE);
+                ilinearP_4.setVisibility(View.VISIBLE);
+                ilinearP_5.setVisibility(View.VISIBLE);
+                ilinearP_6.setVisibility(View.VISIBLE);
+                ilinearP_7.setVisibility(View.GONE);
+                ilinearP_8.setVisibility(View.GONE);
+                ilinearP_9.setVisibility(View.GONE);
+            }
+        } else if (infantsonep.equals("7")) {
 
             Linear_infant1.setVisibility(View.VISIBLE);
             Linear_infant2.setVisibility(View.VISIBLE);
@@ -764,8 +1035,19 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.VISIBLE);
             Linear_infant8.setVisibility(View.GONE);
             Linear_infant9.setVisibility(View.GONE);
-        }
-        else if (infantsonep.equals("8")) {
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.VISIBLE);
+                ilinearP_3.setVisibility(View.VISIBLE);
+                ilinearP_4.setVisibility(View.VISIBLE);
+                ilinearP_5.setVisibility(View.VISIBLE);
+                ilinearP_6.setVisibility(View.VISIBLE);
+                ilinearP_7.setVisibility(View.VISIBLE);
+                ilinearP_8.setVisibility(View.GONE);
+                ilinearP_9.setVisibility(View.GONE);
+
+            }
+        } else if (infantsonep.equals("8")) {
 
             Linear_infant1.setVisibility(View.VISIBLE);
             Linear_infant2.setVisibility(View.VISIBLE);
@@ -776,8 +1058,18 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.VISIBLE);
             Linear_infant8.setVisibility(View.VISIBLE);
             Linear_infant9.setVisibility(View.GONE);
-        }
-        else if (infantsonep.equals("9")) {
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.VISIBLE);
+                ilinearP_3.setVisibility(View.VISIBLE);
+                ilinearP_4.setVisibility(View.VISIBLE);
+                ilinearP_5.setVisibility(View.VISIBLE);
+                ilinearP_6.setVisibility(View.VISIBLE);
+                ilinearP_7.setVisibility(View.VISIBLE);
+                ilinearP_8.setVisibility(View.VISIBLE);
+                ilinearP_9.setVisibility(View.VISIBLE);
+            }
+        } else if (infantsonep.equals("9")) {
 
             Linear_infant1.setVisibility(View.VISIBLE);
             Linear_infant2.setVisibility(View.VISIBLE);
@@ -788,6 +1080,17 @@ public class PassengerDetails extends AppCompatActivity {
             Linear_infant7.setVisibility(View.VISIBLE);
             Linear_infant8.setVisibility(View.VISIBLE);
             Linear_infant9.setVisibility(View.VISIBLE);
+            if ( !countryTo.equals("India")) {
+                ilinearP_1.setVisibility(View.VISIBLE);
+                ilinearP_2.setVisibility(View.VISIBLE);
+                ilinearP_3.setVisibility(View.VISIBLE);
+                ilinearP_4.setVisibility(View.VISIBLE);
+                ilinearP_5.setVisibility(View.VISIBLE);
+                ilinearP_6.setVisibility(View.VISIBLE);
+                ilinearP_7.setVisibility(View.VISIBLE);
+                ilinearP_8.setVisibility(View.VISIBLE);
+                ilinearP_9.setVisibility(View.VISIBLE);
+            }
         }
         final String Adultstr = adultOneFirstName.getText().toString();
         final String adl = adultOneLastName.getText().toString();
@@ -802,8 +1105,6 @@ public class PassengerDetails extends AppCompatActivity {
                 inr.putExtra("infantCount", infantsonep);
                 inr.putExtra("flightPrice", flightPrice);
                 inr.putExtra("flightDepartureTime", departure);
-
-
                 inr.putExtra("flightArrivalTime", arrivalTime);
                 inr.putExtra("flightCode", airlineCode);
                 inr.putExtra("flightName", flightName);
@@ -811,125 +1112,467 @@ public class PassengerDetails extends AppCompatActivity {
                 inr.putExtra("origin", origin);
                 inr.putExtra("destination", destination);
 
-                if (Integer.parseInt(adultonep) == 1) {
-                    inr.putExtra("adultTitle1",adult_sp1.toString());
+                //ReturgetStringExtra Details
+                inr.putExtra("flightPriceR",flightPriceR);
+                inr.putExtra("flightDepartureTimeR",flightDepartureTimeR);
+                inr.putExtra("flightArrivalTimeR",flightArrivalTimeR);
+                inr.putExtra("flightCodeR",flightCodeR);
+                inr.putExtra("flightNameR",flightNameR);
+                inr.putExtra("flightNumberR",flightNumberR);
+                inr.putExtra("origin",originR);
+                inr.putExtra("destination",destinationR);
+                inr.putExtra("id","roundTrip");
+
+
+
+                if (Integer.parseInt(adultonep) == 1)
+                {
+                    inr.putExtra("adultTitle1", adult_sp1.toString());
                     inr.putExtra("adultOneFirstName", adultOneFirstName.getText().toString());
                     inr.putExtra("adultOneLastName", adultOneLastName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("aPassportNo1",aPassportNo1.getText());
+                        inr.putExtra("aPassportExp1",aPassportExp1.getText());
+                    }
 
-                } else if (Integer.parseInt(adultonep) == 2) {
-                    inr.putExtra("adultTitle2",adult_sp2.toString());
+                }  if (Integer.parseInt(adultonep) == 2) {
+                    inr.putExtra("adultTitle2", adult_sp2.toString());
                     inr.putExtra("adultSecondFirstName", adultSecondFirstName.getText().toString());
                     inr.putExtra("adultSecondLastName", adultSecondLastName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("aPassportNo1",aPassportNo1.getText());
+                        inr.putExtra("aPassportExp1",aPassportExp1.getText());
+                        inr.putExtra("aPassportNo2",aPassportNo2.getText());
+                        inr.putExtra("aPassportExp2",aPassportExp2.getText());
 
-                } else if (Integer.parseInt(adultonep) == 3) {
-                    inr.putExtra("adultTitle3",adult_sp3.toString());
+                    }
+
+                }  if (Integer.parseInt(adultonep) == 3) {
+                    inr.putExtra("adultTitle3", adult_sp3.toString());
                     inr.putExtra("adultThrirdFirstName", adultThirdFirstName.getText().toString());
                     inr.putExtra("adultThrirdLastName", adultThirdLastName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("aPassportNo1",aPassportNo1.getText());
+                        inr.putExtra("aPassportExp1",aPassportExp1.getText());
+                        inr.putExtra("aPassportNo2",aPassportNo2.getText());
+                        inr.putExtra("aPassportExp2",aPassportExp2.getText());
+                        inr.putExtra("aPassportNo3",aPassportNo3.getText());
+                        inr.putExtra("aPassportExp3",aPassportExp3.getText());
+                    }
 
-                } else if (Integer.parseInt(adultonep) == 4) {
-                    inr.putExtra("adultTitle4",adult_sp4.toString());
+                }  if (Integer.parseInt(adultonep) == 4) {
+                    inr.putExtra("adultTitle4", adult_sp4.toString());
                     inr.putExtra("adultFourthFirstName", adultFourthFirstName.getText().toString());
                     inr.putExtra("adultFourthLastName", adultFourthLastName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("aPassportNo1",aPassportNo1.getText());
+                        inr.putExtra("aPassportExp1",aPassportExp1.getText());
+                        inr.putExtra("aPassportNo2",aPassportNo2.getText());
+                        inr.putExtra("aPassportExp2",aPassportExp2.getText());
+                        inr.putExtra("aPassportNo3",aPassportNo3.getText());
+                        inr.putExtra("aPassportExp3",aPassportExp3.getText());
+                        inr.putExtra("aPassportNo4",aPassportNo4.getText());
+                        inr.putExtra("aPassportExp4",aPassportExp4.getText());
+                    }
 
-                } else if (Integer.parseInt(adultonep) == 5) {
-                    inr.putExtra("adultTitle5",adult_sp5.toString());
+                }  if(Integer.parseInt(adultonep) == 5)
+                {
+                    inr.putExtra("adultTitle5", adult_sp5.toString());
                     inr.putExtra("adultFifthFirstName", adultFifthFirstName.getText().toString());
                     inr.putExtra("adultFifthdLastName", adultFifthLastName.getText().toString());
-
-                } else if (Integer.parseInt(adultonep) == 6) {
-                    inr.putExtra("adultTitle6",adult_sp6.toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("aPassportNo1",aPassportNo1.getText());
+                        inr.putExtra("aPassportExp1",aPassportExp1.getText());
+                        inr.putExtra("aPassportNo2",aPassportNo2.getText());
+                        inr.putExtra("aPassportExp2",aPassportExp2.getText());
+                        inr.putExtra("aPassportNo3",aPassportNo3.getText());
+                        inr.putExtra("aPassportExp3",aPassportExp3.getText());
+                        inr.putExtra("aPassportNo4",aPassportNo4.getText());
+                        inr.putExtra("aPassportExp4",aPassportExp4.getText());
+                        inr.putExtra("aPassportNo5",aPassportNo5.getText());
+                        inr.putExtra("aPassportExp5",aPassportExp5.getText());
+                    }
+                } if (Integer.parseInt(adultonep) == 6) {
+                    inr.putExtra("adultTitle6", adult_sp6.toString());
                     inr.putExtra("adultSixthFirstName", adultSixthFirstName.getText().toString());
                     inr.putExtra("adultsixthLastName", adultSixthLastName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("aPassportNo1",aPassportNo1.getText());
+                        inr.putExtra("aPassportExp1",aPassportExp1.getText());
+                        inr.putExtra("aPassportNo2",aPassportNo2.getText());
+                        inr.putExtra("aPassportExp2",aPassportExp2.getText());
+                        inr.putExtra("aPassportNo3",aPassportNo3.getText());
+                        inr.putExtra("aPassportExp3",aPassportExp3.getText());
+                        inr.putExtra("aPassportNo4",aPassportNo4.getText());
+                        inr.putExtra("aPassportExp4",aPassportExp4.getText());
+                        inr.putExtra("aPassportNo5",aPassportNo5.getText());
+                        inr.putExtra("aPassportExp5",aPassportExp5.getText());
+                        inr.putExtra("aPassportNo6",aPassportNo5.getText());
+                        inr.putExtra("aPassportExp6",aPassportExp5.getText());
+                    }
 
-                } else if (Integer.parseInt(adultonep) == 7) {
-                    inr.putExtra("adultTitle7",adult_sp7.toString());
+                }  if (Integer.parseInt(adultonep) == 7) {
+                    inr.putExtra("adultTitle7", adult_sp7.toString());
                     inr.putExtra("adultSeventhFirstName", adultSeventhFirstName.getText().toString());
                     inr.putExtra("adultSeventhLastName", adultSeventhLastName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("aPassportNo1",aPassportNo1.getText());
+                        inr.putExtra("aPassportExp1",aPassportExp1.getText());
+                        inr.putExtra("aPassportNo2",aPassportNo2.getText());
+                        inr.putExtra("aPassportExp2",aPassportExp2.getText());
+                        inr.putExtra("aPassportNo3",aPassportNo3.getText());
+                        inr.putExtra("aPassportExp3",aPassportExp3.getText());
+                        inr.putExtra("aPassportNo4",aPassportNo4.getText());
+                        inr.putExtra("aPassportExp4",aPassportExp4.getText());
+                        inr.putExtra("aPassportNo5",aPassportNo5.getText());
+                        inr.putExtra("aPassportExp5",aPassportExp5.getText());
+                        inr.putExtra("aPassportNo6",aPassportNo5.getText());
+                        inr.putExtra("aPassportExp6",aPassportExp5.getText());
+                        inr.putExtra("aPassportNo7",aPassportNo6.getText());
+                        inr.putExtra("aPassportExp7",aPassportExp6.getText());
+                    }
 
-                } else if (Integer.parseInt(adultonep) == 8) {
-                    inr.putExtra("adultTitle8",adult_sp8.toString());
+                }  if (Integer.parseInt(adultonep) == 8) {
+                    inr.putExtra("adultTitle8", adult_sp8.toString());
                     inr.putExtra("adultEigthFirstName", adultEigthFirstName.getText().toString());
                     inr.putExtra("adultEigthLastName", adultEigthLastName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("aPassportNo1",aPassportNo1.getText());
+                        inr.putExtra("aPassportExp1",aPassportExp1.getText());
+                        inr.putExtra("aPassportNo2",aPassportNo2.getText());
+                        inr.putExtra("aPassportExp2",aPassportExp2.getText());
+                        inr.putExtra("aPassportNo3",aPassportNo3.getText());
+                        inr.putExtra("aPassportExp3",aPassportExp3.getText());
+                        inr.putExtra("aPassportNo4",aPassportNo4.getText());
+                        inr.putExtra("aPassportExp4",aPassportExp4.getText());
+                        inr.putExtra("aPassportNo5",aPassportNo5.getText());
+                        inr.putExtra("aPassportExp5",aPassportExp5.getText());
+                        inr.putExtra("aPassportNo6",aPassportNo5.getText());
+                        inr.putExtra("aPassportExp6",aPassportExp5.getText());
+                        inr.putExtra("aPassportNo7",aPassportNo6.getText());
+                        inr.putExtra("aPassportExp7",aPassportExp6.getText());
+                        inr.putExtra("aPassportNo8",aPassportNo8.getText());
+                        inr.putExtra("aPassportExp8",aPassportExp8.getText());
+                    }
 
-                } else if (Integer.parseInt(adultonep) == 9) {
-                    inr.putExtra("adultTitle9",adult_sp9.toString());
+                }  if (Integer.parseInt(adultonep) == 9) {
+                    inr.putExtra("adultTitle9", adult_sp9.toString());
                     inr.putExtra("adultNinethFirstName", adultNinethFirstName.getText().toString());
                     inr.putExtra("adultNinethLastName", adultNinethLastName.getText().toString());
-
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("aPassportNo1",aPassportNo1.getText());
+                        inr.putExtra("aPassportExp1",aPassportExp1.getText());
+                        inr.putExtra("aPassportNo2",aPassportNo2.getText());
+                        inr.putExtra("aPassportExp2",aPassportExp2.getText());
+                        inr.putExtra("aPassportNo3",aPassportNo3.getText());
+                        inr.putExtra("aPassportExp3",aPassportExp3.getText());
+                        inr.putExtra("aPassportNo4",aPassportNo4.getText());
+                        inr.putExtra("aPassportExp4",aPassportExp4.getText());
+                        inr.putExtra("aPassportNo5",aPassportNo5.getText());
+                        inr.putExtra("aPassportExp5",aPassportExp5.getText());
+                        inr.putExtra("aPassportNo6",aPassportNo5.getText());
+                        inr.putExtra("aPassportExp6",aPassportExp5.getText());
+                        inr.putExtra("aPassportNo7",aPassportNo6.getText());
+                        inr.putExtra("aPassportExp7",aPassportExp6.getText());
+                        inr.putExtra("aPassportNo8",aPassportNo8.getText());
+                        inr.putExtra("aPassportExp8",aPassportExp8.getText());
+                        inr.putExtra("aPassportNo9",aPassportNo9.getText());
+                        inr.putExtra("aPassportExp9",aPassportExp9.getText());
+                    }
                 }
 
 
-                if (Integer.parseInt(childonep) == 1) {
-                    inr.putExtra("childTitle1",child_sp1.toString());
+                if (Integer.parseInt(childonep) == 1)
+                {
+                    inr.putExtra("childTitle1", child_sp1.toString());
                     inr.putExtra("childOneFirstName", childOneFirstName.getText().toString());
                     inr.putExtra("childTwoFirstName", childOneFirstName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("cPassportNo1",cPassportNo1.getText());
+                        inr.putExtra("cPassportExp1",cPassportExp1.getText());
 
-                } else if (Integer.parseInt(childonep) == 2) {
-                    inr.putExtra("childTitle2",child_sp2.toString());
+                    }
+                }
+                else if (Integer.parseInt(childonep) == 2)
+                {
+                    inr.putExtra("childTitle2", child_sp2.toString());
                     inr.putExtra("childThrirdFirstName", childSecondFirstName.getText().toString());
                     inr.putExtra("childThrirdLastName", childSecondLastName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("cPassportNo1",cPassportNo1.getText());
+                        inr.putExtra("cPassportExp1",cPassportExp1.getText());
+                        inr.putExtra("cPassportNo2",cPassportNo2.getText());
+                        inr.putExtra("cPassportExp2",cPassportExp2.getText());
+
+                    }
 
                 } else if (Integer.parseInt(childonep) == 3) {
-                    inr.putExtra("childTitle3",child_sp3.toString());
+                    inr.putExtra("childTitle3", child_sp3.toString());
                     inr.putExtra("childThrirdFirstName", childThirdFirstName.getText().toString());
                     inr.putExtra("childThrirdLastName", childThirdLastName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("cPassportNo1",cPassportNo1.getText());
+                        inr.putExtra("cPassportExp1",cPassportExp1.getText());
+                        inr.putExtra("cPassportNo2",cPassportNo2.getText());
+                        inr.putExtra("cPassportExp2",cPassportExp2.getText());
+                        inr.putExtra("cPassportNo3",cPassportNo3.getText());
+                        inr.putExtra("cPassportExp3",cPassportExp3.getText());
+                    }
 
                 } else if (Integer.parseInt(childonep) == 4) {
-                    inr.putExtra("childTitle4",child_sp4.toString());
+                    inr.putExtra("childTitle4", child_sp4.toString());
                     inr.putExtra("childFourthFirstName", childFourthFirstName.getText().toString());
                     inr.putExtra("childFourthLastName", childFourthLastName.getText().toString());
-
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("cPassportNo1",cPassportNo1.getText());
+                        inr.putExtra("cPassportExp1",cPassportExp1.getText());
+                        inr.putExtra("cPassportNo2",cPassportNo2.getText());
+                        inr.putExtra("cPassportExp2",cPassportExp2.getText());
+                        inr.putExtra("cPassportNo3",cPassportNo3.getText());
+                        inr.putExtra("cPassportExp3",cPassportExp3.getText());
+                        inr.putExtra("cPassportNo4",cPassportNo4.getText());
+                        inr.putExtra("cPassportExp4",cPassportExp4.getText());
+                    }
                 } else if (Integer.parseInt(childonep) == 5) {
-                    inr.putExtra("childTitle5",child_sp5.toString());
+                    inr.putExtra("childTitle5", child_sp5.toString());
                     inr.putExtra("childFifthFirstName", childFifthFirstName.getText().toString());
                     inr.putExtra("childFifthdLastName", childFifthLastName.getText().toString());
-
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("cPassportNo1",cPassportNo1.getText());
+                        inr.putExtra("cPassportExp1",cPassportExp1.getText());
+                        inr.putExtra("cPassportNo2",cPassportNo2.getText());
+                        inr.putExtra("cPassportExp2",cPassportExp2.getText());
+                        inr.putExtra("cPassportNo3",cPassportNo3.getText());
+                        inr.putExtra("cPassportExp3",cPassportExp3.getText());
+                        inr.putExtra("cPassportNo4",cPassportNo4.getText());
+                        inr.putExtra("cPassportExp4",cPassportExp4.getText());
+                        inr.putExtra("cPassportNo5",cPassportNo5.getText());
+                        inr.putExtra("cPassportExp5",cPassportExp5.getText());
+                    }
                 } else if (Integer.parseInt(childonep) == 6) {
-                    inr.putExtra("childTitle6",child_sp6.toString());
+                    inr.putExtra("childTitle6", child_sp6.toString());
                     inr.putExtra("childSixthFirstName", childSixthFirstName.getText().toString());
                     inr.putExtra("childsixthLastName", childSixthLastName.getText().toString());
-
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("cPassportNo1",cPassportNo1.getText());
+                        inr.putExtra("cPassportExp1",cPassportExp1.getText());
+                        inr.putExtra("cPassportNo2",cPassportNo2.getText());
+                        inr.putExtra("cPassportExp2",cPassportExp2.getText());
+                        inr.putExtra("cPassportNo3",cPassportNo3.getText());
+                        inr.putExtra("cPassportExp3",cPassportExp3.getText());
+                        inr.putExtra("cPassportNo4",cPassportNo4.getText());
+                        inr.putExtra("cPassportExp4",cPassportExp4.getText());
+                        inr.putExtra("cPassportNo5",cPassportNo5.getText());
+                        inr.putExtra("cPassportExp5",cPassportExp5.getText());
+                        inr.putExtra("cPassportNo6",cPassportNo6.getText());
+                        inr.putExtra("cPassportExp6",cPassportExp6.getText());
+                    }
                 } else if (Integer.parseInt(childonep) == 7) {
-                    inr.putExtra("childTitle7",child_sp7.toString());
+                    inr.putExtra("childTitle7", child_sp7.toString());
                     inr.putExtra("childSeventhFirstName", childSeventhFirstName.getText().toString());
                     inr.putExtra("childSeventhLastName", childSeventhLastName.getText().toString());
-
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("cPassportNo1",cPassportNo1.getText());
+                        inr.putExtra("cPassportExp1",cPassportExp1.getText());
+                        inr.putExtra("cPassportNo2",cPassportNo2.getText());
+                        inr.putExtra("cPassportExp2",cPassportExp2.getText());
+                        inr.putExtra("cPassportNo3",cPassportNo3.getText());
+                        inr.putExtra("cPassportExp3",cPassportExp3.getText());
+                        inr.putExtra("cPassportNo4",cPassportNo4.getText());
+                        inr.putExtra("cPassportExp4",cPassportExp4.getText());
+                        inr.putExtra("cPassportNo5",cPassportNo5.getText());
+                        inr.putExtra("cPassportExp5",cPassportExp5.getText());
+                        inr.putExtra("cPassportNo6",cPassportNo6.getText());
+                        inr.putExtra("cPassportExp6",cPassportExp6.getText());
+                        inr.putExtra("cPassportNo7",cPassportNo7.getText());
+                        inr.putExtra("cPassportExp7",cPassportExp7.getText());
+                    }
                 } else if (Integer.parseInt(childonep) == 8) {
-                    inr.putExtra("childTitle8",child_sp8.toString());
+                    inr.putExtra("childTitle8", child_sp8.toString());
                     inr.putExtra("childEigthFirstName", childEigthFirstName.getText().toString());
                     inr.putExtra("childEigthLastName", childEigthLastName.getText().toString());
-
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("cPassportNo1",cPassportNo1.getText());
+                        inr.putExtra("cPassportExp1",cPassportExp1.getText());
+                        inr.putExtra("cPassportNo2",cPassportNo2.getText());
+                        inr.putExtra("cPassportExp2",cPassportExp2.getText());
+                        inr.putExtra("cPassportNo3",cPassportNo3.getText());
+                        inr.putExtra("cPassportExp3",cPassportExp3.getText());
+                        inr.putExtra("cPassportNo4",cPassportNo4.getText());
+                        inr.putExtra("cPassportExp4",cPassportExp4.getText());
+                        inr.putExtra("cPassportNo5",cPassportNo5.getText());
+                        inr.putExtra("cPassportExp5",cPassportExp5.getText());
+                        inr.putExtra("cPassportNo6",cPassportNo6.getText());
+                        inr.putExtra("cPassportExp6",cPassportExp6.getText());
+                        inr.putExtra("cPassportNo7",cPassportNo7.getText());
+                        inr.putExtra("cPassportExp7",cPassportExp7.getText());
+                        inr.putExtra("cPassportNo8",cPassportNo8.getText());
+                        inr.putExtra("cPassportExp8",cPassportExp8.getText());
+                    }
                 }
                 if (Integer.parseInt(infantsonep) == 1) {
 
                     inr.putExtra("infantOneFirstName", infantOneFirstName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("iPassportNo1",iPassportNo1.getText());
+                        inr.putExtra("iPassportExp1",iPassportExp1.getText());
 
+                    }
 
-                }
-                else if (Integer.parseInt(infantsonep) == 2)
-                {
+                } else if (Integer.parseInt(infantsonep) == 2) {
                     inr.putExtra("infantSecondFirstName", infantSecondFirstName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("iPassportNo1",iPassportNo1.getText());
+                        inr.putExtra("iPassportExp1",iPassportExp1.getText());
+                        inr.putExtra("iPassportNo2",iPassportNo2.getText());
+                        inr.putExtra("iPassportExp2",iPassportExp2.getText());
+                    }
 
-                }
-                else if (Integer.parseInt(infantsonep) == 3)
-                {
+                } else if (Integer.parseInt(infantsonep) == 3) {
                     inr.putExtra("infantThrirdFirstName", infantThirdFirstName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("iPassportNo1",iPassportNo1.getText());
+                        inr.putExtra("iPassportExp1",iPassportExp1.getText());
+                        inr.putExtra("iPassportNo2",iPassportNo2.getText());
+                        inr.putExtra("iPassportExp2",iPassportExp2.getText());
+                        inr.putExtra("iPassportNo3",iPassportNo3.getText());
+                        inr.putExtra("iPassportExp3",iPassportExp3.getText());
+                    }
 
-                }
-                else if (Integer.parseInt(infantsonep) == 4) {
+                } else if (Integer.parseInt(infantsonep) == 4) {
                     inr.putExtra("infantFourthFirstName", infantFourthFirstName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("iPassportNo1",iPassportNo1.getText());
+                        inr.putExtra("iPassportExp1",iPassportExp1.getText());
+                        inr.putExtra("iPassportNo2",iPassportNo2.getText());
+                        inr.putExtra("iPassportExp2",iPassportExp2.getText());
+                        inr.putExtra("iPassportNo3",iPassportNo3.getText());
+                        inr.putExtra("iPassportExp3",iPassportExp3.getText());
+                        inr.putExtra("iPassportNo4",iPassportNo4.getText());
+                        inr.putExtra("iPassportExp4",iPassportExp4.getText());
+                    }
 
                 } else if (Integer.parseInt(infantsonep) == 5) {
                     inr.putExtra("infantFifthFirstName", infantFifthFirstName.getText().toString());
-
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("iPassportNo1",iPassportNo1.getText());
+                        inr.putExtra("iPassportExp1",iPassportExp1.getText());
+                        inr.putExtra("iPassportNo2",iPassportNo2.getText());
+                        inr.putExtra("iPassportExp2",iPassportExp2.getText());
+                        inr.putExtra("iPassportNo3",iPassportNo3.getText());
+                        inr.putExtra("iPassportExp3",iPassportExp3.getText());
+                        inr.putExtra("iPassportNo4",iPassportNo4.getText());
+                        inr.putExtra("iPassportExp4",iPassportExp4.getText());
+                        inr.putExtra("iPassportNo5",iPassportNo5.getText());
+                        inr.putExtra("iPassportExp5",iPassportExp5.getText());
+                    }
                 } else if (Integer.parseInt(infantsonep) == 6) {
                     inr.putExtra("infantSixthFirstName", infantSixthFirstName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("iPassportNo1",iPassportNo1.getText());
+                        inr.putExtra("iPassportExp1",iPassportExp1.getText());
+                        inr.putExtra("iPassportNo2",iPassportNo2.getText());
+                        inr.putExtra("iPassportExp2",iPassportExp2.getText());
+                        inr.putExtra("iPassportNo3",iPassportNo3.getText());
+                        inr.putExtra("iPassportExp3",iPassportExp3.getText());
+                        inr.putExtra("iPassportNo4",iPassportNo4.getText());
+                        inr.putExtra("iPassportExp4",iPassportExp4.getText());
+                        inr.putExtra("iPassportNo5",iPassportNo5.getText());
+                        inr.putExtra("iPassportExp5",iPassportExp5.getText());
+                        inr.putExtra("iPassportNo6",iPassportNo6.getText());
+                        inr.putExtra("iPassportExp6",iPassportExp6.getText());
+                    }
 
                 } else if (Integer.parseInt(infantsonep) == 7) {
                     inr.putExtra("infantSeventhFirstName", infantSeventhFirstName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("iPassportNo1",iPassportNo1.getText());
+                        inr.putExtra("iPassportExp1",iPassportExp1.getText());
+                        inr.putExtra("iPassportNo2",iPassportNo2.getText());
+                        inr.putExtra("iPassportExp2",iPassportExp2.getText());
+                        inr.putExtra("iPassportNo3",iPassportNo3.getText());
+                        inr.putExtra("iPassportExp3",iPassportExp3.getText());
+                        inr.putExtra("iPassportNo4",iPassportNo4.getText());
+                        inr.putExtra("iPassportExp4",iPassportExp4.getText());
+                        inr.putExtra("iPassportNo5",iPassportNo5.getText());
+                        inr.putExtra("iPassportExp5",iPassportExp5.getText());
+                        inr.putExtra("iPassportNo6",iPassportNo6.getText());
+                        inr.putExtra("iPassportExp6",iPassportExp6.getText());
+                        inr.putExtra("iPassportNo7",iPassportNo7.getText());
+                        inr.putExtra("iPassportExp7",iPassportExp7.getText());
+                    }
 
                 } else if (Integer.parseInt(infantsonep) == 8) {
                     inr.putExtra("infantEigthFirstName", infantEigthFirstName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("iPassportNo1",iPassportNo1.getText());
+                        inr.putExtra("iPassportExp1",iPassportExp1.getText());
+                        inr.putExtra("iPassportNo2",iPassportNo2.getText());
+                        inr.putExtra("iPassportExp2",iPassportExp2.getText());
+                        inr.putExtra("iPassportNo3",iPassportNo3.getText());
+                        inr.putExtra("iPassportExp3",iPassportExp3.getText());
+                        inr.putExtra("iPassportNo4",iPassportNo4.getText());
+                        inr.putExtra("iPassportExp4",iPassportExp4.getText());
+                        inr.putExtra("iPassportNo5",iPassportNo5.getText());
+                        inr.putExtra("iPassportExp5",iPassportExp5.getText());
+                        inr.putExtra("iPassportNo6",iPassportNo6.getText());
+                        inr.putExtra("iPassportExp6",iPassportExp6.getText());
+                        inr.putExtra("iPassportNo7",iPassportNo7.getText());
+                        inr.putExtra("iPassportExp7",iPassportExp7.getText());
+                        inr.putExtra("iPassportNo8",iPassportNo8.getText());
+                        inr.putExtra("iPassportExp8",iPassportExp8.getText());
+                    }
+
+                }
+                else if (Integer.parseInt(infantsonep) == 9)
+                {
+                    inr.putExtra("infantNinethFirstName", infantNinethFirstName.getText().toString());
+                    if(!countryTo.equals("India"))
+                    {
+                        inr.putExtra("iPassportNo1",iPassportNo1.getText());
+                        inr.putExtra("iPassportExp1",iPassportExp1.getText());
+                        inr.putExtra("iPassportNo2",iPassportNo2.getText());
+                        inr.putExtra("iPassportExp2",iPassportExp2.getText());
+                        inr.putExtra("iPassportNo3",iPassportNo3.getText());
+                        inr.putExtra("iPassportExp3",iPassportExp3.getText());
+                        inr.putExtra("iPassportNo4",iPassportNo4.getText());
+                        inr.putExtra("iPassportExp4",iPassportExp4.getText());
+                        inr.putExtra("iPassportNo5",iPassportNo5.getText());
+                        inr.putExtra("iPassportExp5",iPassportExp5.getText());
+                        inr.putExtra("iPassportNo6",iPassportNo6.getText());
+                        inr.putExtra("iPassportExp6",iPassportExp6.getText());
+                        inr.putExtra("iPassportNo7",iPassportNo7.getText());
+                        inr.putExtra("iPassportExp7",iPassportExp7.getText());
+                        inr.putExtra("iPassportNo8",iPassportNo8.getText());
+                        inr.putExtra("iPassportExp8",iPassportExp8.getText());
+                        inr.putExtra("iPassportNo9",iPassportNo9.getText());
+                        inr.putExtra("iPassportExp9",iPassportExp9.getText());
+                    }
 
                 }
 
@@ -1055,31 +1698,38 @@ public class PassengerDetails extends AppCompatActivity {
         });
     }
 
-public  void updateLabel(int tag)
-    {
-        String myFormat="dd/MM/yyyy";
-        SimpleDateFormat sdf=new SimpleDateFormat(myFormat, Locale.US);
-        Log.i("Tag",String.valueOf(tag));
-        switch(tag)
-        {
-            case 1:infant_DOB1.setText(sdf.format(calendar.getTime()));
+    public void updateLabel(int tag) {
+        String myFormat = "dd/MM/yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        Log.i("Tag", String.valueOf(tag));
+        switch (tag) {
+            case 1:
+                infant_DOB1.setText(sdf.format(calendar.getTime()));
                 break;
-            case 2:infant_DOB2.setText(sdf.format(calendar.getTime()));
+            case 2:
+                infant_DOB2.setText(sdf.format(calendar.getTime()));
                 break;
-            case 3:infant_DOB3.setText(sdf.format(calendar.getTime()));
+            case 3:
+                infant_DOB3.setText(sdf.format(calendar.getTime()));
                 break;
-            case 4:infant_DOB4.setText(sdf.format(calendar.getTime()));
+            case 4:
+                infant_DOB4.setText(sdf.format(calendar.getTime()));
                 break;
-            case 5:infant_DOB5.setText(sdf.format(calendar.getTime()));
+            case 5:
+                infant_DOB5.setText(sdf.format(calendar.getTime()));
 
                 break;
-            case 6:infant_DOB6.setText(sdf.format(calendar.getTime()));
+            case 6:
+                infant_DOB6.setText(sdf.format(calendar.getTime()));
                 break;
-            case 7:infant_DOB7.setText(sdf.format(calendar.getTime()));
+            case 7:
+                infant_DOB7.setText(sdf.format(calendar.getTime()));
                 break;
-            case 8:infant_DOB8.setText(sdf.format(calendar.getTime()));
+            case 8:
+                infant_DOB8.setText(sdf.format(calendar.getTime()));
                 break;
-            case 9:infant_DOB9.setText(sdf.format(calendar.getTime()));
+            case 9:
+                infant_DOB9.setText(sdf.format(calendar.getTime()));
                 break;
         }//End of Switch
     }//End of updateLabel method

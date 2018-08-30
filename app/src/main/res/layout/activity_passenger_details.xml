@@ -90,6 +90,7 @@
 
                     <LinearLayout
                         android:id="@+id/adultPassport1"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -171,7 +172,7 @@
 
                     <LinearLayout
                         android:id="@+id/adultPassport2"
-
+                        android:visibility="gone"
 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -252,6 +253,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/adultPassport3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -329,36 +331,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="40"
                             android:hint="Last name" />
-                        <LinearLayout
-                            android:id="@+id/adultPassport4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            >
 
-                            <EditText
-                                android:id="@+id/aPassportNo4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="5dp"
-                                android:hint="Passport No." />
-                            <TextView
-                                android:gravity="center_horizontal"
-                                android:text="Date of Expiry"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                />
-                            <EditText
-                                android:id="@+id/aPassportEx4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="5dp"
-                                android:hint="DD/MM/YYYY" />
-                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -368,6 +341,37 @@
                         android:layout_marginBottom="15sp"
                         android:layout_marginTop="5sp"
                         android:background="@color/bgBottomNavigation" />
+                    <LinearLayout
+                        android:id="@+id/adultPassport4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <EditText
+                            android:id="@+id/aPassportNo4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Passport No." />
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:text="Date of Expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/aPassportEx4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="DD/MM/YYYY" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
 
@@ -419,6 +423,7 @@
                         android:layout_marginTop="5sp"
                         android:background="@color/bgBottomNavigation" />
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/adultPassport5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -501,6 +506,7 @@
                         android:layout_marginTop="5sp"
                         android:background="@color/bgBottomNavigation" />
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/adultPassport6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -665,6 +671,7 @@
                         android:layout_marginTop="5sp"
                         android:background="@color/bgBottomNavigation" />
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/adultPassport8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -746,6 +753,7 @@
                         android:layout_marginTop="5sp"
                         android:background="@color/bgBottomNavigation" />
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/adultPassport9"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -822,6 +830,7 @@
                             android:layout_height="wrap_content" />
                     </LinearLayout>
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/childPassport1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -904,6 +913,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
                     <LinearLayout
                         android:id="@+id/childPassport2"
 
@@ -945,12 +961,6 @@
                             android:layout_height="wrap_content"
                             android:hint="DOB"/>
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
-                        android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_child3"
@@ -986,7 +996,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/childPassport3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1026,12 +1044,6 @@
                             android:layout_height="wrap_content"
                             android:hint="DOB"/>
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
-                        android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_child4"
@@ -1067,6 +1079,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
                     <LinearLayout
                         android:id="@+id/childPassport4"
                         android:layout_width="match_parent"
@@ -1106,12 +1125,6 @@
                             android:layout_height="wrap_content"
                             android:hint="DOB"/>
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
-                        android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_child5"
@@ -1147,6 +1160,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
                     <LinearLayout
                         android:id="@+id/childPassport5"
                         android:layout_width="match_parent"
@@ -1186,12 +1206,6 @@
                             android:layout_height="wrap_content"
                             android:hint="DOB"/>
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
-                        android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_child6"
@@ -1227,6 +1241,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
                     <LinearLayout
                         android:id="@+id/childPassport6"
                         android:visibility="gone"
@@ -1267,12 +1288,6 @@
                             android:layout_height="wrap_content"
                             android:hint="DOB"/>
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
-                        android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_child7"
@@ -1389,6 +1404,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
                     <LinearLayout
                         android:id="@+id/childPassport8"
                         android:visibility="gone"
@@ -1429,12 +1451,6 @@
                             android:layout_height="wrap_content"
                             android:hint="DOB"/>
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:background="@color/bgBottomNavigation"
-                        android:layout_marginTop="5sp"
-                        android:layout_marginBottom="15sp"
-                        android:layout_height="2dp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -1513,6 +1529,7 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/infantPassport1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1585,6 +1602,7 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/infantPassport2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1657,6 +1675,7 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/infantPassport3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1729,6 +1748,7 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/infantPassport4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1754,6 +1774,7 @@
                             android:layout_height="wrap_content"
                             android:hint="DD/MM/YYYY"/>
                     </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -1800,6 +1821,7 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/infantPassport5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1871,6 +1893,7 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/infantPassport6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1883,6 +1906,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Passport"/>
+                        <TextView
+                            android:text="Date of Expiry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <EditText
+                            android:id="@+id/iPassportExp6"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="DD/MM/YYYY"/>
+
                         <TextView
                             android:text="Date of Birth"
                             android:layout_width="match_parent"
@@ -1943,6 +1979,7 @@
                         android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/infantPassport7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1954,7 +1991,16 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Passport"/>
+                        android:hint="Passport No."/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date of Expiry"/>
+                    <EditText
+                        android:id="@+id/iPassportExp7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DD/MM/YYYY"/>
                     <TextView
                         android:text="Date of Birth"
                         android:layout_width="match_parent"
@@ -2013,6 +2059,7 @@
                         android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/infantPassport8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -2025,6 +2072,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Passport"/>
+                    <TextView
+                        android:text="Passport Expiry"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/iPassportExp8"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DD/MM/YYYY"/>
+
                     <TextView
                         android:gravity="center_horizontal"
                         android:text="Date of Birth"
@@ -2085,6 +2146,7 @@
                         android:layout_height="2dp"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/infantPassport9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -2097,6 +2159,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Passport"/>
+                    <TextView
+                        android:text="Passport Expiry"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/iPassportExp9"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DD/MM/YYYY"/>
+
                     <TextView
                         android:text="Date of Birth"
                         android:layout_width="match_parent"

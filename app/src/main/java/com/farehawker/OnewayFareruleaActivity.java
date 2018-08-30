@@ -81,8 +81,10 @@ public class OnewayFareruleaActivity extends AppCompatActivity
         flightCode=intent.getStringExtra("flightCode");
         origin=intent.getStringExtra("origin");
         destination=intent.getStringExtra("destination");
+
         countryFrom=intent.getStringExtra("countryFrom");
         countryTo=intent.getStringExtra("countryTo");
+
         text_onward=(TextView)findViewById(R.id.onewayname);
         text_dest=(TextView)findViewById(R.id.onewaydestname);
         text_onward.setText(origin);

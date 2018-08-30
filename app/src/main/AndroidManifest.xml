@@ -24,12 +24,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChepestFlightActivity" />
-        <activity android:name=".FlightbookingActivity" />
+        <activity android:name=".FlightbookingActivity" android:label="@string/title_flight_search" />
         <activity android:name=".SearchviewActivity" />
         <activity android:name=".PrivatejetActivity" />
         <activity android:name=".GroupBookingActivity" />
         <activity android:name=".DestinationSearchActivity" />
-        <activity android:name=".OnewayActivityresult" />
+        <activity android:name=".OnewayActivityresult"  />
         <activity android:name=".RoundTripActivity" />
         <activity android:name=".Splacescreen">
             <intent-filter>
@@ -43,7 +43,7 @@
         <activity android:name=".PassengerDetails"
             android:label="@string/PassengerDetails"/>
         <activity android:name=".Reviewdetails" />
-        <activity android:name=".International_Roundtrip"></activity>
+        <activity android:name=".International_Roundtrip" android:label=""></activity>
         <activity android:name=".PassengerDetailsR"
             android:label="@string/PassengerDetails"></activity>
         <activity android:name=".SomeEarlierMerchantActivity"

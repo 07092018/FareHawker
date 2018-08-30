@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Reviewdetails extends AppCompatActivity {
+
     TextView flightNameT, flightNameRT, arrivalTimeT, arrivalTimeRT, departureT, departureRT, flightCodeT, flightCodeRT, destinationT, destinationRT, originT, originRT;
     String TAG = "Reviewdetails";
     LinearLayout adult1, adult2, adult3, adult4, adult5, adult6, adult7, adult8, adult9;
@@ -22,6 +24,14 @@ public class Reviewdetails extends AppCompatActivity {
     TextView childOneFirstName, childTwoFirstName, childThirdFirstName, childFourthFirstName, childFifthFirstName, childSixthFirstName, childSeventhFirstName, childEighthFirstName;
     TextView childOneLastName, childSecondLastName, childThirdLastName, childFourthLastName, childFifthLastName, childSixthLastName, childSeventhLastName, childEighthLastName;
 
+    TextView aPassportNo1, aPassportNo2, aPassportNo3, aPassportNo4, aPassportNo5, aPassportNo6, aPassportNo7,
+            aPassportNo8, aPassportNo9, cPassportNo8, cPassportNo1, cPassportNo2, cPassportNo3, cPassportNo4,
+            cPassportNo5, cPassportNo6, cPassportNo7, iPassportNo1, iPassportNo2, iPassportNo3, iPassportNo4,
+            iPassportNo5, iPassportNo6, iPassportNo7, iPassportNo8, iPassportNo9, aPassportExp1, aPassportExp2,
+            aPassportExp3, aPassportExp4, aPassportExp5, aPassportExp6, aPassportExp7, aPassportExp8, aPassportExp9,
+            iPassportExp1, iPassportExp2, iPassportExp3, iPassportExp4, iPassportExp5, iPassportExp6, iPassportExp7,
+            iPassportExp8, iPassportExp9, cPassportExp1, cPassportExp2, cPassportExp3, cPassportExp4, cPassportExp5,
+            cPassportExp6, cPassportExp7, cPassportExp8;
     TextView infantOneFirstName, infantTwoFirstName, infantThirdFirstName, infantFourthFirstName, infantFifthFirstName, infantSixthFirstName, infantSeventhFirstName, infantEighthFirstName, infantNinethFirstName;
     TextView infantOneLastName, infantTwoLastName, infantThirdLastName, infantFourthLastName, infantFifthLastName, infantSixthLastName, infantSeventhLastName, infantEighthLastName, infantNinethLastName;
 
@@ -43,8 +53,125 @@ public class Reviewdetails extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviewdetails);
+        //Adult Passport numbers and their Passport Expiry dates
+//        aPassportNo1 = findViewById(R.id.aPassportNo1);
+//        aPassportNo2 = findViewById(R.id.aPassportNo2);
+//        aPassportNo3 = findViewById(R.id.aPassportNo3);
+//        aPassportNo4 = findViewById(R.id.aPassportNo4);
+//        aPassportNo5 = findViewById(R.id.aPassportNo5);
+//        aPassportNo6 = findViewById(R.id.aPassportNo6);
+//        aPassportNo7 = findViewById(R.id.aPassportNo7);
+//        aPassportNo8 = findViewById(R.id.aPassportNo8);
+//        aPassportNo9 = findViewById(R.id.aPassportNo9);
+//
+//        aPassportExp1 = findViewById(R.id.aPassportEx1);
+//        aPassportExp2 = findViewById(R.id.aPassportEx2);
+//        aPassportExp3 = findViewById(R.id.aPassportEx3);
+//        aPassportExp4 = findViewById(R.id.aPassportEx4);
+//        aPassportExp5 = findViewById(R.id.aPassportEx5);
+//        aPassportExp6 = findViewById(R.id.aPassportEx6);
+//        aPassportExp7 = findViewById(R.id.aPassportEx7);
+//        aPassportExp8 = findViewById(R.id.aPassportEx8);
+//        aPassportExp9 = findViewById(R.id.aPassportEx9);
+//
+//        //Children Passport numbers and their Passport Expiry dates
+//        cPassportNo1 = findViewById(R.id.cPassportNo1);
+//        cPassportNo2 = findViewById(R.id.cPassportNo2);
+//        cPassportNo3 = findViewById(R.id.cPassportNo3);
+//        cPassportNo4 = findViewById(R.id.cPassportNo4);
+//        cPassportNo5 = findViewById(R.id.cPassportNo5);
+//        cPassportNo6 = findViewById(R.id.cPassportNo6);
+//        cPassportNo7 = findViewById(R.id.cPassportNo7);
+//        cPassportNo8 = findViewById(R.id.cPassportNo8);
+//
+//        cPassportExp1 = findViewById(R.id.cPassportExp1);
+//        cPassportExp2 = findViewById(R.id.cPassportExp2);
+//        cPassportExp3 = findViewById(R.id.cPassportExp3);
+//        cPassportExp4 = findViewById(R.id.cPassportExp4);
+//        cPassportExp5 = findViewById(R.id.cPassportExp5);
+//        cPassportExp6 = findViewById(R.id.cPassportExp6);
+//        cPassportExp7 = findViewById(R.id.cPassportExp7);
+//        cPassportExp8 = findViewById(R.id.cPassportExp8);
+//
+//        //Infants passports and date of expiry details
+//        iPassportNo1 = findViewById(R.id.iPassportNo1);
+//        iPassportNo2 = findViewById(R.id.iPassportNo2);
+//        iPassportNo3 = findViewById(R.id.iPassportNo3);
+//        iPassportNo4 = findViewById(R.id.iPassportNo4);
+//        iPassportNo5 = findViewById(R.id.iPassportNo5);
+//        iPassportNo6 = findViewById(R.id.iPassportNo6);
+//        iPassportNo7 = findViewById(R.id.iPassportNo7);
+//        iPassportNo8 = findViewById(R.id.iPassportNo8);
+//        iPassportNo9 = findViewById(R.id.iPassportNo9);
+//
+//        iPassportExp1 = findViewById(R.id.iPassportExp1);
+//        iPassportExp2 = findViewById(R.id.iPassportExp2);
+//        iPassportExp3 = findViewById(R.id.iPassportExp3);
+//        iPassportExp4 = findViewById(R.id.iPassportExp4);
+//        iPassportExp5 = findViewById(R.id.iPassportExp5);
+//        iPassportExp6 = findViewById(R.id.iPassportExp6);
+//        iPassportExp7 = findViewById(R.id.iPassportExp7);
+//        iPassportExp8 = findViewById(R.id.iPassportExp8);
+//        iPassportExp9 = findViewById(R.id.iPassportExp9);
 
         intent = getIntent();
+        //Get Passport details from intent
+        intent.getStringExtra("aPassportNo1");
+        intent.getStringExtra("aPassportExp1");
+        intent.getStringExtra("aPassportNo2");
+        intent.getStringExtra("aPassportExp2");
+        intent.getStringExtra("aPassportNo3");
+        intent.getStringExtra("aPassportExp3");
+        intent.getStringExtra("aPassportNo4");
+        intent.getStringExtra("aPassportExp4");
+        intent.getStringExtra("aPassportNo5");
+        intent.getStringExtra("aPassportExp5");
+        intent.getStringExtra("aPassportNo6");
+        intent.getStringExtra("aPassportExp6");
+        intent.getStringExtra("aPassportNo7");
+        intent.getStringExtra("aPassportExp7");
+        intent.getStringExtra("aPassportNo8");
+        intent.getStringExtra("aPassportExp8");
+        intent.getStringExtra("aPassportNo9");
+        intent.getStringExtra("aPassportExp9");
+        //Get children Passport details from intent
+        intent.getStringExtra("cPassportNo1");
+        intent.getStringExtra("cPassportExp1");
+        intent.getStringExtra("cPassportNo2");
+        intent.getStringExtra("cPassportExp2");
+        intent.getStringExtra("cPassportNo3");
+        intent.getStringExtra("cPassportExp3");
+        intent.getStringExtra("cPassportNo4");
+        intent.getStringExtra("cPassportExp4");
+        intent.getStringExtra("cPassportNo5");
+        intent.getStringExtra("cPassportExp5");
+        intent.getStringExtra("cPassportNo6");
+        intent.getStringExtra("cPassportExp6");
+        intent.getStringExtra("cPassportNo7");
+        intent.getStringExtra("cPassportExp7");
+        intent.getStringExtra("cPassportNo8");
+        intent.getStringExtra("cPassportExp8");
+
+        //Get Infants Passport details from intent
+        intent.getStringExtra("iPassportNo1");
+        intent.getStringExtra("iPassportExp1");
+        intent.getStringExtra("iPassportNo2");
+        intent.getStringExtra("iPassportExp2");
+        intent.getStringExtra("iPassportNo3");
+        intent.getStringExtra("iPassportExp3");
+        intent.getStringExtra("iPassportNo4");
+        intent.getStringExtra("iPassportExp4");
+        intent.getStringExtra("iPassportNo5");
+        intent.getStringExtra("iPassportExp5");
+        intent.getStringExtra("iPassportNo6");
+        intent.getStringExtra("iPassportExp6");
+        intent.getStringExtra("iPassportNo7");
+        intent.getStringExtra("iPassportExp7");
+        intent.getStringExtra("iPassportNo8");
+        intent.getStringExtra("iPassportExp8");
+        intent.getStringExtra("iPassportNo9");
+        intent.getStringExtra("iPassportExp9");
+
         adultCount = intent.getStringExtra("adultCount");
         childCount = intent.getStringExtra("childCount");
         infantCount = intent.getStringExtra("infantCount");
@@ -211,7 +338,7 @@ public class Reviewdetails extends AppCompatActivity {
             flightCodeRT.setText(flightCodeR);
             originRT.setText(destinationR);
             destinationRT.setText(originR);
-            flightDetailsR.setVisibility(View.GONE);
+            flightDetailsR.setVisibility(View.VISIBLE);
         }
 
 

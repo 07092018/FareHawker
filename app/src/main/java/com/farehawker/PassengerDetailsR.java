@@ -314,11 +314,11 @@ public class PassengerDetailsR extends AppCompatActivity
          infantSpinner9=findViewById(R.id.spinner_infants9);
 
          maincount_adult=findViewById(R.id.maincount_adult);
-        maincount_child=findViewById(R.id.maincount_child);
+       // maincount_child=findViewById(R.id.maincount_child);
 
         maincount_infant=findViewById(R.id.maincount_infant);
 
-         children=findViewById(R.id.children);
+         //children=findViewById(R.id.children);
          infants=findViewById(R.id.infants);
         gstLinearLayout=findViewById(R.id.gstLinearLayout);
         intent=getIntent();
@@ -347,7 +347,7 @@ public class PassengerDetailsR extends AppCompatActivity
 
 
 
-        children=findViewById(R.id.children);
+        //children=findViewById(R.id.children);
         infants=findViewById(R.id.infants);
 
         maincount_adult.setText(adultCount);
