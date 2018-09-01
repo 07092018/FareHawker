@@ -2307,28 +2307,7 @@
             android:gravity="bottom"
             android:layout_weight="10"
             android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#1691d9"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_margin="20sp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/whitecolor"
-                    android:textSize="16sp"
-                    android:text="Update Fare  ₹"/>
-                <TextView
-                    android:id="@+id/fares"
-                    android:textSize="18sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/whitecolor"
-                    android:text="1000"/>
-            </LinearLayout>
+
             <Button
                 android:id="@+id/contineee"
                 android:layout_width="match_parent"

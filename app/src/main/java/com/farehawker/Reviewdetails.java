@@ -6,13 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 public class Reviewdetails extends AppCompatActivity {
 
+    ImageView airlineImage;
     TextView flightNameT, flightNameRT, arrivalTimeT, arrivalTimeRT, departureT, departureRT, flightCodeT, flightCodeRT, destinationT, destinationRT, originT, originRT;
     String TAG = "Reviewdetails";
     LinearLayout adult1, adult2, adult3, adult4, adult5, adult6, adult7, adult8, adult9;
@@ -41,7 +45,7 @@ public class Reviewdetails extends AppCompatActivity {
     String adultCount;
     String childCount;
     String infantCount;
-    String flightPrice, flightDepartureTime, flightArrivalTime, flightCode, flightName, flightNumber, flightPriceR, flightArrivalTimeR, flightCodeR, flightNameR, flightNumberR, originR, destinationR, flightDepartureTimeR,origin,destination;
+    String flightPrice, flightDepartureTime, flightArrivalTime, flightCode, flightName, flightNumber, flightPriceR, flightArrivalTimeR, flightCodeR, flightNameR, flightNumberR, originR, destinationR, flightDepartureTimeR,origin,destination,airlineCode;
     RelativeLayout flightDetailsR;
     String id;
     Button makePayment;
@@ -113,7 +117,7 @@ public class Reviewdetails extends AppCompatActivity {
 //        iPassportExp7 = findViewById(R.id.iPassportExp7);
 //        iPassportExp8 = findViewById(R.id.iPassportExp8);
 //        iPassportExp9 = findViewById(R.id.iPassportExp9);
-
+        airlineImage=findViewById(R.id.airlineImage);
         intent = getIntent();
         //Get Passport details from intent
         intent.getStringExtra("aPassportNo1");
@@ -171,20 +175,23 @@ public class Reviewdetails extends AppCompatActivity {
         intent.getStringExtra("iPassportExp8");
         intent.getStringExtra("iPassportNo9");
         intent.getStringExtra("iPassportExp9");
+        origin = intent.getStringExtra("origin");
+        destination = intent.getStringExtra("destination");
 
         adultCount = intent.getStringExtra("adultCount");
         childCount = intent.getStringExtra("childCount");
         infantCount = intent.getStringExtra("infantCount");
-
+        Picasso.with(Reviewdetails.this).load("https://www.farehawker.com/img/Airlines_logo/"+airlineCode+".gif").into(airlineImage);
         //Flights Details
         flightPrice = intent.getStringExtra("flightPrice");
         flightDepartureTime = intent.getStringExtra("flightDepartureTime");
         flightArrivalTime = intent.getStringExtra("flightArrivalTime");
-        flightCode = intent.getStringExtra("flightCode");
+
+        airlineCode = intent.getStringExtra("airlineCode");
+        flightNumber=intent.getStringExtra("flightNumber");
         flightName = intent.getStringExtra("flightName");
         //flightNumber = intent.getStringExtra("flightNumber");
-        origin = intent.getStringExtra("origin");
-        destination = intent.getStringExtra("destination");
+
         id=intent.getStringExtra("Id");
         //Return Flight Details
         if(id.equals("roundTrip"))
@@ -237,6 +244,7 @@ public class Reviewdetails extends AppCompatActivity {
         infant8 = findViewById(R.id.infant8);
         infant9 = findViewById(R.id.infant9);
 
+        airlineImage=findViewById(R.id.airlineImage);
         flightDetailsR_RelativeLayout=findViewById(R.id.flightDetailsR_RelativeLayout);
         adultOneFirstName = findViewById(R.id.adultName1);
         adultTwoFirstName = findViewById(R.id.adultName2);
@@ -292,9 +300,9 @@ public class Reviewdetails extends AppCompatActivity {
 
         arrivalTimeT = findViewById(R.id.arrivalTime);
 
-        departureT = findViewById(R.id.departureTimeR);
+        departureT = findViewById(R.id.departureTime);
 
-        flightCodeT = findViewById(R.id.flightCode2);
+       // flightCodeT = findViewById(R.id.flightCode2);
 
         destination1 = findViewById(R.id.destination1);
 
@@ -326,7 +334,8 @@ public class Reviewdetails extends AppCompatActivity {
         destinationT.setText(destination);
         destination1.setText(destination);
         originT.setText(origin);
-        flightCodeT.setText(flightCode);
+        Picasso.with(Reviewdetails.this).load("https://www.farehawker.com/img/Airlines_logo/"+airlineCode+".gif").into(airlineImage);
+        flightCodeT.setText(airlineCode+"-"+flightNumber);
         flightDetailsR_RelativeLayout.setVisibility(View.GONE);
         flightRLinearLayout.setVisibility(View.GONE);
         if(id.equals("roundTrip"))

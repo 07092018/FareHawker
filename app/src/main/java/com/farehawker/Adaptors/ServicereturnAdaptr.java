@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 /**
- * Created by 1 on 4/11/2018.
+ * Created by FareHawker on 4/11/2018.
  */
 
 public class ServicereturnAdaptr extends BaseAdapter {
@@ -26,8 +26,6 @@ public class ServicereturnAdaptr extends BaseAdapter {
        this.mcontext = mcontext;
        this.returnservicelist = returnservice;
     }
-
-
     @Override
     public int getCount() {
         return returnservicelist.size();

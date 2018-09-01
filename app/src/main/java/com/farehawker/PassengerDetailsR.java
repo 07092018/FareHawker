@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -50,6 +51,7 @@ public class PassengerDetailsR extends AppCompatActivity
     String flightPriceR;
     String originR;
     String destinationR;
+
 
     TextView adultOneFirstName, adultSecondFirstName, adultThirdFirstName, adultFourthFirstName, adultFifthFirstName, adultSixthFirstName, adultSeventhFirstName, adultEigthFirstName, adultNinethFirstName,
             adultOneLastName, adultSecondLastName, adultThirdLastName, adultFourthLastName, adultFifthLastName, adultSixthLastName, adultSeventhLastName, adultEigthLastName, adultNinethLastName,
@@ -319,7 +321,7 @@ public class PassengerDetailsR extends AppCompatActivity
         maincount_infant=findViewById(R.id.maincount_infant);
 
          //children=findViewById(R.id.children);
-         infants=findViewById(R.id.infants);
+        infants=findViewById(R.id.infants);
         gstLinearLayout=findViewById(R.id.gstLinearLayout);
         intent=getIntent();
         adultCount=intent.getStringExtra("adultround");

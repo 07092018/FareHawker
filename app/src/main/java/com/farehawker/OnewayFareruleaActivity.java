@@ -60,7 +60,7 @@ public class OnewayFareruleaActivity extends AppCompatActivity
     TextView term_condition;
     TextView text_onward,text_dest;
     Button continue_booking;
-    String airlineCode,airlineName,flightArrivalTime;
+    String airlineCode,airlineName,flightArrivalTime,flightNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,6 +129,7 @@ public class OnewayFareruleaActivity extends AppCompatActivity
         else
         {
             Intent inn=new Intent(OnewayFareruleaActivity.this,PassengerDetails.class);
+
             inn.putExtra("airlineCode",airlineCode);
             inn.putExtra("origin",origin);
             inn.putExtra("destination",destination);
@@ -140,13 +141,14 @@ public class OnewayFareruleaActivity extends AppCompatActivity
             inn.putExtra("childone",childone);
             inn.putExtra("infantsone",infantsone);
             inn.putExtra("airlineName",airlineName);
-            inn.putExtra("flightCode",flightCode);
+            inn.putExtra("airlineCode",flightCode);
             inn.putExtra("arrivalTime",flightArrivalTime);
             inn.putExtra("flightDepartureTime",flightDepartureTime);
             inn.putExtra("flightName",airlineName);
             inn.putExtra("totalFare",publish_oneway.getText().toString());//"totalFare",publish_oneway
             inn.putExtra("countryTo",countryTo);
             inn.putExtra("countryFrom",countryFrom);
+            inn.putExtra("flightNumber",flightNumber);
             startActivity(inn);
 
         }
@@ -320,7 +322,8 @@ public class OnewayFareruleaActivity extends AppCompatActivity
                             onewaydata.setOfcode1_oneway(airline.getString("AirlineCode"));
                             onewaydata.setO_fname1_oneway(airline.getString("AirlineName"));
                             onewaydata.setOfnumber1_oneway(airline.getString("FlightNumber"));
-
+                            flightNumber=airline.getString("FlightNumber");
+                            Log.i("FlightNumber",flightNumber);
                             JSONObject origin = jobjet.getJSONObject("Origin");
                             onewaydata.setOtime1_oneway(origin.getString("DepTime"));
                             String splitdest = origin.getString("DepTime");

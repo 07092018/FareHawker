@@ -487,7 +487,7 @@ public class FlightbookingActivity extends AppCompatActivity
                             }
                         } else
                             {
-
+                            //change the destination activity in inr(Intent) to OnewayActivityresult after
                             Intent inr = new Intent(FlightbookingActivity.this, OnewayActivityresult.class);
 
                             inr.putExtra("countryTo",countryTO);

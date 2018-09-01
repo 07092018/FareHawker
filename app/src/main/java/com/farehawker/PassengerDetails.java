@@ -66,7 +66,7 @@ public class PassengerDetails extends AppCompatActivity
   /*
   *  status variable is used to show or hide GST Linear layout.
   *  status  equals to one means hide GST Linear layout
-   *  status equals to zero means unhide GST Linear Layout
+   *  status equals to zero means unhide GST Linear Layout.
    */
     static int status = 0;
     String orignp, destp, endipp, tokenp, resultindp, traceidonep, adultonep, childonep, infantsonep;
@@ -433,11 +433,12 @@ public class PassengerDetails extends AppCompatActivity
         tokenp = intent.getStringExtra("tokenid");
         resultindp = intent.getStringExtra("resultindex");
         traceidonep = intent.getStringExtra("traceid");
-        departure = intent.getStringExtra("departure");
+        //departure = intent.getStringExtra("departure");
         //ArrivalTime,flightCode,flightName
         arrivalTime = intent.getStringExtra("arrivalTime");
         departure = intent.getStringExtra("flightDepartureTime");
-        flightCode = intent.getStringExtra("flightCode");
+        airlineCode = intent.getStringExtra("airlineCode");
+        flightNumber=intent.getStringExtra("flightNumber");
         flightName = intent.getStringExtra("flightName");
         countryFrom = intent.getStringExtra("countryFrom");
         countryTo = intent.getStringExtra("countryTo");
@@ -459,7 +460,7 @@ public class PassengerDetails extends AppCompatActivity
         infantsonep = intent.getStringExtra("infantsone");
         flightPrice = intent.getStringExtra("totalFare");
         TotalFare.setText("₹" + intent.getStringExtra("totalFare"));
-        airlineCode = intent.getStringExtra("airlineCode");
+
         airlineName = intent.getStringExtra("airlineName");
 
         awesomeValidation.validate();
@@ -821,8 +822,6 @@ public class PassengerDetails extends AppCompatActivity
                 clinearP_7.setVisibility(View.GONE);
                 clinearP_8.setVisibility(View.GONE);
             }
-
-
         }
         if (childonep.equals("6")) {
             linear_child7.setVisibility(View.GONE);
@@ -877,7 +876,6 @@ public class PassengerDetails extends AppCompatActivity
             Linear_infant7.setVisibility(View.GONE);
             Linear_infant8.setVisibility(View.GONE);
             Linear_infant9.setVisibility(View.GONE);
-
             if ( !countryTo.equals("India")) {
                 ilinearP_1.setVisibility(View.VISIBLE);
                 ilinearP_2.setVisibility(View.GONE);
@@ -1106,7 +1104,7 @@ public class PassengerDetails extends AppCompatActivity
                 inr.putExtra("flightPrice", flightPrice);
                 inr.putExtra("flightDepartureTime", departure);
                 inr.putExtra("flightArrivalTime", arrivalTime);
-                inr.putExtra("flightCode", airlineCode);
+                inr.putExtra("airlineCode", airlineCode);
                 inr.putExtra("flightName", flightName);
                 inr.putExtra("flightNumber", flightNumber);//flightNumber,origin,destination
                 inr.putExtra("origin", origin);
@@ -1119,8 +1117,8 @@ public class PassengerDetails extends AppCompatActivity
                 inr.putExtra("flightCodeR",flightCodeR);
                 inr.putExtra("flightNameR",flightNameR);
                 inr.putExtra("flightNumberR",flightNumberR);
-                inr.putExtra("origin",originR);
-                inr.putExtra("destination",destinationR);
+                inr.putExtra("originR",originR);
+                inr.putExtra("destinationR",destinationR);
                 inr.putExtra("id","roundTrip");
 
 
@@ -2455,14 +2453,15 @@ public class PassengerDetails extends AppCompatActivity
         });
     }
 
-    public void applyForCoupon(View view) {
+    public void applyForCoupon(View view)
+    {
 
         String value;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Log.i(TAG, "Inside applyForCoupon method");
         String URL = "https://www.farehawker.com/api/coupon_code.php?coupon_code=" + couponCode.getText();
         JSONObject jsonObject = new JSONObject();
-// prepare the Request
+        // Prepare the Request
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URL,
                 new Response.Listener<JSONObject>() {
@@ -2490,7 +2489,11 @@ public class PassengerDetails extends AppCompatActivity
 
                             } else {
                                 if (couponValidity == 1) {
-                                    TotalFare.setText(String.valueOf(Integer.parseInt(TotalFare.getText().toString()) - my_amount));
+                                    int publishedFare;
+                                    String t=TotalFare.getText().toString().substring(1);
+
+
+                                    TotalFare.setText(String.valueOf(Integer.parseInt(TotalFare.getText().toString().substring(1))-my_amount));//int publishedFare;
                                     //set couponValidity to zero.Since Coupon has been used once it not valid now
                                     couponValidity = 0;
                                     Toast.makeText(PassengerDetails.this, "Coupon Code is valid for once", Toast.LENGTH_SHORT);
