@@ -110,12 +110,11 @@ public class PassengerDetails extends AppCompatActivity
     EditText aPassportNo1, aPassportNo2, aPassportNo3, aPassportNo4, aPassportNo5, aPassportNo6, aPassportNo7,
             aPassportNo8, aPassportNo9, cPassportNo8, cPassportNo1, cPassportNo2, cPassportNo3, cPassportNo4,
             cPassportNo5, cPassportNo6, cPassportNo7, iPassportNo1, iPassportNo2, iPassportNo3, iPassportNo4,
-            iPassportNo5, iPassportNo6, iPassportNo7, iPassportNo8, iPassportNo9, aPassportExp1, aPassportExp2,
-            aPassportExp3, aPassportExp4, aPassportExp5, aPassportExp6, aPassportExp7, aPassportExp8, aPassportExp9,
+            iPassportNo5, iPassportNo6, iPassportNo7, iPassportNo8, iPassportNo9;
+    TextView aPassportExp1, aPassportExp2,aPassportExp3, aPassportExp4, aPassportExp5, aPassportExp6, aPassportExp7, aPassportExp8, aPassportExp9,
             iPassportExp1, iPassportExp2, iPassportExp3, iPassportExp4, iPassportExp5, iPassportExp6, iPassportExp7,
             iPassportExp8, iPassportExp9, cPassportExp1, cPassportExp2, cPassportExp3, cPassportExp4, cPassportExp5,
             cPassportExp6, cPassportExp7, cPassportExp8;
-
     int tag;
 
     @Override
@@ -228,15 +227,6 @@ public class PassengerDetails extends AppCompatActivity
         aPassportNo8 = findViewById(R.id.aPassportNo8);
         aPassportNo9 = findViewById(R.id.aPassportNo9);
 
-        aPassportExp1 = findViewById(R.id.aPassportEx1);
-        aPassportExp2 = findViewById(R.id.aPassportEx2);
-        aPassportExp3 = findViewById(R.id.aPassportEx3);
-        aPassportExp4 = findViewById(R.id.aPassportEx4);
-        aPassportExp5 = findViewById(R.id.aPassportEx5);
-        aPassportExp6 = findViewById(R.id.aPassportEx6);
-        aPassportExp7 = findViewById(R.id.aPassportEx7);
-        aPassportExp8 = findViewById(R.id.aPassportEx8);
-        aPassportExp9 = findViewById(R.id.aPassportEx9);
 
         //Children Passport numbers and their Passport Expiry dates
         cPassportNo1 = findViewById(R.id.cPassportNo1);
@@ -420,6 +410,380 @@ public class PassengerDetails extends AppCompatActivity
                                            }
                                        }
         );
+        aPassportExp1.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=10;
+            }
+        });
+        aPassportExp2.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=11;
+            }
+        });
+        aPassportExp3.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=12;
+            }
+        });
+        aPassportExp4.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=13;
+            }
+        });
+
+        aPassportExp5.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=14;
+            }
+        });
+
+        aPassportExp6.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=15;
+            }
+        });
+
+        aPassportExp7.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=16;
+            }
+        });
+
+        aPassportExp8.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=17;
+            }
+        });
+
+        aPassportExp9.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=18;
+            }
+        });
+
+        iPassportExp1.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=19;
+            }
+        });
+        iPassportExp2.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=20;
+            }
+        });
+        iPassportExp3.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=21;
+            }
+        });
+        iPassportExp4.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=22;
+            }
+        });
+        iPassportExp5.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=23;
+            }
+        });
+        iPassportExp6.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=24;
+            }
+        });
+        iPassportExp7.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=25;
+            }
+        });
+        iPassportExp8.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=26;
+            }
+        });
+        iPassportExp9.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=27;
+            }
+        });
+        cPassportExp1.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=28;
+            }
+        });
+        cPassportExp2.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=29;
+            }
+        });
+        cPassportExp3.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=30;
+            }
+        });
+        cPassportExp4.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=31;
+            }
+        });
+        cPassportExp5.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=32;
+            }
+        });
+        cPassportExp6.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=33;
+            }
+        });
+        cPassportExp7.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=34;
+            }
+        });
+
+        cPassportExp8.setOnClickListener(new OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PassengerDetails.this, date, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
+
+                datePickerDialog.show();
+
+                tag=35;
+            }
+        });
+
+
+
 
 
         TotalFare = findViewById(R.id.TotalFare);
@@ -1696,7 +2060,9 @@ public class PassengerDetails extends AppCompatActivity
         });
     }
 
-    public void updateLabel(int tag) {
+    public void updateLabel(int tag)
+    {
+        String date;
         String myFormat = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         Log.i("Tag", String.valueOf(tag));
@@ -1728,6 +2094,58 @@ public class PassengerDetails extends AppCompatActivity
                 break;
             case 9:
                 infant_DOB9.setText(sdf.format(calendar.getTime()));
+                break;
+            case 10: aPassportExp1.setText(sdf.format(calendar.getTime()));
+                break;
+            case 11: aPassportExp2.setText(sdf.format(calendar.getTime()));
+                break;
+            case 12: aPassportExp3.setText(sdf.format(calendar.getTime()));
+                break;
+            case 13: aPassportExp4.setText(sdf.format(calendar.getTime()));
+                break;
+            case 14: aPassportExp5.setText(sdf.format(calendar.getTime()));
+                break;
+            case 15: aPassportExp6.setText(sdf.format(calendar.getTime()));
+                break;
+            case 16: aPassportExp7.setText(sdf.format(calendar.getTime()));
+                break;
+            case 17: aPassportExp8.setText(sdf.format(calendar.getTime()));
+                break;
+            case 18: aPassportExp9.setText(sdf.format(calendar.getTime()));
+                break;
+            case 19: iPassportExp1.setText(sdf.format(calendar.getTime()));
+                break;
+            case 20: iPassportExp2.setText(sdf.format(calendar.getTime()));
+                break;
+            case 21: iPassportExp3.setText(sdf.format(calendar.getTime()));
+                break;
+            case 22: iPassportExp4.setText(sdf.format(calendar.getTime()));
+                break;
+            case 23: iPassportExp5.setText(sdf.format(calendar.getTime()));
+                break;
+            case 24: iPassportExp6.setText(sdf.format(calendar.getTime()));
+                break;
+            case 25: iPassportExp7.setText(sdf.format(calendar.getTime()));
+                break;
+            case 26: iPassportExp8.setText(sdf.format(calendar.getTime()));
+                break;
+            case 27: iPassportExp9.setText(sdf.format(calendar.getTime()));
+                break;
+            case 28: cPassportExp1.setText(sdf.format(calendar.getTime()));
+                break;
+            case 29: cPassportExp2.setText(sdf.format(calendar.getTime()));
+                break;
+            case 30: cPassportExp3.setText(sdf.format(calendar.getTime()));
+                break;
+            case 31: cPassportExp4.setText(sdf.format(calendar.getTime()));
+                break;
+            case 32: cPassportExp5.setText(sdf.format(calendar.getTime()));
+                break;
+            case 33: cPassportExp6.setText(sdf.format(calendar.getTime()));
+                break;
+            case 34: cPassportExp7.setText(sdf.format(calendar.getTime()));
+                break;
+            case 35: cPassportExp8.setText(sdf.format(calendar.getTime()));
                 break;
         }//End of Switch
     }//End of updateLabel method
@@ -2493,7 +2911,7 @@ public class PassengerDetails extends AppCompatActivity
                                     String t=TotalFare.getText().toString().substring(1);
 
 
-                                    TotalFare.setText(String.valueOf(Integer.parseInt(TotalFare.getText().toString().substring(1))-my_amount));//int publishedFare;
+                                    TotalFare.setText("₹"+String.valueOf(Integer.parseInt(TotalFare.getText().toString().substring(1))-my_amount));//int publishedFare;
                                     //set couponValidity to zero.Since Coupon has been used once it not valid now
                                     couponValidity = 0;
                                     Toast.makeText(PassengerDetails.this, "Coupon Code is valid for once", Toast.LENGTH_SHORT);
