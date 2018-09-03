@@ -166,7 +166,8 @@ public class FlightbookingActivity extends AppCompatActivity
         citynameFROM = getIntent().getStringExtra("cityname");
 
             countryTO=getIntent().getStringExtra("Countrydes");//countryname
-            countrynameFROm=getIntent().getStringExtra("countryname");
+
+           countrynameFROm=getIntent().getStringExtra("countryname");
            SharedPreferences.Editor editor= sharedPreferences.edit();
 
         editor.putString("AirportCodeFrom",AirportcodeFROM);
@@ -437,10 +438,14 @@ public class FlightbookingActivity extends AppCompatActivity
                     String depadate = text_departure.getText().toString();
                     String retunrdate = text_return.getText().toString();
                     String cabinclas = String.valueOf(spn_count);
+                    /*In case of International flights country will be other than India
+                    *Example: countryTo will be Dubai(Airport code:DXB)
+                     * and countryFrom will be Delhi(Airport code:DEL)
+                    */
+
                     if ((linear_return.isShown()) && ((!text_fromcountry.getText().toString().equals("India")) || (!text_tocountry.getText().toString().equals("India"))))
                     {
-                        Intent in = new Intent(FlightbookingActivity.this, RoundTripActivity.class);
-                        //In case of International flights country will be other than India
+                        Intent in = new Intent(FlightbookingActivity.this, International_Roundtrip.class);
                         in.putExtra("countryTo",countryTO);
                         in.putExtra("countryFrom",countrynameFROm);
                         in.putExtra("originround", fromc);
@@ -453,6 +458,21 @@ public class FlightbookingActivity extends AppCompatActivity
                         in.putExtra("cabinclass", cabinclas);
                         startActivity(in);
                     }
+//                    else if(!text_fromcountry.getText().toString().equals("India")||!text_tocountry.getText().toString().equals("India"))
+//                    {
+//                        Intent in = new Intent(FlightbookingActivity.this,International_Roundtrip.class);
+//                        in.putExtra("countryTo",text_tocountry.getText().toString());
+//                        in.putExtra("countryFrom",text_fromcountry.getText().toString());
+//                        in.putExtra("adultCount",adultc);
+//                        in.putExtra("childCount",childc);
+//                        in.putExtra("infantCount",infacntc);
+//                        in.putExtra("origin",fromc);
+//                        in.putExtra("destination",toc);
+//                        in.putExtra("flightCabinClass",cabinclas);
+//                        in.putExtra("departureDate",depadate);
+//                        in.putExtra("returnDate",retunrdate);
+//                        startActivity(in);
+//                    }
                     else
                         {
                         if (linear_return.isShown())
@@ -503,16 +523,7 @@ public class FlightbookingActivity extends AppCompatActivity
                             inr.putExtra("countryFrom",countrynameFROm);
                             inr.putExtra("countryTo",countryTO);
                             startActivity(inr);
-                          //      Intent inr= new Intent(FlightbookingActivity.this,SomeEarlierMerchantActivity.class);
-//                                inr.putExtra("originround", "Delhi");
-//                              inr.putExtra("destinationround", "BLR");
-//                            inr.putExtra("departureround", "2018-08-26");
-//                            inr.putExtra("adultround", "1");
-//                            inr.putExtra("childround", "0");
-//                            inr.putExtra("infantsround", "0");
-//                            inr.putExtra("cabinclass", "1");
-//
-//                                startActivity(inr);
+
                         }
                     }
                 }

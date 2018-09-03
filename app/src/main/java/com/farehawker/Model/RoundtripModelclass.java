@@ -1,31 +1,38 @@
 package com.farehawker.Model;
 
 /**
- * Created by 1 on 3/19/2018.
+ * Created by FareHawker on 3/19/2018.
  */
 
-public class RoundtripModelclass {
+public class RoundtripModelclass
+{
     private String flightnameneway,codeneway,numberneway,
             origintimeneway,diparturetimeneway,
             stopsneway,priceneway,seatsleftneway,calculationneway;
     private int imgageoneway;
     private String resultindex_oneward;
-    public int getImgaoneway() {
+    public int getImgaoneway()
+    {
         return imgageoneway;
     }
-    public void setImgageoneway(int imgageoneway) {
+    public void setImgageoneway(int imgageoneway)
+    {
         this.imgageoneway = imgageoneway;
     }
-    public String getFlightnameneway() {
+    public String getFlightnameneway()
+    {
         return flightnameneway;
     }
-    public void setFlightnameneway(String flightnameneway) {
+    public void setFlightnameneway(String flightnameneway)
+    {
         this.flightnameneway = flightnameneway;
     }
-    public String getCodeneway() {
+    public String getCodeneway()
+    {
         return codeneway;
     }
-    public void setCodeneway(String codeneway) {
+    public void setCodeneway(String codeneway)
+    {
         this.codeneway = codeneway;
     }
     public String getNumberneway() {
@@ -40,31 +47,40 @@ public class RoundtripModelclass {
     public void setOrigintimeneway(String origintimeneway) {
         this.origintimeneway = origintimeneway;
     }
-    public String getDiparturetimeneway() {
+    public String getDiparturetimeneway()
+    {
         return diparturetimeneway;
     }
-    public void setDiparturetimeneway(String diparturetimeneway) {
+    public void setDiparturetimeneway(String diparturetimeneway)
+    {
         this.diparturetimeneway = diparturetimeneway;
     }
-    public String getStopsneway() {
+    public String getStopsneway()
+    {
         return stopsneway;
     }
-    public void setStopsneway(String stopsneway) {
+    public void setStopsneway(String stopsneway)
+    {
         this.stopsneway = stopsneway;
     }
-    public String getSeatsleftneway() {
+    public String getSeatsleftneway()
+    {
         return seatsleftneway;
     }
-    public void setSeatsleftneway(String seatsleftneway) {
+    public void setSeatsleftneway(String seatsleftneway)
+    {
         this.seatsleftneway = seatsleftneway;
     }
-    public String getPriceneway() {
+    public String getPriceneway()
+    {
         return priceneway;
     }
-    public void setPriceneway(String priceneway) {
+    public void setPriceneway(String priceneway)
+    {
         this.priceneway = priceneway;
     }
-    public String getCalculationneway() {
+    public String getCalculationneway()
+    {
         return calculationneway;
     }
     public void setCalculationneway(String calculationneway) {
