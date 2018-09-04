@@ -6,9 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.farehawker.International_Roundtrip">
-<TextView
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/international_round_trips"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="20sp"
-    android:text=" This is International Round Trip"/>
+    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>

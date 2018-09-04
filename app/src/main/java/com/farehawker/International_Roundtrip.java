@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.sip.SipSession;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -17,22 +18,27 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.farehawker.Model.RoundtripModelclass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class International_Roundtrip extends AppCompatActivity
 {
+    List<RoundtripModelclass> roundtripModelclassList=new ArrayList<RoundtripModelclass>();
+    RecyclerView recyclerView;
     ProgressDialog progressDialog;
     String traceId;
     String TAG="International_Roundtrip";
     Intent intent;
     String endUserIp="216.10.251.69";
     String URL="http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
-    String TokenId="5fb88b65-91ef-4566-a9c8-1556e54e009d";
+    String TokenId="ad40ebb1-585a-4f3f-a9ba-a3f14b744dfc";
     String adultCount="1";
     String childCount="0";
     String infantCount="0";
@@ -72,7 +78,7 @@ public class International_Roundtrip extends AppCompatActivity
         {
             /*
             * {"EndUserIp":"216.10.251.69","TokenId":"51e12095-4692-40fe-9540-fc5ebe621008","AdultCount":"1","ChildCount":"0","InfantCount":"0","DirectFlight":"false","OneStopFlight":"false","JourneyType":"1","Segments":[{"Origin":"DEL","Destination":"DXB","FlightCabinClass":"1","PreferredDepartureTime":"2018-08-22T00:00:00"}]}*/
-            /*{"EndUserIp":"216.10.251.69","TokenId":"5fb88b65-91ef-4566-a9c8-1556e54e009d","AdultCount":"1","ChildCount":"0","InfantCount":"0","IsDomestic":"false","DirectFlight":"false","OneStopFlight":"false","JourneyType":"2","Segments":[{"Origin":"DEL","Destination":"DXB","FlightCabinClass":"1","PreferredArrivalTime":"2018-09-04T00:00:00","PreferredDepartureTime":"2018-09-04T00:00:00"},{"Origin":"DXB","Destination":"DEL","FlightCabinClass":"1","PreferredDepartureTime":"2018-09-05T00:00:00","PreferredArrivalTime":"2018-09-05T00:00:00"}]}*/
+            /*{"EndUserIp":"216.10.251.69","TokenId":"ad40ebb1-585a-4f3f-a9ba-a3f14b744dfc","AdultCount":"1","ChildCount":"0","InfantCount":"0","IsDomestic":"false","DirectFlight":"false","OneStopFlight":"false","JourneyType":"2","Segments":[{"Origin":"DEL","Destination":"DXB","FlightCabinClass":"1","PreferredArrivalTime":"2018-09-04T00:00:00","PreferredDepartureTime":"2018-09-04T00:00:00"},{"Origin":"DXB","Destination":"DEL","FlightCabinClass":"1","PreferredDepartureTime":"2018-09-05T00:00:00","PreferredArrivalTime":"2018-09-05T00:00:00"}]}*/
             RequestQueue requestQueue= Volley.newRequestQueue(this);
             JSONObject jsonObject=new JSONObject();
             jsonObject.put("AdultCount",adultCount);
@@ -81,6 +87,15 @@ public class International_Roundtrip extends AppCompatActivity
             jsonObject.put("isDomestic",false);
             jsonObject.put("DirectFlight",directFlight);
             jsonObject.put("OneStopFlight",oneStopFlight);
+            /*
+            JourneyType
+            JourneyType
+            One way 1
+            return 2
+            multi stop 3
+            Advance search 4
+            Special return 5
+             */
             jsonObject.put("JourneyType",2);
             jsonObject.put("EndUserIp","216.10.251.69");
             jsonObject.put("TokenId",TokenId);
@@ -121,7 +136,6 @@ public class International_Roundtrip extends AppCompatActivity
                         jsonObject2=response.getJSONObject("Response");
 
                         Log.i(TAG,response.toString());
-
                         traceId=jsonObject2.getString("TraceId");
 
                         jsonArray1=jsonObject2.getJSONArray("Results");
@@ -131,8 +145,31 @@ public class International_Roundtrip extends AppCompatActivity
 
                         for(int i=0;i<jsonArray2.length();i++)
                         {
+                            RoundtripModelclass roundtripModelclass= new RoundtripModelclass();
+                            JSONObject jsonObject3 = new JSONObject();
+                            jsonObject3=jsonArray2.getJSONObject(i);
+                            roundtripModelclass.setResultindex_oneward(jsonObject3.getString("ResultIndex"));
+                            JSONObject jsonObject4=jsonObject3.getJSONObject("Fare");
+                            roundtripModelclass.setPriceneway(jsonObject4.getString("PublishedFare"));
+                            JSONArray jsonArray3 = new JSONArray();
+                            jsonArray3=jsonObject3.getJSONArray("Segments");
+                            //This json array(Segment[0])  Contains origin to destination
+                            JSONArray jsonArray4=jsonArray3.getJSONArray(0);
 
-                        }
+                            JSONObject jsonObject5 =new JSONObject();
+                            jsonObject5=jsonArray4.getJSONObject(0);
+                            JSONObject jsonObject6=jsonObject5.getJSONObject("Airline");
+                            roundtripModelclass.setCodeneway(jsonObject6.getString("AirlineCode"));
+                            roundtripModelclass.setFlightnameneway(jsonObject6.getString("AirlineName"));
+
+                            roundtripModelclass.setSeatsleftneway(jsonObject5.getString("NoOfSeatAvailable"));
+                            roundtripModelclass.setDiparturetimeneway();
+                            jsonArray4.getJSONObject(1);
+
+                            //This json array(Segment[1]) contains destination to origin
+                            JSONArray jsonArray5=jsonArray3.getJSONArray(1);
+
+                        }//End of for loop
 
 
 
