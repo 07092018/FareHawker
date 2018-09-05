@@ -218,7 +218,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             }
         });
         Toast.makeText(RoundTripActivity.this, "mag" + originacc + "\n" + destinationacc + "\n" + adultacc + "\n" + childacc + "\n" + infantacc + "\n" + cabinacc + "\n" + depdateacc + "\n" + returndateacc, Toast.LENGTH_LONG).show();
-    }
+    }//End of onCreate method
 
     private void makeJsonObjectRequest() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -327,7 +327,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
                             roundleftlist.add(roundset);
                             Log.wtf("printlog", roundset.toString());
                             progressDialog.dismiss();
-                        }
+                        }//End of for loop
                         JSONArray resulsreturnarray = resultarray.getJSONArray(1);
                         for (int j = 0; j < resulsreturnarray.length(); j++)
                         {
@@ -423,7 +423,8 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
     }
 //Right side flights clicked
     @Override
-    public void itemClicked(View view, int position) {
+    public void itemClicked(View view, int position)
+    {
         RoundtripreturnModelclass rightmodel = (RoundtripreturnModelclass) rightadaptor.getItem(position);
         Linvisible.setVisibility(View.VISIBLE);
         finalprice = Integer.parseInt(rightmodel.getReturnroundtriponewayprice());
