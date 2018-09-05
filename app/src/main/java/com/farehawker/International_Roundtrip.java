@@ -30,6 +30,7 @@ import java.util.List;
 
 public class International_Roundtrip extends AppCompatActivity
 {
+    JSONArray segments = new JSONArray();
     List<RoundtripModelclass> roundtripModelclassList=new ArrayList<RoundtripModelclass>();
     RecyclerView recyclerView;
     ProgressDialog progressDialog;
@@ -38,7 +39,7 @@ public class International_Roundtrip extends AppCompatActivity
     Intent intent;
     String endUserIp="216.10.251.69";
     String URL="http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
-    String TokenId="ad40ebb1-585a-4f3f-a9ba-a3f14b744dfc";
+    String TokenId="f7f8c9ce-1f9a-4367-9e87-9b67bc30005e";
     String adultCount="1";
     String childCount="0";
     String infantCount="0";
@@ -78,7 +79,7 @@ public class International_Roundtrip extends AppCompatActivity
         {
             /*
             * {"EndUserIp":"216.10.251.69","TokenId":"51e12095-4692-40fe-9540-fc5ebe621008","AdultCount":"1","ChildCount":"0","InfantCount":"0","DirectFlight":"false","OneStopFlight":"false","JourneyType":"1","Segments":[{"Origin":"DEL","Destination":"DXB","FlightCabinClass":"1","PreferredDepartureTime":"2018-08-22T00:00:00"}]}*/
-            /*{"EndUserIp":"216.10.251.69","TokenId":"ad40ebb1-585a-4f3f-a9ba-a3f14b744dfc","AdultCount":"1","ChildCount":"0","InfantCount":"0","IsDomestic":"false","DirectFlight":"false","OneStopFlight":"false","JourneyType":"2","Segments":[{"Origin":"DEL","Destination":"DXB","FlightCabinClass":"1","PreferredArrivalTime":"2018-09-04T00:00:00","PreferredDepartureTime":"2018-09-04T00:00:00"},{"Origin":"DXB","Destination":"DEL","FlightCabinClass":"1","PreferredDepartureTime":"2018-09-05T00:00:00","PreferredArrivalTime":"2018-09-05T00:00:00"}]}*/
+            /*{"EndUserIp":"216.10.251.69","TokenId":"f7f8c9ce-1f9a-4367-9e87-9b67bc30005e","AdultCount":"1","ChildCount":"0","InfantCount":"0","IsDomestic":"false","DirectFlight":"false","OneStopFlight":"false","JourneyType":"2","Segments":[{"Origin":"DEL","Destination":"DXB","FlightCabinClass":"1","PreferredArrivalTime":"2018-09-04T00:00:00","PreferredDepartureTime":"2018-09-04T00:00:00"},{"Origin":"DXB","Destination":"DEL","FlightCabinClass":"1","PreferredDepartureTime":"2018-09-05T00:00:00","PreferredArrivalTime":"2018-09-05T00:00:00"}]}*/
             RequestQueue requestQueue= Volley.newRequestQueue(this);
             JSONObject jsonObject=new JSONObject();
             jsonObject.put("AdultCount",adultCount);
@@ -91,8 +92,8 @@ public class International_Roundtrip extends AppCompatActivity
             JourneyType
             JourneyType
             One way 1
-            return 2
-            multi stop 3
+            Return 2
+            Multi stop 3
             Advance search 4
             Special return 5
              */
@@ -119,6 +120,7 @@ public class International_Roundtrip extends AppCompatActivity
 
             jsonObject.put("Segments",jsonArray);
             jsonObject.put("Sources",JSONObject.NULL);
+
             progressDialog=new ProgressDialog(this);
             progressDialog.setMessage("Loading please wait...");
             progressDialog.show();
@@ -137,8 +139,9 @@ public class International_Roundtrip extends AppCompatActivity
 
                         Log.i(TAG,response.toString());
                         traceId=jsonObject2.getString("TraceId");
-
+                        Log.i("TraceId141",traceId);
                         jsonArray1=jsonObject2.getJSONArray("Results");
+
                         Log.i(TAG,jsonArray1.toString());
                         Log.i("0",jsonArray1.getJSONArray(0).toString());
                         JSONArray jsonArray2=jsonArray1.getJSONArray(0);
@@ -151,32 +154,61 @@ public class International_Roundtrip extends AppCompatActivity
                             roundtripModelclass.setResultindex_oneward(jsonObject3.getString("ResultIndex"));
                             JSONObject jsonObject4=jsonObject3.getJSONObject("Fare");
                             roundtripModelclass.setPriceneway(jsonObject4.getString("PublishedFare"));
-                            JSONArray jsonArray3 = new JSONArray();
-                            jsonArray3=jsonObject3.getJSONArray("Segments");
-                            //This json array(Segment[0])  Contains origin to destination
-                            JSONArray jsonArray4=jsonArray3.getJSONArray(0);
+                            Log.i("PublishedFare",jsonObject4.getString("PublishedFare"));
 
-                            JSONObject jsonObject5 =new JSONObject();
-                            jsonObject5=jsonArray4.getJSONObject(0);
-                            JSONObject jsonObject6=jsonObject5.getJSONObject("Airline");
-                            roundtripModelclass.setCodeneway(jsonObject6.getString("AirlineCode"));
-                            roundtripModelclass.setFlightnameneway(jsonObject6.getString("AirlineName"));
+                            segments=jsonObject3.getJSONArray("Segments");
+                            //This JSON array(Segment[0])  contains origin to destination
+                            /*
+                            Suppose origin is delhi(DEL) and destination is Dubai(DXB)
+                             .Then,
+                             Array 1(segment[0]) contains the flight details of delhi to Dubai(DXB).
+                             Array 2(segment[1]) contains the flight details of Dubai to Delhi(DEL).
+                             */
+                            //This array contains the origin  to destination flight details
+                            JSONArray segment1=segments.getJSONArray(0);
 
-                            roundtripModelclass.setSeatsleftneway(jsonObject5.getString("NoOfSeatAvailable"));
-                            roundtripModelclass.setDiparturetimeneway();
-                            jsonArray4.getJSONObject(1);
 
-                            //This json array(Segment[1]) contains destination to origin
-                            JSONArray jsonArray5=jsonArray3.getJSONArray(1);
+                            List<RoundtripModelclass> flights=new ArrayList<RoundtripModelclass>();
+                            RoundtripModelclass roundtripModelclass1= new RoundtripModelclass();
+                            for(int j=0;j<segment1.length();j++)
+                            {
+                                JSONObject jsonObject5=segment1.getJSONObject(j);
+                                roundtripModelclass1.setSeatsleftneway(jsonObject5.getString("NoOfSeatAvailable"));
+                                Log.i("NoOfSeatAvailable",jsonObject5.getString("NoOfSeatAvailable"));
+                                /*
+                                * Airline
+                                * Airline is a JSON object.Airline contains the following
+                                * details:
+                                * 1. Airline
+                                * 2. Airline name
+                                * 3.Airline Code
+                                * 4.Flight Number
+                                * */
+                                JSONObject airline=jsonObject5.getJSONObject("Airline");
+                                Log.i("Airline",airline.toString());
+                                roundtripModelclass1.setFlightnameneway(airline.getString("AirlineName"));
+                                Log.i("AirlineName",airline.getString("AirlineName"));
+                                roundtripModelclass1.setCodeneway(airline.getString("AirlineCode"));
+                                Log.i("AirlineCode",airline.getString("AirlineCode"));
+                                roundtripModelclass1.setNumberneway(airline.getString("FlightNumber"));
+                                Log.i("FlightNumber",airline.getString("FlightNumber"));
+                                roundtripModelclass1.setStopsneway(jsonObject5.getString("StopPoint"));
+                                Log.i("StopPoint",jsonObject5.getString("StopPoint"));
+                                flights.add(roundtripModelclass1);
+                            }//End of for loop
+                            for(int j=0;i<flights.size();i++)
+                            {
+                                Log.i("Flight Details",flights.get(j).toString());
+                            }//End of for loop
+                            }
+                            //This array contains the destination  to origin flight details
+                            JSONArray jsonArray5= segments.getJSONArray(1);
 
                         }//End of for loop
-
-
-
-                    } catch (Exception e)
+                      catch (JSONException e)
                     {
-                        Toast.makeText(International_Roundtrip.this,"on line 90",Toast.LENGTH_LONG);
-                        }
+                        Log.i("jsonException",e.toString());
+                    }
 
                 }
             }, new Response.ErrorListener() {
