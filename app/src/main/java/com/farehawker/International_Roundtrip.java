@@ -38,9 +38,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class International_Roundtrip extends AppCompatActivity implements ClickListener, LeftclickI {
+public class International_Roundtrip extends AppCompatActivity implements ClickListener, LeftclickI
+{
     int flightImage;
-
     String flightCode;
     String flightName;
     String flightNumber;
@@ -71,13 +71,13 @@ public class International_Roundtrip extends AppCompatActivity implements ClickL
     TextView text_price;
     LinearLayout Linvisible;
     TextView Book_btn;
-    String EndUserIp_Round = "216.10.251.69";
-    String TokenId_Round = "df94e420-f631-4463-9546-fc3dd685e222";
+    String EndUserIp_Round="216.10.251.69";
+    String TokenId_Round="7c3d01bd-cac5-4875-8b77-1282ec84ab0e";
     String originacc, destinationacc, adultacc, childacc, infantacc, cabinacc, depdateacc, returndateacc;
     String urlJsonroundtrip = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
     private int flightImageR;
     String countryTo;
-
+    TextView originT,destinationT,origin2T,destination2T;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -85,6 +85,10 @@ public class International_Roundtrip extends AppCompatActivity implements ClickL
         setContentView(R.layout.activity_round_trip);
         text_price = (TextView) findViewById(R.id.price_text);
         Book_btn = (TextView) findViewById(R.id.book_btn);
+        originT=findViewById(R.id.activity_textoriginlocation);
+        destinationT=findViewById(R.id.activity_textdestination);
+        origin2T=findViewById(R.id.returndestinationlocation);
+        destination2T=findViewById(R.id.returnoriginlocation);
         Book_btn.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -123,8 +127,6 @@ public class International_Roundtrip extends AppCompatActivity implements ClickL
                 in.putExtra("flightNameR",flightNameR);
                 in.putExtra("flightNumberR",flightNumberR);
                 in.putExtra("countryTo",countryTo);
-
-
                 startActivity(in);
             }
         });
@@ -141,8 +143,7 @@ public class International_Roundtrip extends AppCompatActivity implements ClickL
 
         //get the data from bundle
         Intent intent = getIntent();
-        originacc = intent.getStringExtra("originround");
-        destinationacc = intent.getStringExtra("destinationround");
+        originacc = intent.getStringExtra("originround");destinationacc = intent.getStringExtra("destinationround");
         adultacc = intent.getStringExtra("adultround");
         childacc = intent.getStringExtra("childround");
         infantacc = intent.getStringExtra("infantsround");
@@ -150,6 +151,17 @@ public class International_Roundtrip extends AppCompatActivity implements ClickL
         depdateacc = intent.getStringExtra("departureround");
         returndateacc = intent.getStringExtra("returnround");
         countryTo=intent.getStringExtra("countryTo");
+
+        Log.i("",depdateacc.substring(3,4));
+        depdateacc=depdateacc.substring(6,10)+"-"+depdateacc.substring(3,5)+"-"+depdateacc.substring(0,2);
+        returndateacc=returndateacc.substring(6,10)+"-"+returndateacc.substring(3,5)+"-"+returndateacc.substring(0,2);
+
+        originT.setText(originacc);
+        destinationT.setText(destinationacc);
+        origin2T.setText(destinationacc);
+        destination2T.setText(originacc);
+
+        //destinationacc.
 
         makeJsonObjectRequest();
         onward_spin = (Spinner) findViewById(R.id.originfilter);
@@ -250,7 +262,7 @@ public class International_Roundtrip extends AppCompatActivity implements ClickL
             //first object
             JSONObject jsonobjectt = new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId", "df94e420-f631-4463-9546-fc3dd685e222");
+            jsonobjectt.put("TokenId", "7c3d01bd-cac5-4875-8b77-1282ec84ab0e");
             jsonobjectt.put("AdultCount", adultacc);
             jsonobjectt.put("ChildCount", childacc);
             jsonobjectt.put("InfantCount", infantacc);
@@ -269,14 +281,13 @@ public class International_Roundtrip extends AppCompatActivity implements ClickL
                 public void onResponse(JSONObject response) {
 
                     Log.i("LOG_VOLLEY", response.toString());
-                    try {
+                    try
+                    {
                         JSONObject firstobjs = response.getJSONObject("Response");
                         traceid = firstobjs.getString("TraceId");
                         Log.i("traceid273",traceid.toString());
                         JSONArray resultarray = firstobjs.getJSONArray("Results");
                         JSONArray resulsetarray = resultarray.getJSONArray(0);
-
-
                         for (int i = 0; i < resulsetarray.length(); i++)
                         {
                             RoundtripModelclass roundset = new RoundtripModelclass();

@@ -79,9 +79,9 @@ public class FlightbookingActivity extends AppCompatActivity
                 fd = "0" +selectedDay;
             }
             departurewron= Integer.parseInt(fd);
-            String departure_data= String.valueOf(new StringBuilder().append(selectedYear).append("-").append((fm)).append("-").append(fd));
+            String departure_data= String.valueOf(new StringBuilder().append(fd).append("-").append((fm)).append("-").append(selectedYear));
 
-            text_departure.setText(new StringBuilder().append(selectedYear).append("-").append((fm)).append("-").append(fd));
+            text_departure.setText(new StringBuilder().append(fd).append("-").append((fm)).append("-").append(selectedYear));
         }
     };
     //for Return trip date
@@ -101,7 +101,7 @@ public class FlightbookingActivity extends AppCompatActivity
                 rfd = "0" +xselectedDay;
             }
             returwrong= Integer.parseInt(rfd);
-            text_return.setText(new StringBuilder().append(xselectedYear).append("-").append((rfm)).append("-").append(rfd));
+            text_return.setText(new StringBuilder().append(rfd).append("-").append((rfm)).append("-").append(xselectedYear));
         }
     };
 
@@ -141,7 +141,7 @@ public class FlightbookingActivity extends AppCompatActivity
         text_departure = (TextView) findViewById(R.id.txt_departureday);
         text_return = (TextView) findViewById(R.id.txt_returnday);
         Calendar cc = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-YYYY");
         String formattedDate = df.format(cc.getTime());
 
         // System.out.println("Currrent Date Time : "+formattedDate);
