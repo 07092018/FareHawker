@@ -5,9 +5,16 @@ import android.content.Intent;
 import android.net.sip.SipSession;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -18,7 +25,10 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.farehawker.Adaptors.RoundtripOriginAdaptor;
+import com.farehawker.Adaptors.RoundtripReturnAdaptor;
 import com.farehawker.Model.RoundtripModelclass;
+import com.farehawker.Model.RoundtripreturnModelclass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,212 +38,440 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class International_Roundtrip extends AppCompatActivity
-{
-    JSONArray segments = new JSONArray();
-    List<RoundtripModelclass> roundtripModelclassList=new ArrayList<RoundtripModelclass>();
-    RecyclerView recyclerView;
-    ProgressDialog progressDialog;
-    String traceId;
-    String TAG="International_Roundtrip";
+public class International_Roundtrip extends AppCompatActivity implements ClickListener, LeftclickI {
+    int flightImage;
+
+    String flightCode;
+    String flightName;
+    String flightNumber;
+    String flightSeatLeft;
+    String flightDepartureTime;
+    String flightPrice;
+    String flightArrivalTime;
+    String flightCodeR;
+    String flightNameR;
+    String flightNumberR;
+    String flightSeatLeftR;
+    String flightDepartureTimeR;
+    String flightPriceR;
+    String flightArrivalTimeR;
     Intent intent;
-    String endUserIp="216.10.251.69";
-    String URL="http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
-    String TokenId="f7f8c9ce-1f9a-4367-9e87-9b67bc30005e";
-    String adultCount="1";
-    String childCount="0";
-    String infantCount="0";
-    String countryTo,countryFrom,origin,destination,departureDate,returnDate,cabinClass;
-    String noOfSeatsAvailable;
-    boolean directFlight=false;
-    boolean oneStopFlight=false;
-    int journeyType;
-    Double publishedFare;
-    String airlineCode;
+    String TAG = "International_Roundtrip";
+    Spinner onward_spin, return_spin;
+    private List<RoundtripModelclass> roundleftlist;
+    private List<RoundtripreturnModelclass> roundrightlist;
+    private RecyclerView recyclerViewleft, recyclerViewright;
+    private RoundtripOriginAdaptor leftadaptor;
+    private RoundtripReturnAdaptor rightadaptor;
+    String items, itemsr;
+    int priceid = 0;
+    int finalprice = 0;
+    String result_oneward, resutlt_retunr;
+    String traceid;
+    TextView text_price;
+    LinearLayout Linvisible;
+    TextView Book_btn;
+    String EndUserIp_Round = "216.10.251.69";
+    String TokenId_Round = "df94e420-f631-4463-9546-fc3dd685e222";
+    String originacc, destinationacc, adultacc, childacc, infantacc, cabinacc, depdateacc, returndateacc;
+    String urlJsonroundtrip = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
+    private int flightImageR;
+    String countryTo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_international__roundtrip);
+        setContentView(R.layout.activity_round_trip);
+        text_price = (TextView) findViewById(R.id.price_text);
+        Book_btn = (TextView) findViewById(R.id.book_btn);
+        Book_btn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent in = new Intent(International_Roundtrip.this, FarerulesActivity.class);
 
-        intent =getIntent();
+                in.putExtra("adultR", adultacc);
+                in.putExtra("childR", childacc);
+                in.putExtra("infantR", infantacc);
+                in.putExtra("result_oneward", result_oneward);
+                in.putExtra("result_return", resutlt_retunr);
+                in.putExtra("traceid", traceid);
+                in.putExtra("enduserip_round", EndUserIp_Round);
+                in.putExtra("tokenid_round", TokenId_Round);
+                in.putExtra("depart", depdateacc);
+
+                in.putExtra("originround", originacc);
+                in.putExtra("destinationround", destinationacc);
+                in.putExtra("cabinclass", cabinacc);
+                in.putExtra("departureround", depdateacc);
+                in.putExtra("returnround", returndateacc);
+                //First FLight Details
+                in.putExtra("flightPrice",flightPrice);
+                in.putExtra("flightDepartureTime",flightDepartureTime);
+                in.putExtra("flightArrivalTime",flightArrivalTime);
+                in.putExtra("flightCode",flightCode);
+                in.putExtra("flightName",flightName);
+                in.putExtra("flightNumber",flightNumber);
+
+                //Return FLight Details
+                in.putExtra("flightPriceR",flightPriceR);
+                in.putExtra("flightDepartureTimeR",flightDepartureTimeR);
+                in.putExtra("flightArrivalTimeR",flightArrivalTimeR);
+                in.putExtra("flightCodeR",flightCodeR);
+                in.putExtra("flightNameR",flightNameR);
+                in.putExtra("flightNumberR",flightNumberR);
+                in.putExtra("countryTo",countryTo);
+
+
+                startActivity(in);
+            }
+        });
+        Linvisible = (LinearLayout) findViewById(R.id.invisible_layout);
+
+        recyclerViewleft = (RecyclerView) findViewById(R.id.recyclerview_roundtriporigin);
+        RecyclerView.LayoutManager leftLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerViewleft.setLayoutManager(leftLayoutManager);
+        roundleftlist = new ArrayList<>();
+        roundrightlist = new ArrayList<>();
+        recyclerViewright = (RecyclerView) findViewById(R.id.recyclerview_roundtripreturn);
+        RecyclerView.LayoutManager rightLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerViewright.setLayoutManager(rightLayoutManager);
+
+        //get the data from bundle
+        Intent intent = getIntent();
+        originacc = intent.getStringExtra("originround");
+        destinationacc = intent.getStringExtra("destinationround");
+        adultacc = intent.getStringExtra("adultround");
+        childacc = intent.getStringExtra("childround");
+        infantacc = intent.getStringExtra("infantsround");
+        cabinacc = intent.getStringExtra("cabinclass");
+        depdateacc = intent.getStringExtra("departureround");
+        returndateacc = intent.getStringExtra("returnround");
         countryTo=intent.getStringExtra("countryTo");
-        countryFrom=intent.getStringExtra("countryFrom");
-        origin=intent.getStringExtra("originround");
-        destination=intent.getStringExtra("destinationround");
-        departureDate=intent.getStringExtra("departureround");
-        returnDate=intent.getStringExtra("returnround");
-        adultCount=intent.getStringExtra("adultround");
-        childCount=intent.getStringExtra("childround");
-        infantCount=intent.getStringExtra("infantsround");
-        cabinClass=intent.getStringExtra("cabinclass");
-        if(countryFrom==null)
-        {
-            countryFrom="India";
-        }
-        sendRequest();
+
+        makeJsonObjectRequest();
+        onward_spin = (Spinner) findViewById(R.id.originfilter);
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Filter");
+        categories.add("Departure");
+        categories.add("Stop");
+        categories.add("Airlines");
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // attaching data adapter to spinner
+        onward_spin.setAdapter(dataAdapter);
+        onward_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                items = parent.getItemAtPosition(position).toString();
+                if (items.equals("Filter")) {
+                    Toast.makeText(parent.getContext(), "Selected: " + items, Toast.LENGTH_SHORT).show();
+
+                } else if (items.equals("Departure")) {
+                    Toast.makeText(parent.getContext(), "Selected: " + items, Toast.LENGTH_SHORT).show();
+                } else if (items.equals("Stop")) {
+                    Toast.makeText(parent.getContext(), "Selected: " + items, Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(parent.getContext(), "Selected: " + items, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        return_spin = (Spinner) findViewById(R.id.returnfilter);
+        List<String> categoriesreturn = new ArrayList<String>();
+        categoriesreturn.add("Filter");
+        categoriesreturn.add("Departure");
+        categoriesreturn.add("Stop");
+        categoriesreturn.add("Airlines");
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapterreturn = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categoriesreturn);
+        // Drop down layout style - list view with radio button
+        dataAdapterreturn.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // attaching data adapter to spinner
+        return_spin.setAdapter(dataAdapterreturn);
+        return_spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                itemsr = parent.getItemAtPosition(position).toString();
+                if (itemsr.equals("Filter")) {
+                    Toast.makeText(parent.getContext(), "Selected: " + itemsr, Toast.LENGTH_SHORT).show();
+
+                } else if (itemsr.equals("Departure")) {
+                    Toast.makeText(parent.getContext(), "Selected: " + itemsr, Toast.LENGTH_SHORT).show();
+                } else if (itemsr.equals("Stop")) {
+                    Toast.makeText(parent.getContext(), "Selected: " + itemsr, Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(parent.getContext(), "Selected: " + itemsr, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+        Toast.makeText(International_Roundtrip.this, "mag" + originacc + "\n" + destinationacc + "\n" + adultacc + "\n" + childacc + "\n" + infantacc + "\n" + cabinacc + "\n" + depdateacc + "\n" + returndateacc, Toast.LENGTH_LONG).show();
     }//End of onCreate method
-    public void sendRequest()
-    {
-        try
-        {
-            /*
-            * {"EndUserIp":"216.10.251.69","TokenId":"51e12095-4692-40fe-9540-fc5ebe621008","AdultCount":"1","ChildCount":"0","InfantCount":"0","DirectFlight":"false","OneStopFlight":"false","JourneyType":"1","Segments":[{"Origin":"DEL","Destination":"DXB","FlightCabinClass":"1","PreferredDepartureTime":"2018-08-22T00:00:00"}]}*/
-            /*{"EndUserIp":"216.10.251.69","TokenId":"f7f8c9ce-1f9a-4367-9e87-9b67bc30005e","AdultCount":"1","ChildCount":"0","InfantCount":"0","IsDomestic":"false","DirectFlight":"false","OneStopFlight":"false","JourneyType":"2","Segments":[{"Origin":"DEL","Destination":"DXB","FlightCabinClass":"1","PreferredArrivalTime":"2018-09-04T00:00:00","PreferredDepartureTime":"2018-09-04T00:00:00"},{"Origin":"DXB","Destination":"DEL","FlightCabinClass":"1","PreferredDepartureTime":"2018-09-05T00:00:00","PreferredArrivalTime":"2018-09-05T00:00:00"}]}*/
-            RequestQueue requestQueue= Volley.newRequestQueue(this);
-            JSONObject jsonObject=new JSONObject();
-            jsonObject.put("AdultCount",adultCount);
-            jsonObject.put("ChildCount",childCount);
-            jsonObject.put("InfantCount",infantCount);
-            jsonObject.put("isDomestic",false);
-            jsonObject.put("DirectFlight",directFlight);
-            jsonObject.put("OneStopFlight",oneStopFlight);
-            /*
-            JourneyType
-            JourneyType
-            One way 1
-            Return 2
-            Multi stop 3
-            Advance search 4
-            Special return 5
-             */
-            jsonObject.put("JourneyType",2);
-            jsonObject.put("EndUserIp","216.10.251.69");
-            jsonObject.put("TokenId",TokenId);
-            jsonObject.put("PreferredAirlines",JSONObject.NULL);
-            final JSONArray jsonArray =new JSONArray();
-            JSONObject jsonObject1= new JSONObject();
-            jsonObject1.put("Origin",origin);
-            jsonObject1.put("Destination",destination);
-            jsonObject1.put("FlightCabinClass",cabinClass);
-            jsonObject1.put("PreferredArrivalTime",departureDate+"T00:00:00");
-            jsonObject1.put("PreferredDepartureTime",departureDate+"T00:00:00");
-            JSONObject jsonObject2=new JSONObject();
-            jsonObject2.put("Origin",destination);
-            jsonObject2.put("Destination",origin);
-            jsonObject2.put("FlightCabinClass",cabinClass);
-            jsonObject2.put("PreferredArrivalTime",returnDate+"T00:00:00");
-            jsonObject2.put("PreferredDepartureTime",returnDate+"T00:00:00");
 
-            jsonArray.put(jsonObject1);
-            jsonArray.put(jsonObject2);
+    private void makeJsonObjectRequest() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading please wait ...");
+        progressDialog.show();
+        try {
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-            jsonObject.put("Segments",jsonArray);
-            jsonObject.put("Sources",JSONObject.NULL);
+            //Start bottom
+            JSONObject objsagment = new JSONObject();
+            objsagment.put("Origin", originacc);
+            objsagment.put("Destination", destinationacc);
+            objsagment.put("FlightCabinClass", cabinacc);
+            objsagment.put("PreferredArrivalTime", depdateacc + "T00:00:00");
+            objsagment.put("PreferredDepartureTime", depdateacc + "T00:00:00");
+            JSONObject objectsegment2 = new JSONObject();
+            objectsegment2.put("Origin", destinationacc);
+            objectsegment2.put("Destination", originacc);
+            objectsegment2.put("FlightCabinClass", cabinacc);
+            objectsegment2.put("PreferredDepartureTime", returndateacc + "T00:00:00");
+            objectsegment2.put("PreferredArrivalTime", returndateacc + "T00:00:00");
 
-            progressDialog=new ProgressDialog(this);
-            progressDialog.setMessage("Loading please wait...");
-            progressDialog.show();
+            //bottom array
+            JSONArray Arraysagment = new JSONArray();
+            Arraysagment.put(objsagment);
+            Arraysagment.put(objectsegment2);
+            //first object
+            JSONObject jsonobjectt = new JSONObject();
+            jsonobjectt.put("EndUserIp", "216.10.251.69");
+            jsonobjectt.put("TokenId", "df94e420-f631-4463-9546-fc3dd685e222");
+            jsonobjectt.put("AdultCount", adultacc);
+            jsonobjectt.put("ChildCount", childacc);
+            jsonobjectt.put("InfantCount", infantacc);
+            jsonobjectt.put("IsDomestic", "false");
+            jsonobjectt.put("DirectFlight", "false");
+            jsonobjectt.put("OneStopFlight", "false");
+            jsonobjectt.put("JourneyType", "2");
+            jsonobjectt.put("PreferredAirlines", null);
+            jsonobjectt.put("Sources", null);
+            jsonobjectt.put("Segments", Arraysagment);
+            final String mRequestBody = jsonobjectt.toString();
+            Log.wtf("bodyprint", mRequestBody);
 
-            Log.i("Object",jsonObject.toString());
-
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, urlJsonroundtrip, jsonobjectt, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
+
+                    Log.i("LOG_VOLLEY", response.toString());
                     try {
-                        response.toString();
-                        progressDialog.dismiss();
-                        JSONObject jsonObject2= new JSONObject();
-                        JSONArray jsonArray1= new JSONArray();
-                        jsonObject2=response.getJSONObject("Response");
+                        JSONObject firstobjs = response.getJSONObject("Response");
+                        traceid = firstobjs.getString("TraceId");
+                        Log.i("traceid273",traceid.toString());
+                        JSONArray resultarray = firstobjs.getJSONArray("Results");
+                        JSONArray resulsetarray = resultarray.getJSONArray(0);
 
-                        Log.i(TAG,response.toString());
-                        traceId=jsonObject2.getString("TraceId");
-                        Log.i("TraceId141",traceId);
-                        jsonArray1=jsonObject2.getJSONArray("Results");
 
-                        Log.i(TAG,jsonArray1.toString());
-                        Log.i("0",jsonArray1.getJSONArray(0).toString());
-                        JSONArray jsonArray2=jsonArray1.getJSONArray(0);
-
-                        for(int i=0;i<jsonArray2.length();i++)
+                        for (int i = 0; i < resulsetarray.length(); i++)
                         {
-                            RoundtripModelclass roundtripModelclass= new RoundtripModelclass();
-                            JSONObject jsonObject3 = new JSONObject();
-                            jsonObject3=jsonArray2.getJSONObject(i);
-                            roundtripModelclass.setResultindex_oneward(jsonObject3.getString("ResultIndex"));
-                            JSONObject jsonObject4=jsonObject3.getJSONObject("Fare");
-                            roundtripModelclass.setPriceneway(jsonObject4.getString("PublishedFare"));
-                            Log.i("PublishedFare",jsonObject4.getString("PublishedFare"));
-
-                            segments=jsonObject3.getJSONArray("Segments");
-                            //This JSON array(Segment[0])  contains origin to destination
-                            /*
-                            Suppose origin is delhi(DEL) and destination is Dubai(DXB)
-                             .Then,
-                             Array 1(segment[0]) contains the flight details of delhi to Dubai(DXB).
-                             Array 2(segment[1]) contains the flight details of Dubai to Delhi(DEL).
-                             */
-                            //This array contains the origin  to destination flight details
-                            JSONArray segment1=segments.getJSONArray(0);
-
-
-                            List<RoundtripModelclass> flights=new ArrayList<RoundtripModelclass>();
-                            RoundtripModelclass roundtripModelclass1= new RoundtripModelclass();
-                            for(int j=0;j<segment1.length();j++)
+                            RoundtripModelclass roundset = new RoundtripModelclass();
+                            JSONObject jobjet = resulsetarray.getJSONObject(i);
+                            Log.i(TAG, jobjet.toString());
+                            roundset.setResultindex_oneward(jobjet.getString("ResultIndex"));
+                            JSONObject fares = jobjet.getJSONObject("Fare");
+                            Double dfare_return = Double.valueOf(fares.getString("PublishedFare"));
+                            String finalfare_r = String.format("%.0f", dfare_return);
+                            roundset.setPriceneway(finalfare_r);
+                            // roundset.setPriceneway(fares.getString("PublishedFare"));
+                            JSONArray sagmentarray = jobjet.getJSONArray("Segments");
+                            JSONArray sagmentsubarray = sagmentarray.getJSONArray(0);
+                            JSONObject sagmentobj = sagmentsubarray.getJSONObject(0);
+                            if (sagmentobj.has("NoOfSeatAvailable"))
                             {
-                                JSONObject jsonObject5=segment1.getJSONObject(j);
-                                roundtripModelclass1.setSeatsleftneway(jsonObject5.getString("NoOfSeatAvailable"));
-                                Log.i("NoOfSeatAvailable",jsonObject5.getString("NoOfSeatAvailable"));
-                                /*
-                                * Airline
-                                * Airline is a JSON object.Airline contains the following
-                                * details:
-                                * 1. Airline
-                                * 2. Airline name
-                                * 3.Airline Code
-                                * 4.Flight Number
-                                * */
-                                JSONObject airline=jsonObject5.getJSONObject("Airline");
-                                Log.i("Airline",airline.toString());
-                                roundtripModelclass1.setFlightnameneway(airline.getString("AirlineName"));
-                                Log.i("AirlineName",airline.getString("AirlineName"));
-                                roundtripModelclass1.setCodeneway(airline.getString("AirlineCode"));
-                                Log.i("AirlineCode",airline.getString("AirlineCode"));
-                                roundtripModelclass1.setNumberneway(airline.getString("FlightNumber"));
-                                Log.i("FlightNumber",airline.getString("FlightNumber"));
-                                roundtripModelclass1.setStopsneway(jsonObject5.getString("StopPoint"));
-                                Log.i("StopPoint",jsonObject5.getString("StopPoint"));
-                                flights.add(roundtripModelclass1);
-                            }//End of for loop
-                            for(int j=0;i<flights.size();i++)
-                            {
-                                Log.i("Flight Details",flights.get(j).toString());
-                            }//End of for loop
+                                roundset.setSeatsleftneway(sagmentobj.getString("NoOfSeatAvailable"));
                             }
-                            //This array contains the destination  to origin flight details
-                            JSONArray jsonArray5= segments.getJSONArray(1);
+                            else
+                            {
+                                roundset.setSeatsleftneway(" ");
+                            }
+                            roundset.setStopsneway(sagmentobj.getString("StopPoint"));
+                            JSONObject airlineobje = sagmentobj.getJSONObject("Airline");
+                            roundset.setFlightnameneway(airlineobje.getString("AirlineName"));
+                            roundset.setCodeneway(airlineobje.getString("AirlineCode"));
+                            roundset.setNumberneway(airlineobje.getString("FlightNumber"));
+                            JSONObject originobject = sagmentobj.getJSONObject("Origin");
+                            JSONObject destinationobj = sagmentobj.getJSONObject("Destination");
+                            //Split the value
+                            String splitdest = originobject.getString("DepTime");
+                            String[] textslitdest = splitdest.split("T");
+                            String newsplitdest1 = textslitdest[0];
+                            String newsplitdest2 = textslitdest[1];
+                            String textdepar = newsplitdest2;
+                            String sub_textdepa = textdepar.substring(0, newsplitdest2.length() - 3);
+                            //this is wrong because i made mistake in xml
+                            roundset.setOrigintimeneway(sub_textdepa);
+//                                 // onewayset.setArrivingtime(destinaobj.getString("ArrTime"))
+                            // onewayset.setDeparturetime(originobject.getString("DepTime"));
+                            String splitarive = destinationobj.getString("ArrTime");
+                            String[] textslitarivtim = splitarive.split("T");
+                            String newsplitarriv = textslitarivtim[0];
+                            String newsplitarriv2 = textslitarivtim[1];
+                            //substring value
+                            String textsub = newsplitarriv2;
+                            String sub_text = textsub.substring(0, newsplitarriv2.length() - 3);
 
+                            //this is wrong because i made mistake in xml
+                            roundset.setDiparturetimeneway(sub_text);
+                            roundleftlist.add(roundset);
+                            Log.wtf("printlog", roundset.toString());
+                            progressDialog.dismiss();
                         }//End of for loop
-                      catch (JSONException e)
-                    {
-                        Log.i("jsonException",e.toString());
+                        JSONArray resulsreturnarray = resultarray.getJSONArray(0);
+                        for (int j = 0; j < resulsreturnarray.length(); j++)
+                        {
+                            RoundtripreturnModelclass listright = new RoundtripreturnModelclass();
+                            JSONObject jobjet = resulsreturnarray.getJSONObject(j);
+                            listright.setResultindex_return(jobjet.getString("ResultIndex"));
+                            JSONObject fares = jobjet.getJSONObject("Fare");
+                            Double dfare_origin = Double.valueOf(fares.getString("PublishedFare"));
+                            //round fare after decimal
+                            String finalfare = String.format("%.0f", dfare_origin);
+                            listright.setReturnroundtriponewayprice(finalfare);
+                            // listright.setReturnroundtriponewayprice(fares.getString("PublishedFare"));
+                            JSONArray sagmentarray = jobjet.getJSONArray("Segments");
+                            JSONArray sagmentsubarray = sagmentarray.getJSONArray(1);
+                            JSONObject sagmentobj = sagmentsubarray.getJSONObject(0);
+                            if (sagmentobj.has("NoOfSeatAvailable")) {
+                                listright.setReturnroundtriponewayseatsleft(sagmentobj.getString("NoOfSeatAvailable"));
+                            } else {
+                                listright.setReturnroundtriponewayseatsleft(" ");
+                            }
+                            listright.setReturnroundtriponewaynumberofstops(sagmentobj.getString("StopPoint"));
+                            JSONObject airlineobje = sagmentobj.getJSONObject("Airline");
+                            listright.setReturnflightnamearrive(airlineobje.getString("AirlineName"));
+                            listright.setReturnflightcodearrive(airlineobje.getString("AirlineCode"));
+                            listright.setReturnflightnumberarrive(airlineobje.getString("FlightNumber"));
+                            JSONObject originobject = sagmentobj.getJSONObject("Origin");
+                            JSONObject destinationobj = sagmentobj.getJSONObject("Destination");
+                            //split the value
+                            String splitdest = originobject.getString("DepTime");
+                            String[] textslitdest = splitdest.split("T");
+                            String newsplitdest1 = textslitdest[0];
+                            String newsplitdest2 = textslitdest[1];
+                            //substring value
+                            String textsubreturn = newsplitdest2;
+                            String sub_return = textsubreturn.substring(0, newsplitdest2.length() - 3);
+                            listright.setReturnflightonewaytimearrive(sub_return);
+//                                  // onewayset.setArrivingtime(destinaobj.getString("ArrTime"))
+                            // onewayset.setDeparturetime(originobject.getString("DepTime"));
+                            String splitarive = destinationobj.getString("ArrTime");
+                            String[] textslitarivtim = splitarive.split("T");
+                            String newsplitarriv = textslitarivtim[0];
+                            String newsplitarriv_2 = textslitarivtim[1];
+                            //for substring
+                            String txtsub_return2 = newsplitarriv_2;
+                            String sub_return2 = txtsub_return2.substring(0, newsplitarriv_2.length() - 3);
+                            //this is wrong because i made mistake in xml
+                            listright.setReturnflightonewaydiparturetime(sub_return2);
+                            roundrightlist.add(listright);
+                            Log.wtf("printlog", listright.toString());
+                            progressDialog.dismiss();
+                        }
                     }
+                    catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    leftadaptor = new RoundtripOriginAdaptor(International_Roundtrip.this, roundleftlist);
+                    recyclerViewleft.setAdapter(leftadaptor);
+                    leftadaptor.setClickListenleft(International_Roundtrip.this);
+                    leftadaptor.notifyDataSetChanged();
+
+                    rightadaptor = new RoundtripReturnAdaptor(International_Roundtrip.this, roundrightlist);
+                    recyclerViewright.setAdapter(rightadaptor);
+                    rightadaptor.setClickListen(International_Roundtrip.this);
+                    rightadaptor.notifyDataSetChanged();
+                    progressDialog.dismiss();
 
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.i("International_Roundtrip",error.toString());
-                    Toast.makeText(International_Roundtrip.this,"onErrorResponse",Toast.LENGTH_LONG);
-
+                    Log.e("LOG_VOLLEY", error.toString());
+                    progressDialog.dismiss();
+                    Toast.makeText(International_Roundtrip.this, "mag" + originacc + "\n" + destinationacc + "\n" + adultacc + "\n" + childacc + "\n" + infantacc + "\n" + cabinacc + "\n" + depdateacc + "\n" + returndateacc, Toast.LENGTH_LONG).show();
                 }
-            })
-            {
+            }) {
                 @Override
-                public String getBodyContentType()
-                {
+                public String getBodyContentType() {
                     return "application/json; charset=utf-8";
                 }
             };
-            int socketTimeOut=900000;
-            RetryPolicy policy = new DefaultRetryPolicy(socketTimeOut,DefaultRetryPolicy.DEFAULT_MAX_RETRIES,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+            int socketTimeout = 500000; // 30 seconds. You can change it
+            RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
             jsonObjectRequest.setRetryPolicy(policy);
-            requestQueue.add(jsonObjectRequest);
-        }
-        catch(Exception e)
-        {
 
+            requestQueue.add(jsonObjectRequest);
+
+        } catch (JSONException e)
+        {
+            e.printStackTrace();
         }
     }
+    //Right side flights clicked
+    @Override
+    public void itemClicked(View view, int position)
+    {
+        RoundtripreturnModelclass rightmodel = (RoundtripreturnModelclass) rightadaptor.getItem(position);
+        Linvisible.setVisibility(View.VISIBLE);
+        finalprice = Integer.parseInt(rightmodel.getReturnroundtriponewayprice());
+        resutlt_retunr = rightmodel.getResultindex_return();
+
+        flightCodeR=rightmodel.getReturnflightcodearrive();
+        flightNameR=rightmodel.getReturnflightnamearrive();
+        flightNumberR=rightmodel.getReturnflightnumberarrive();
+        flightSeatLeftR=rightmodel.getReturnroundtriponewayseatsleft();
+        flightDepartureTimeR=rightmodel.getReturnflightonewaydiparturetime();
+        flightPriceR=rightmodel.getReturnroundtriponewayprice();
+        flightImageR=rightmodel.getImgagerountreturn();
+        flightArrivalTimeR=rightmodel.getReturnflightonewaytimearrive();
+
+        int f = finalprice + priceid;
+        text_price.setText(String.valueOf(f));
+        if (finalprice > 0 && priceid > 0) {
+            Book_btn.setVisibility(View.VISIBLE);
+        }
+        Toast.makeText(getApplicationContext(), "it is working " + f, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void leftitemclick(View view, int position)
+    {
+        Linvisible.setVisibility(View.VISIBLE);
+        RoundtripModelclass leftmodel = (RoundtripModelclass) leftadaptor.getItem(position);
+
+        flightCode=leftmodel.getCodeneway();
+        flightName=leftmodel.getFlightnameneway();
+        flightNumber=leftmodel.getNumberneway();
+        flightSeatLeft=leftmodel.getSeatsleftneway();
+        flightDepartureTime=leftmodel.getDiparturetimeneway();
+        flightPrice=leftmodel.getPriceneway();
+        flightArrivalTime=leftmodel.getOrigintimeneway();
+
+        priceid = Integer.parseInt(leftmodel.getPriceneway());
+        result_oneward = leftmodel.getResultindex_oneward();
+        int b = finalprice + priceid;
+        text_price.setText(String.valueOf(b));
+        if (finalprice > 0 && priceid > 0)
+        {
+            Book_btn.setVisibility(View.VISIBLE);
+        }
+        Toast.makeText(getApplicationContext(), "It is working " + b, Toast.LENGTH_SHORT).show();
+    }//End of leftitemclick method
 }
